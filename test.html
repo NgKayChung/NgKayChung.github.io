@@ -2,7 +2,7 @@
 <head>
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
-<script>
+<!--script>
 function readURL(input) {
 	var image = document.getElementById("image");
 	var result;
@@ -12,24 +12,70 @@ function readURL(input) {
 		reader.addEventListener('load', function(e){
 			image.setAttribute('src', e.target.result);
 			
-			QCodeDecoder().decodeFromImage(image,function(er, result){
-				/*var answer = document.getElementById('ans');
+			QCodeDecoder().decodeFromImage(image, function(er, result){
+				var answer = document.getElementById('ans');
 				var p = document.createElement('p');
 				var textn = document.createTextNode(result);
 				p.appendChild(textn);
-				answer.appendChild(p);*/
+				answer.appendChild(p);
 				alert(result);
 			});
 		});
-
 		reader.readAsDataURL(input.files[0]);
 	}
 }
-</script>
+</script-->
 </head>
 <body>
+<video id = "scan"></video>
 <input type='file' id = "upload" onchange="readURL(this);"/>
 <img src = "#" id = "image"/>
 <div id='ans'></div>
+<script>
+var n = navigator;
+video = document.querySelector('scan');
+var options = true;
+
+    if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
+    {
+        try{
+            navigator.mediaDevices.enumerateDevices()
+            .then(function(devices) {
+              devices.forEach(function(device) {
+                console.log("deb1");
+                if (device.kind === 'videoinput') {
+                  if(device.label.toLowerCase().search("back") >-1)
+                    options=[{'sourceId': device.deviceId}] ;
+                }
+                console.log(device.kind + ": " + device.label +
+                            " id = " + device.deviceId);
+              });
+            })
+            
+        }
+        catch(e)
+        {
+            console.log(e);
+        }
+    }
+    else{
+        console.log("no navigator.mediaDevices.enumerateDevices" );
+    }
+    
+    /*if(n.getUserMedia)
+        n.getUserMedia({video: options, audio: false}, qrcode.vidSuccess, qrcode.vidError);
+    else
+    if(n.webkitGetUserMedia)
+    {
+        qrcode.webkit=true;
+        n.webkitGetUserMedia({video:options, audio: false}, qrcode.vidSuccess, qrcode.vidError);
+    }
+    else
+    if(n.mozGetUserMedia)
+    {
+        qrcode.moz=true;
+        n.mozGetUserMedia({video: options, audio: false}, qrcode.vidSuccess, qrcode.vidError);
+    }*/
+</script>
 </body>
 </html>
