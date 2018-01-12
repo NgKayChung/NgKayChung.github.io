@@ -1,87 +1,149 @@
 <html>
 <head>
 <title>Reader Test</title>
-<script>
-navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
-   getUserMedia: function(c) {
-     return new Promise(function(y, n) {
-       (navigator.mozGetUserMedia ||
-        navigator.webkitGetUserMedia).call(navigator, c, y, n);
-     });
-   }
-} : null);
-
-if (!navigator.mediaDevices) {
-  alert("getUserMedia() not supported.");
-}
-</script>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
-var result;
-/*function readURL(input) {
-	var image = document.getElementById("image");
-	var result;
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
+var gCtx = null;
+var gCanvas = null;
+var c=0;
+var stype=0;
+var gUM=false;
+var webkit=false;
+var moz=false;
+var v=null;
+var vidhtml = '<video id="v" autoplay></video>';
 
-		reader.addEventListener('load', function(e){
-			image.setAttribute('src', e.target.result);
-			
-			QCodeDecoder().decodeFromImage(image, function(er, result){
-				var answer = document.getElementById('ans');
-				var p = document.createElement('p');
-				var textn = document.createTextNode(result);
-				p.appendChild(textn);
-				answer.appendChild(p);
-				alert(result);
+function initCanvas(w,h)
+{
+    gCanvas = document.getElementById("qr-canvas");
+    gCanvas.style.width = w + "px";
+    gCanvas.style.height = h + "px";
+    gCanvas.width = w;
+    gCanvas.height = h;
+    gCtx = gCanvas.getContext("2d");
+    gCtx.clearRect(0, 0, w, h);
+}
+
+function captureToCanvas() {
+    if(stype!=1)
+        return;
+    if(gUM)
+    {
+        try{
+            gCtx.drawImage(v,0,0);
+            try{
+                qrcode.decode();
+            }
+            catch(e){       
+                console.log(e);
+                setTimeout(captureToCanvas, 500);
+            };
+        }
+        catch(e){       
+                console.log(e);
+                setTimeout(captureToCanvas, 500);
+        };
+    }
+}
+
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}
+function success(stream) {
+    if(webkit)
+        v.src = window.URL.createObjectURL(stream);
+    else
+    if(moz)
+    {
+        v.mozSrcObject = stream;
+        v.play();
+    }
+    else
+        v.src = stream;
+    gUM=true;
+    setTimeout(captureToCanvas, 500);
+}
+		
+function error(error) {
+    gUM=false;
+    return;
+}
+
+function load()
+{
+	setwebcam();
+}
+
+function setwebcam()
+{
+	var options = true;
+	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
+	{
+		try{
+			navigator.mediaDevices.enumerateDevices()
+			.then(function(devices) {
+			  devices.forEach(function(device) {
+				if (device.kind === 'videoinput') {
+				  if(device.label.toLowerCase().search("back") >-1)
+					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
+				}
+				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
+			  });
+			  setwebcam2(options);
 			});
-		});
-		reader.readAsDataURL(input.files[0]);
+		}
+		catch(e)
+		{
+			console.log(e);
+		}
 	}
-}*/
-QCodeDecoder.decodeFromCamera(document.getElementById('scan'), function (err, result) {
-  if (err) throw err;
+	else{
+		console.log("no navigator.mediaDevices.enumerateDevices" );
+		setwebcam2(options);
+	}
+}
 
-  alert(result);
-});
+function setwebcam2(options)
+{
+	console.log(options);
+	document.getElementById("result").innerHTML="- scanning -";
+    if(stype==1)
+    {
+        setTimeout(captureToCanvas, 500);    
+        return;
+    }
+    var n=navigator;
+    document.getElementById("outdiv").innerHTML = vidhtml;
+    v=document.getElementById("v");
+
+
+    if(n.getUserMedia)
+	{
+		webkit=true;
+        n.getUserMedia({video: options, audio: false}, success, error);
+	}
+    else
+    if(n.webkitGetUserMedia)
+    {
+        webkit=true;
+        n.webkitGetUserMedia({video:options, audio: false}, success, error);
+    }
+    else
+    if(n.mozGetUserMedia)
+    {
+        moz=true;
+        n.mozGetUserMedia({video: options, audio: false}, success, error);
+    }
+    stype=1;
+    setTimeout(captureToCanvas, 500);
+}
 </script>
 </head>
 <body>
-<video id = "scan" autoplay></video>
-<input type='file' id = "upload" onchange="readURL(this);"/>
-<img src = "#" id = "image"/>
-<div id='ans'></div>
-<script>
-var n = navigator;
-video = document.getElementById('scan');
-var options = true;
-
-    if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
-    {
-        try{
-            navigator.mediaDevices.enumerateDevices()
-            .then(function(devices) {
-              devices.forEach(function(device) {
-                console.log("deb1");
-                if (device.kind === 'videoinput') {
-                  if(device.label.toLowerCase().search("back") >-1){
-                    options=[{'sourceId': device.deviceId}] ;
-					alert(options);
-                }
-                console.log(device.kind + ": " + device.label +
-                            " id = " + device.deviceId);
-              });
-            })
-            
-        }
-        catch(e)
-        {
-            alert(e);
-        }
-    }
-    else{
-        alert("no navigator.mediaDevices.enumerateDevices" );
-    }
-</script>
+<div id="outdiv"></div>
+<div id = "result"></div>
+<canvas id="qr-canvas" width="800" height="600"></canvas>
+<script type="text/javascript">load();</script>
 </body>
 </html>
