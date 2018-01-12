@@ -13,7 +13,7 @@ function readURL(input) {
 			image.setAttribute('src', e.target.result);
 			
 			QCodeDecoder().decodeFromImage(image,function(er, result){
-				alert(result);
+				document.getElementById('readans').setAttribute('value', result);
 			});
 		});
 
@@ -25,6 +25,6 @@ function readURL(input) {
 <body>
 <input type='file' id = "upload" onchange="readURL(this);"/>
 <img src = "#" id = "image"/>
-
+<p id = "readans"></p>
 </body>
 </html>
