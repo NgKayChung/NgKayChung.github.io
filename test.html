@@ -14,7 +14,9 @@ function readURL(input) {
 			
 			QCodeDecoder().decodeFromImage(image,function(er, result){
 				var answer = document.getElementById('ans');
-				var p = "<p>" + result + "</p>";
+				var p = document.createElement('p');
+				var textn = document.createTextNode(result);
+				p.appendChild(textn);
 				answer.appendChild(p);
 			});
 		});
