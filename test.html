@@ -13,11 +13,12 @@ function readURL(input) {
 			image.setAttribute('src', e.target.result);
 			
 			QCodeDecoder().decodeFromImage(image,function(er, result){
-				var answer = document.getElementById('ans');
+				/*var answer = document.getElementById('ans');
 				var p = document.createElement('p');
 				var textn = document.createTextNode(result);
 				p.appendChild(textn);
-				answer.appendChild(p);
+				answer.appendChild(p);*/
+				alert(result);
 			});
 		});
 
