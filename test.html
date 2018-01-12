@@ -10,6 +10,11 @@ navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia |
      });
    }
 } : null);
+
+if (!navigator.mediaDevices) {
+  alert("getUserMedia() not supported.");
+  return;
+}
 </script>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
@@ -60,8 +65,9 @@ var options = true;
               devices.forEach(function(device) {
                 console.log("deb1");
                 if (device.kind === 'videoinput') {
-                  if(device.label.toLowerCase().search("back") >-1)
+                  if(device.label.toLowerCase().search("back") >-1){
                     options=[{'sourceId': device.deviceId}] ;
+					alert(options);
                 }
                 console.log(device.kind + ": " + device.label +
                             " id = " + device.deviceId);
@@ -71,11 +77,11 @@ var options = true;
         }
         catch(e)
         {
-            console.log(e);
+            alert(e);
         }
     }
     else{
-        console.log("no navigator.mediaDevices.enumerateDevices" );
+        alert("no navigator.mediaDevices.enumerateDevices" );
     }
 </script>
 </body>
