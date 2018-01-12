@@ -13,7 +13,6 @@ navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia |
 
 if (!navigator.mediaDevices) {
   alert("getUserMedia() not supported.");
-  return;
 }
 </script>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
@@ -45,7 +44,7 @@ QCodeDecoder.decodeFromCamera(document.getElementById('scan'), function (err, re
 
   alert(result);
 });
-</script-->
+</script>
 </head>
 <body>
 <video id = "scan" autoplay></video>
