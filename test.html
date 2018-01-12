@@ -1,6 +1,16 @@
 <html>
 <head>
 <title>Reader Test</title>
+<script>
+navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+   getUserMedia: function(c) {
+     return new Promise(function(y, n) {
+       (navigator.mozGetUserMedia ||
+        navigator.webkitGetUserMedia).call(navigator, c, y, n);
+     });
+   }
+} : null);
+</script>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <!--script>
 function readURL(input) {
@@ -33,7 +43,7 @@ function readURL(input) {
 <div id='ans'></div>
 <script>
 var n = navigator;
-video = document.querySelector('scan');
+video = document.getElementById('scan');
 var options = true;
 
     if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
@@ -61,21 +71,6 @@ var options = true;
     else{
         console.log("no navigator.mediaDevices.enumerateDevices" );
     }
-    
-    /*if(n.getUserMedia)
-        n.getUserMedia({video: options, audio: false}, qrcode.vidSuccess, qrcode.vidError);
-    else
-    if(n.webkitGetUserMedia)
-    {
-        qrcode.webkit=true;
-        n.webkitGetUserMedia({video:options, audio: false}, qrcode.vidSuccess, qrcode.vidError);
-    }
-    else
-    if(n.mozGetUserMedia)
-    {
-        qrcode.moz=true;
-        n.mozGetUserMedia({video: options, audio: false}, qrcode.vidSuccess, qrcode.vidError);
-    }*/
 </script>
 </body>
 </html>
