@@ -75,7 +75,7 @@ function setwebcam2(options)
         moz=true;
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
-
+	alert('facing : ' + n.video.facingMode);
     stype=1;
 }
 
