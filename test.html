@@ -26,7 +26,7 @@ function setwebcam()
 			  devices.forEach(function(device) {
 				if(device.kind === 'videoinput')
 					options = {deviceId:{exact:device.deviceId}, facingMode:'environment'};
-				console.log('device type : ' + device.kind + ' id : ' + device.deviceId + ' face : ' + device.facingMode);
+				console.log('device type : ' + device.kind + ' id : ' + device.deviceId);
 			  });
 			 });
 			  setwebcam2(options);
@@ -75,7 +75,7 @@ function setwebcam2(options)
         moz=true;
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
-	alert('facing : ' + n.video.facingMode);
+   alert('facing : ' + v.video.facingMode);
     stype=1;
 }
 
