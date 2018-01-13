@@ -32,8 +32,8 @@ function setwebcam()
 			  
 			  if(devs.length > 1){
 			    devs.forEach(function(dev){
-				if(dev.facingMode === 'environment')
-				    devID = dev.deviceId;
+				if(dev.facingMode === 'environment'){
+				    devID = dev.deviceId; alert('yes');}
 			    });
 			  }
 			  else if(devs.length == 0)
