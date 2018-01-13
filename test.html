@@ -10,25 +10,6 @@ var moz=false;
 var v=null;
 var vidhtml = '<video id="v" autoplay></video>';
 
-function success(stream) {
-    if(webkit)
-        v.src = window.URL.createObjectURL(stream);
-    else
-    if(moz)
-    {
-        v.mozSrcObject = stream;
-        v.play();
-    }
-    else
-        v.src = stream;
-    gUM=true;
-}
-		
-function error(error) {
-    gUM=false;
-    return;
-}
-
 function load()
 {
 	setwebcam();
@@ -36,7 +17,7 @@ function load()
 
 function setwebcam()
 {
-	var options = true;
+	var options = null;
 	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
 	{
 		try{
@@ -44,7 +25,7 @@ function setwebcam()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
 				if (device.kind === 'videoinput' && device.facing === 'environment')
-					options={deviceId:device.deviceid};
+					options={deviceId:device.deviceId};
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
 			  setwebcam2(options);
@@ -55,7 +36,8 @@ function setwebcam()
 			console.log(e);
 		}
 	}
-	else{
+	else
+	{
 		console.log("no navigator.mediaDevices.enumerateDevices" );
 		setwebcam2(options);
 	}
@@ -67,39 +49,60 @@ function setwebcam()
 
 function setwebcam2(options)
 {
-	document.getElementById("result").innerHTML="- scanning -";
+    document.getElementById("result").innerHTML="- scanning -";
+    
     if(stype==1)
     {   
         return;
     }
+    
     var n=navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v=document.getElementById("v");
 
     if(n.getUserMedia)
-	{
-		webkit=true;
+    {
+	webkit=true;
         n.getUserMedia({video: options, audio: false}, success, error);
-	}
-    else
-    if(n.webkitGetUserMedia)
+    }
+    else if(n.webkitGetUserMedia)
     {
         webkit=true;
-        n.webkitGetUserMedia({video:options, audio: false}, success, error);
+        n.webkitGetUserMedia({video: options, audio: false}, success, error);
     }
-    else
-    if(n.mozGetUserMedia)
+    else if(n.mozGetUserMedia)
     {
         moz=true;
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
+
     stype=1;
+}
+
+function success(stream) {
+    if(webkit)
+        v.src = window.URL.createObjectURL(stream);
+    else if(moz)
+    {
+        v.mozSrcObject = stream;
+        v.play();
+    }
+    else
+        v.src = stream;
+    gUM=true;
+}
+		
+function error(err)
+{
+    gUM=false;
+    return;
 }
 </script>
 </head>
 <body>
 <div id="outdiv"></div>
-<div id = "result"></div><br/>
+<div id = "result"></div>
+<br/>
 <script type="text/javascript">load();</script>
 </body>
 </html>
