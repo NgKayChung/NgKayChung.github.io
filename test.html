@@ -87,7 +87,7 @@ function setwebcam()
 			  devices.forEach(function(device) {
 				if (device.kind === 'videoinput') {
 				  if(device.label.toLowerCase().search("back") >-1)
-					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
+					options={'deviceId': {'exact':device.deviceId}, 'facingMode':{'exact':'environment'}} ;
 				}
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
@@ -144,12 +144,16 @@ function setwebcam2(options)
     setTimeout(captureToCanvas, 500);
 }
 
-
+function flipCamera()
+{
+    
+}
 </script>
 </head>
 <body>
 <div id="outdiv"></div>
-<div id = "result"></div>
+<div id = "result"></div><br/>
+<button id = "flip" onclick = "flipCamera();">Flip Camera</button>
 <canvas id="qr-canvas" width="800" height="600"></canvas>
 <script type="text/javascript">load();</script>
 </body>
