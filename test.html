@@ -24,8 +24,8 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
-				if (device.kind === 'videoinput' && device.facing === 'environment')
-					options={deviceId:device.deviceId};
+				if (device.kind === 'videoinput')
+					options={deviceId:{exact:device.deviceId}, facingMode:{exact:'environment'}};
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
 			  setwebcam2(options);
@@ -51,14 +51,14 @@ function setwebcam2(options)
 {
     document.getElementById("result").innerHTML="- scanning -";
     
-    if(stype==1)
+    if(stype == 1)
     {   
         return;
     }
     
-    var n=navigator;
+    var n = navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
-    v=document.getElementById("v");
+    v = document.getElementById("v");
 
     if(n.getUserMedia)
     {
