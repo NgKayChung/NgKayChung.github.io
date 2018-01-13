@@ -24,7 +24,7 @@ function setwebcam()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
 				if(device.kind === 'videoinput')
-					options = {deviceId:{exact:device.deviceId}, facingMode:{exact:'user'}};
+					options = {deviceId:{exact:device.deviceId}, facingMode:{exact:'environment'}};
 				console.log('device type : ' + device.kind + ' id : ' + device.deviceId);
 			  });
 			 });
