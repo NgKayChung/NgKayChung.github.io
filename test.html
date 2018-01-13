@@ -73,6 +73,7 @@ function error(error) {
 function load()
 {
 	setwebcam();
+	initCanvas(700, 500);
 }
 
 function setwebcam()
@@ -117,6 +118,10 @@ function setwebcam2(options)
     document.getElementById("outdiv").innerHTML = vidhtml;
     v=document.getElementById("v");
 
+    QCodeDecoder()
+    .decodeFromCamera(v, function(er,res){
+        console.log(res);
+    });
 
     if(n.getUserMedia)
 	{
@@ -138,6 +143,8 @@ function setwebcam2(options)
     stype=1;
     setTimeout(captureToCanvas, 500);
 }
+
+
 </script>
 </head>
 <body>
