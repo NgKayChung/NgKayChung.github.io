@@ -4,7 +4,6 @@
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
 var stype=0;
-var gUM=false;
 var webkit=false;
 var moz=false;
 var v=null;
@@ -25,7 +24,7 @@ function setwebcam()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
 				if(device.kind === 'videoinput')
-					options = {deviceId:{exact:device.deviceId}, facingMode:{exact:'environment'}};
+					options = {deviceId:{exact:device.deviceId}, facingMode:{exact:'user'}};
 				console.log('device type : ' + device.kind + ' id : ' + device.deviceId);
 			  });
 			 });
@@ -89,12 +88,10 @@ function success(stream) {
     }
     else
         v.src = stream;
-    gUM=true;
 }
 		
 function error(err)
 {
-    gUM=false;
     return;
 }
 </script>
