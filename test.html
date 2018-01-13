@@ -20,7 +20,7 @@ function setwebcam()
 	var options = null;
 	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
 	{
-		try{
+	    try{
 			var devs = []
 			navigator.mediaDevices.enumerateDevices()
 			.then(function(devices) {
@@ -43,7 +43,6 @@ function setwebcam()
 			 });
 			
 			  setwebcam2(options);
-			});
 		}
 		catch(e)
 		{
