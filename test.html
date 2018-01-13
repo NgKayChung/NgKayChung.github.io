@@ -12,6 +12,7 @@ var webkit=false;
 var moz=false;
 var v=null;
 var vidhtml = '<video id="v" autoplay></video>';
+var front = true;
 
 function initCanvas(w,h)
 {
@@ -87,7 +88,7 @@ function setwebcam()
 			  devices.forEach(function(device) {
 				if (device.kind === 'videoinput') {
 				  if(device.label.toLowerCase().search("back") >-1)
-					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
+					options={deviceId:{'exact':device.deviceId}, facingMode:{'exact':(front ? 'user' : 'environment')};
 				}
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
@@ -104,6 +105,11 @@ function setwebcam()
 		setwebcam2(options);
 	}
 }
+	
+QCodeDecoder()
+    .decodeFromCamera(v, function(er,res){
+        document.getElementById('result').innerHTML = res;
+    });
 
 function setwebcam2(options)
 {
@@ -116,11 +122,6 @@ function setwebcam2(options)
     var n=navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v=document.getElementById("v");
-
-    QCodeDecoder()
-    .decodeFromCamera(v, function(er,res){
-        console.log(res);
-    });
 
     if(n.getUserMedia)
 	{
@@ -145,7 +146,8 @@ function setwebcam2(options)
 
 function flipCamera()
 {
-    
+    front = !front;
+    setwebcam();
 }
 </script>
 </head>
