@@ -21,13 +21,27 @@ function setwebcam()
 	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
 	{
 		try{
+			var devs = []
 			navigator.mediaDevices.enumerateDevices()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
-				if (device.kind === 'videoinput')
-					options={deviceId:{exact:device.deviceId}, facingMode:{exact:'environment'}};
-				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
-			  });
+				if(device.kind === 'videoinput')
+					devs.push(device);
+			  }
+			  var devID = "";
+			  
+			  if(devs.length > 1){
+			    devs.forEach(function(dev){
+				if(dev.facingMode === 'environment')
+				    devID = dev.deviceId;
+			    }
+			  }
+			  else if(devs.length == 0)
+			    devID = devs[0].deviceId;
+			  
+			  options = {deviceId:{exact:devID}};
+			 });
+			
 			  setwebcam2(options);
 			});
 		}
