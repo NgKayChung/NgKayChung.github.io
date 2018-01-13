@@ -3,57 +3,13 @@
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
-var gCtx = null;
-var gCanvas = null;
-var c=0;
 var stype=0;
 var gUM=false;
 var webkit=false;
 var moz=false;
 var v=null;
 var vidhtml = '<video id="v" autoplay></video>';
-var front = true;
 
-function initCanvas(w,h)
-{
-    gCanvas = document.getElementById("qr-canvas");
-    gCanvas.style.width = w + "px";
-    gCanvas.style.height = h + "px";
-    gCanvas.width = w;
-    gCanvas.height = h;
-    gCtx = gCanvas.getContext("2d");
-    gCtx.clearRect(0, 0, w, h);
-}
-
-function captureToCanvas() {
-    if(stype!=1)
-        return;
-    if(gUM)
-    {
-        try{
-            gCtx.drawImage(v,0,0);
-            try{
-                QCodeDecoder()
-		.decodeFromImage(document.getElementById('qr-canvas'), function(er, res){
-			alert(res);
-		});
-            }
-            catch(e){       
-                console.log(e);
-                setTimeout(captureToCanvas, 500);
-            };
-        }
-        catch(e){       
-                console.log(e);
-                setTimeout(captureToCanvas, 500);
-        };
-    }
-}
-
-function isCanvasSupported(){
-  var elem = document.createElement('canvas');
-  return !!(elem.getContext && elem.getContext('2d'));
-}
 function success(stream) {
     if(webkit)
         v.src = window.URL.createObjectURL(stream);
@@ -66,7 +22,6 @@ function success(stream) {
     else
         v.src = stream;
     gUM=true;
-    setTimeout(captureToCanvas, 500);
 }
 		
 function error(error) {
@@ -77,7 +32,6 @@ function error(error) {
 function load()
 {
 	setwebcam();
-	initCanvas(700, 500);
 }
 
 function setwebcam()
@@ -89,10 +43,8 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
-				if (device.kind === 'videoinput') {
-				  if(device.label.toLowerCase().search("back") >-1)
-					options={deviceId:device.deviceId, facingMode:(front ? 'user' : 'environment')};
-				}
+				if (device.kind === 'videoinput' && device.facing === 'environment')
+					options={deviceId:device.deviceid};
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
 			  setwebcam2(options);
@@ -109,17 +61,15 @@ function setwebcam()
 	}
 }
 	
-QCodeDecoder()
-    .decodeFromCamera(v, function(er,res){
-        document.getElementById('result').innerHTML = res;
-    });
+QCodeDecoder().decodeFromCamera(v, function(er,res){
+    document.getElementById('result').innerHTML = res;
+});
 
 function setwebcam2(options)
 {
 	document.getElementById("result").innerHTML="- scanning -";
     if(stype==1)
-    {
-        setTimeout(captureToCanvas, 500);    
+    {   
         return;
     }
     var n=navigator;
@@ -144,21 +94,12 @@ function setwebcam2(options)
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
     stype=1;
-    setTimeout(captureToCanvas, 500);
-}
-
-function flipCamera()
-{
-    front = !front;
-    setwebcam();
 }
 </script>
 </head>
 <body>
 <div id="outdiv"></div>
 <div id = "result"></div><br/>
-<button id = "flip" onclick = "flipCamera();">Flip Camera</button>
-<canvas id="qr-canvas" width="800" height="600"></canvas>
 <script type="text/javascript">load();</script>
 </body>
 </html>
