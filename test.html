@@ -27,19 +27,19 @@ function setwebcam()
 			  devices.forEach(function(device) {
 				if(device.kind === 'videoinput')
 					devs.push(device);
-			  }
+			  });
 			  var devID = "";
 			  
 			  if(devs.length > 1){
 			    devs.forEach(function(dev){
 				if(dev.facingMode === 'environment')
 				    devID = dev.deviceId;
-			    }
+			    });
 			  }
 			  else if(devs.length == 0)
 			    devID = devs[0].deviceId;
 			  
-			  options = {deviceId:{exact:devID}, facingMode:'environment'};
+			  options = {deviceId:{exact:devID}};
 			 });
 			
 			  setwebcam2(options);
