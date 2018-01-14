@@ -94,7 +94,7 @@ function error(err)
     return;
 }
 
-QCodeDecoder.decodeFromVideo(v, function(err, res){
+QCodeDecoder().decodeFromVideo(document.getElementById('v'), function(err, res){
 	if(err) throw err;
 	alert(res);
 });
