@@ -24,7 +24,7 @@ function setwebcam()
 			.then(function(devices) {
 			  devices.forEach(function(device) {
 				if(device.kind === 'videoinput')
-					options = {deviceId:{exact:device.deviceId}, facing:{exact:'environment'}};
+					options = {deviceId:{exact:device.deviceId}, facingMode:{exact:'environment'}};
 			  });
 			 });
 			  setwebcam2(options);
@@ -94,7 +94,7 @@ function error(err)
     return;
 }
 
-QCodeDecoder().decodeFromVideo(document.getElementById('v'), function(err, res){
+QCodeDecoder().decodeFromCamera(document.getElementById('v'), function(err, res){
 	if(err) throw err;
 	alert(res);
 });
