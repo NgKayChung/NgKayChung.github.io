@@ -25,7 +25,8 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput')
-						options = {deviceId:{exact:device.deviceid}, facingMode:{exact:(front ? 'user' : 'environment')}};
+						options = {deviceId:device.deviceid, facingMode:{exact:(front ? 'user' : 'environment')}};
+					alert('device kind = ' + device.kind + ' device id = ' + device.deviceid);
 				});
 			});
 		 	setwebcam2(options);
@@ -58,7 +59,7 @@ function setwebcam2(options)
     var n = navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
-    document.getElementById("flipp").innerHTML = fliphtml;
+    
     
 
     if(n.getUserMedia)
@@ -76,6 +77,8 @@ function setwebcam2(options)
         moz=true;
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
+    else{
+	    alert('no media');}
 
     stype=1;
 }
@@ -91,9 +94,10 @@ function success(stream) {
     else
         v.src = stream;
 
+    document.getElementById("flipp").innerHTML = fliphtml;
     flipbtn.addEventListener('onclick', function(err){
 	front = !front;
-	v.video.facingMode = front ? 'user' : 'environment';
+	v.video.facingMode = (front ? 'user' : 'environment');
     });
 }
 		
