@@ -22,8 +22,8 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput'){
-						options = {deviceId: {exact: device.deviceid}, facingMode: 'environment'}; alert('yes');}
+					if(device.kind === 'videoinput' && device.facingMode === 'environment'){
+						options = {deviceId: {exact: device.deviceid}, facingMode: {exact: 'environment'}}; alert('yes');}
 				});
 			});
 		 	setwebcam2(options);
@@ -97,8 +97,6 @@ function error(err)
 {
     return;
 }
-
-
 </script>
 </head>
 <body>
