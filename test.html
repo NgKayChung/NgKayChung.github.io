@@ -8,6 +8,8 @@ var webkit=false;
 var moz=false;
 var v=null;
 var vidhtml = '<video id="v" autoplay></video>';
+var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
+var front = true;
 
 function load()
 {
@@ -23,7 +25,7 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput')
-						options = {deviceId:{exact:device.deviceid}, facingMode:{exact:'environment'}};
+						options = {deviceId:{exact:device.deviceid}, facingMode:{exact:(front ? 'user' : 'environment')}};
 				});
 			});
 		 	setwebcam2(options);
@@ -56,6 +58,8 @@ function setwebcam2(options)
     var n = navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
+    document.getElementById("flipp").innerHTML = fliphtml;
+    
 
     if(n.getUserMedia)
     {
@@ -86,6 +90,11 @@ function success(stream) {
     }
     else
         v.src = stream;
+
+    flipbtn.addEventListener('onclick', function(err){
+	front = !front;
+	v.video.facingMode = front ? 'user' : 'environment';
+    });
 }
 		
 function error(err)
@@ -96,6 +105,7 @@ function error(err)
 </head>
 <body>
 <button id = 'scannerbtn' onclick = 'setwebcam();'>Capture</button>
+<div id = "flipp"></div>
 <div id="outdiv"></div>
 <div id = "result"></div>
 </body>
