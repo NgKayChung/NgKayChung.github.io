@@ -95,7 +95,7 @@ function success(stream) {
         v.src = stream;
 
     document.getElementById("flipp").innerHTML = fliphtml;
-    flipbtn.addEventListener('onclick', flipCamera);
+    document.getElementById("flipbtn").addEventListener('onclick', flipCamera);
 }
 		
 function error(err)
