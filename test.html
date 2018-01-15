@@ -7,7 +7,7 @@ var stype=0;
 var webkit=false;
 var moz=false;
 var v=null;
-var devId = "";
+var vidDevInfos = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var front = false;
@@ -25,13 +25,13 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput'){
-						devId = device.deviceId;
-						options = {deviceId:{exact:devId}};
-						break;
-					}
+					if(device.kind === 'videoinput')
+						vidDevInfos.push(devId);
 				});
 			});
+		        var tempinfo = vidDevInfos.pop();
+		        vidDevInfos.push(tempinfo);
+		        options = {deviceId:{exact:tempInfo}};
 		 	setwebcam2(options);
 		}
 		catch(e)
@@ -63,8 +63,6 @@ function setwebcam2(options)
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
     
-    
-
     if(n.getUserMedia)
     {
 	webkit=true;
@@ -99,12 +97,20 @@ function success(stream) {
         v.src = stream;
 
     document.getElementById("flipp").innerHTML = fliphtml;
-    flipbtn.addEventListener('onclick', setwebcam);
+    flipbtn.addEventListener('onclick', flipCamera);
 }
 		
 function error(err)
 {
     return;
+}
+	
+function flipCamera()
+{
+	var temp = vidDevInfos.pop();
+	vidDevInfos.push(temp);
+	var options = {deviceId:{exact:temp}};
+	setwebcam2(options);
 }
 </script>
 </head>
