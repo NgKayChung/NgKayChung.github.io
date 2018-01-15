@@ -23,7 +23,7 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput')
-						options = {deviceId:{exact:device.deviceid}, facingMode:{exact:'environment'}};
+						options = {deviceId:{exact:device.deviceid}, facingMode:{exact:'user'}};
 				});
 			});
 		 	setwebcam2(options);
