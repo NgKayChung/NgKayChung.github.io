@@ -88,7 +88,7 @@ function success(stream) {
     else
         v.src = stream;
     
-    QCodeDecoder().decodeFromCamera(v, function(err, res){
+    QCodeDecoder().decodeFromVideo(v, function(err, res){
 	if(err) throw err;
 	alert(res);
     });
