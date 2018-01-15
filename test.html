@@ -87,6 +87,10 @@ function success(stream) {
     }
     else
         v.src = stream;
+    QCodeDecoder().decodeFromCamera(document.getElementById('v'), function(err, res){
+	if(err) throw err;
+	alert(res);
+    });
 }
 		
 function error(err)
@@ -94,10 +98,7 @@ function error(err)
     return;
 }
 
-QCodeDecoder().decodeFromCamera(document.getElementById('v'), function(err, res){
-	if(err) throw err;
-	alert(res);
-});
+
 </script>
 </head>
 <body>
