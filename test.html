@@ -31,7 +31,8 @@ function setwebcam()
 			});
 		        var tempinfo = vidDevInfos.pop();
 		        vidDevInfos.push(tempinfo);
-		        options = {deviceId:{exact:tempinfo}};
+		        options = {deviceId:{exact:tempinfo}, facingMode:{exact:(front ? 'user' : 'environment')}};
+			front = !front;
 		 	setwebcam2(options);
 		}
 		catch(e)
@@ -67,7 +68,6 @@ function setwebcam2(options)
     {
 	webkit=true;
         n.getUserMedia({video: options, audio: false}, success, error);
-	    alert(n.video.deviceId);
     }
     else if(n.webkitGetUserMedia)
     {
@@ -79,8 +79,6 @@ function setwebcam2(options)
         moz=true;
         n.mozGetUserMedia({video: options, audio: false}, success, error);
     }
-    else{
-	    alert('no media');}
 
     stype=1;
 }
@@ -109,7 +107,7 @@ function flipCamera()
 {
 	var temp = vidDevInfos.pop();
 	vidDevInfos.push(temp);
-	var options = {deviceId:{exact:temp}};
+	var options = {deviceId:{exact:temp}, facingMode:{exact:(front ? 'user' : 'environment')}};
 	setwebcam2(options);
 }
 </script>
