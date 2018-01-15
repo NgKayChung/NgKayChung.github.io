@@ -20,14 +20,13 @@ function setwebcam()
 	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
 	{
 	    try{
-			navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-			  devices.forEach(function(device) {
-				if(device.kind === 'videoinput')
-					options = {deviceId: {exact: device.deviceId}, facingMode: {exact: 'environment'}};
-			  });
-			 });
-			  setwebcam2(options);
+			navigator.mediaDevices.enumerateDevices().then(function(devices) {
+				devices.forEach(function(device) {
+					if(device.kind === 'videoinput'){
+						options = {deviceId: {exact: device.deviceid}, facingMode: 'environment'}; alert('yes');}
+				});
+			});
+		 	setwebcam2(options);
 		}
 		catch(e)
 		{
@@ -106,6 +105,5 @@ function error(err)
 <button id = 'scannerbtn' onclick = 'setwebcam();'>Capture</button>
 <div id="outdiv"></div>
 <div id = "result"></div>
-<br/>
 </body>
 </html>
