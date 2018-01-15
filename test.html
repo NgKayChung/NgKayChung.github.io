@@ -22,8 +22,8 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput' && device.facingMode === 'environment'){
-						options = {deviceId: {exact: device.deviceid}, facingMode: {exact: 'environment'}}; alert('yes');}
+					if(device.kind === 'videoinput')
+						options = {deviceId:{exact:device.deviceid}, facingMode:{exact:'environment'}};
 				});
 			});
 		 	setwebcam2(options);
@@ -86,11 +86,6 @@ function success(stream) {
     }
     else
         v.src = stream;
-    
-    QCodeDecoder().decodeFromVideo(v, function(err, res){
-	if(err) throw err;
-	alert(res);
-    });
 }
 		
 function error(err)
