@@ -35,9 +35,9 @@ function setwebcam()
 				ids.push(temp);
 				
 				if(front)
-					options = {{deviceId: temp}, facingMode: {exact: 'user'}};
+					options = {deviceId: temp, facingMode: {exact: 'user'}};
 				else
-					options = {{deviceId: temp}, facingMode: {exact: 'environment'}};
+					options = {deviceId: temp, facingMode: {exact: 'environment'}};
 				front = !front;
 				setwebcam2(options);
 			});
@@ -98,10 +98,10 @@ function flipCamera()
 	ids.push(temp);
 	
 	if(front) {
-		options = {{deviceId: temp}, facingMode: {exact: 'user'}};
+		options = {deviceId: temp, facingMode: {exact: 'user'}};
 	}
 	else {
-		options = {{deviceId: temp}, facingMode: {exact: 'environment'}};
+		options = {deviceId: temp, facingMode: {exact: 'environment'}};
 	}
 	
 	front = !front;
