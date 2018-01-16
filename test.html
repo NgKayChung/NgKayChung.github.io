@@ -29,11 +29,12 @@ function setwebcam()
 						vidDevInfos.push(device.deviceId);
 					}
 				});
+				if(vidDevInfos.length < 1) {
+					alert('no video input device');
+					return;
+				}
 			});
-		    	if(vidDevInfos.length < 1) {
-				alert('no video input device');
-				return;
-			}
+		    	
 		        //var tempinfo = vidDevInfos.shift();
 		        //vidDevInfos.push(tempinfo);
 		    	if(front)
