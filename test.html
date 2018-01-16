@@ -93,14 +93,25 @@ function error(err)
     return;
 }
 
-function startDecode()
-{
-    QCodeDecoder().decodeFromVideo(v, function(err, res){
-	if(err)
-		console.log(err);
-    	else
-		document.getElementById('result').innerHTML = res;
-    });
+function startDecode() {
+    'use strict';
+    var qr = new QCodeDecoder();
+    if (!(qr.isCanvasSupported() && qr.hasGetUserMedia())) {
+      alert('Your browser doesn\'t match the required specs.');
+      throw new Error('Canvas and getUserMedia are required');
+    }
+    var video = document.querySelector("video");
+    function resultHandler (err, result) {
+      if (err)
+        return console.log(err.message);
+      alert(result);
+    }
+    // prepare a canvas element that will receive
+    // the image to decode, sets the callback for
+    // the result and then prepares the
+    // videoElement to send its source to the
+    // decoder.
+    qr.decodeFromCamera(video, resultHandler);
 }
 /*function flipCamera()
 {
@@ -122,5 +133,6 @@ function startDecode()
 <!--div id = "flipp"></div-->
 <div id="outdiv"></div>
 <div id = "result"></div>
+<canvas id = "qr-canvas"></canvas>
 </body>
 </html>
