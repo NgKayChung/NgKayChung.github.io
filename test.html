@@ -165,12 +165,10 @@ function startDecode() {
     // videoElement to send its source to the
     // decoder.
     alert("start decode");
-    while(true){
     QCodeDecoder().decodeFromCamera(v, function(er,res){
 	if(res != undefined) alert(res);
     });
     setTimeout(captureToCanvas, 500);
-    }
 }
 
 /*function flipCamera()
