@@ -1,7 +1,23 @@
 <html>
 <head>
 <title>Reader Test</title>
-<script src = "qcode\build\qcode-decoder.min.js"></script>
+<script src = "webqr\src\alignpat.js"></script>
+<script src = "webqr\src\bitmat.js"></script>
+<script src = "webqr\src\bmparser.js"></script>
+<script src = "webqr\src\datablock.js"></script>
+<script src = "webqr\src\databr.js"></script>
+<script src = "webqr\src\datamask.js"></script>
+<script src = "webqr\src\decoder.js"></script>
+<script src = "webqr\src\detector.js"></script>
+<script src = "webqr\src\errorlevel.js"></script>
+<script src = "webqr\src\findpat.js"></script>
+<script src = "webqr\src\formatinf.js"></script>
+<script src = "webqr\src\gf256.js"></script>
+<script src = "webqr\src\gf256poly.js"></script>
+<script src = "webqr\src\grid.js"></script>
+<script src = "webqr\src\qrcode.js"></script>
+<script src = "webqr\src\rsdecoder.js"></script>
+<script src = "webqr\src\version.js"></script>
 <script>
 var gCtx = null;
 var gCanvas = null;
@@ -22,21 +38,42 @@ function load()
 		console.log(err);
 	});*/
 	initCanvas(300, 400);
+	qrcode.callback = read;
+	setwebcam();
 }
 
 function initCanvas(ww,hh)
-	{
-		gCanvas = document.getElementById("qr-canvas");
-		var w = ww;
-		var h = hh;
-		gCanvas.style.width = w + "px";
-		gCanvas.style.height = h + "px";
-		gCanvas.width = w;
-		gCanvas.height = h;
-		gCtx = gCanvas.getContext("2d");
-		gCtx.clearRect(0, 0, w, h);
-	}
-	
+{
+	gCanvas = document.getElementById("qr-canvas");
+	var w = ww;
+	var h = hh;
+	gCanvas.style.width = w + "px";
+	gCanvas.style.height = h + "px";
+	gCanvas.width = w;
+	gCanvas.height = h;
+	gCtx = gCanvas.getContext("2d");
+	gCtx.clearRect(0, 0, w, h);
+}
+
+
+function captureToCanvas()
+{
+	try {
+        gCtx.drawImage(v,0,0);
+        try {
+            qrcode.decode();
+        }
+        catch(e) {       
+            console.log(e);
+            setTimeout(captureToCanvas, 500);
+        }
+    }
+    catch(e) {       
+         console.log(e);
+         setTimeout(captureToCanvas, 500);
+    }
+}
+
 function setwebcam()
 {
 	var options = null;
@@ -81,6 +118,8 @@ function setwebcam2(options)
     document.getElementById("result").innerHTML="- scanning -";
     
     n.getUserMedia({video: options, audio: false}, success, error);
+	
+	setTimeout(captureToCanvas, 500);
 }
 
 function success(stream) {
@@ -100,16 +139,16 @@ function success(stream) {
     
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
-    
-    startDecode();
+    //startDecode();
+    setTimeout(captureToCanvas, 500);
 }
 		
 function error(err)
 {
     return;
 }
-
-function startDecode() {
+// cirocosta's decoder
+/*function startDecode() {
     'use strict';
     var qr = new QCodeDecoder();
     if (!(qr.isCanvasSupported() && qr.hasGetUserMedia())) {
@@ -126,7 +165,7 @@ function startDecode() {
     window.setTimeout(QCodeDecoder().decodeFromCamera(video, function(er,res){
 			if(res != undefined) alert(res);
     		}), 500);
-}
+}*/
 
 /*function flipCamera()
 {
