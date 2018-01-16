@@ -3,6 +3,8 @@
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
+var gCtx = null;
+var gCanvas = null;
 var v=null;
 //var labels = [];
 var ids = [];
@@ -19,7 +21,21 @@ function load()
 	}, function(err) {
 		console.log(err);
 	});*/
+	initCanvas(300, 400);
 }
+
+function initCanvas(ww,hh)
+	{
+		gCanvas = document.getElementById("qr-canvas");
+		var w = ww;
+		var h = hh;
+		gCanvas.style.width = w + "px";
+		gCanvas.style.height = h + "px";
+		gCanvas.width = w;
+		gCanvas.height = h;
+		gCtx = gCanvas.getContext("2d");
+		gCtx.clearRect(0, 0, w, h);
+	}
 	
 function setwebcam()
 {
@@ -112,7 +128,7 @@ function startDecode() {
 		    console.log(err);
 	    else
 		    document.getElementbyId("result").innerHTML = res;
-    }, true);
+    });
 }
 
 /*function flipCamera()
