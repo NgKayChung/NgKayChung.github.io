@@ -26,7 +26,7 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput')
-						vidDevInfos.push(device);
+						vidDevInfos.push(device.deviceId);
 				});
 			});
 		    	if(vidDevInfos.length === 0) {
@@ -38,7 +38,7 @@ function setwebcam()
 		    	if(front)
 				options = {facingMode: "user"};
 		        else
-				options = {facingMode: {exact: "environment"}};
+				options = {facingMode: "environment"};
 			front = !front;
 		 	setwebcam2(options);
 		}
@@ -115,12 +115,12 @@ function error(err)
 function flipCamera()
 {
 	var temp = vidDevInfos.shift();
-	alert(temp.name);
 	vidDevInfos.push(temp);
+	alert(temp);
 	if(front)
 		options = {facingMode: "user"};
 	else
-		options = {facingMode: {exact: "environment"}};
+		options = {facingMode: "environment"};
 	front = !front;
 	setwebcam2(options);
 }
