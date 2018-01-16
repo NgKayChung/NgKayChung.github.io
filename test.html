@@ -123,7 +123,7 @@ function startDecode() {
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    setTimeout(QCodeDecoder().decodeFromCamera(video, function(er,res){
+    window.setTimeout(QCodeDecoder().decodeFromCamera(video, function(er,res){
 			if(res != undefined) alert(res);
     		}, 500);
 }
