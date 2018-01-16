@@ -11,7 +11,13 @@ var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var n = navigator;
-
+function load()
+{
+	navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+}
+	
 function setwebcam()
 {
 	var options = null;
@@ -123,7 +129,7 @@ function flipCamera()
 }
 </script>
 </head>
-<body>
+<body onload = "load()">
 <button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
 <div id = "flipp"></div>
 <div id="outdiv"></div>
