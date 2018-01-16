@@ -19,18 +19,7 @@ function load()
 	
 	var MediaStream = window.MediaStream;
 
-	if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
-    		MediaStream = webkitMediaStream;
-	}
-
-	/*global MediaStream:true */
-	if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
-    		MediaStream.prototype.stop = function() {
-        		this.getVideoTracks().forEach(function(track) {
-           			track.stop();
-        		});
-   		};
-	}
+	MediaStream.stop();
 }
 	
 function setwebcam()
@@ -113,6 +102,7 @@ function flipCamera()
 	ids.push(tempId);
 	var tempLabel = labels.shift();
 	labels.push(tempLabel);
+	alert(tempLabel);
 	if(tempLabel.indexOf("front") != -1)
 		options = {deviceId: tempId, facingMode: 'user'};
 	else
