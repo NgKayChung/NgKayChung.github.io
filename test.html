@@ -31,7 +31,7 @@ function setwebcam()
 				});
 				if(vidDevInfos.length < 1) {
 					alert('no video input device');
-					return;
+					throw "no video input";
 				}
 			});
 		    	
