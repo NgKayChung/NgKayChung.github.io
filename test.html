@@ -8,13 +8,13 @@ var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var n = navigator;
+var front = false;
 	
 function load()
 {
 	n.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
-	n.getUserMedia({audio: false, video: false});
 }
 	
 function setwebcam()
