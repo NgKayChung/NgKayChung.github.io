@@ -2,7 +2,7 @@
 <head>
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
-<script src = "webqr\src\alignpat.js"></script>
+<!--script src = "webqr\src\alignpat.js"></script>
 <script src = "webqr\src\bitmat.js"></script>
 <script src = "webqr\src\bmparser.js"></script>
 <script src = "webqr\src\datablock.js"></script>
@@ -18,7 +18,7 @@
 <script src = "webqr\src\grid.js"></script>
 <script src = "webqr\src\qrcode.js"></script>
 <script src = "webqr\src\rsdecoder.js"></script>
-<script src = "webqr\src\version.js"></script>
+<script src = "webqr\src\version.js"></script-->
 <script>
 var gCtx = null;
 var gCanvas = null;
@@ -174,7 +174,7 @@ function startDecode() {
     alert("start decode");
     QCodeDecoder().decodeFromCamera(v, function(er,res){
 	if(res != undefined) alert(res);
-    }), 500);
+    });
 }
 
 /*function flipCamera()
