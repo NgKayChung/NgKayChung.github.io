@@ -15,7 +15,22 @@ function load()
 	n.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
-	n.getUserMedia({audio: false, video: true}, function(st){console.log('ok'); st.stop();}, function(err){console.log(err);});
+	n.getUserMedia({audio: false, video: true}, function(st){console.log('ok');}, function(err){console.log(err);});
+	
+	var MediaStream = window.MediaStream;
+
+	if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
+    		MediaStream = webkitMediaStream;
+	}
+
+	/*global MediaStream:true */
+	if (typeof MediaStream !== 'undefined' && !('stop' in MediaStream.prototype)) {
+    		MediaStream.prototype.stop = function() {
+        		this.getVideoTracks().forEach(function(track) {
+           			track.stop();
+        		});
+   		};
+	}
 }
 	
 function setwebcam()
