@@ -15,7 +15,7 @@ function load()
 	n.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
-	n.getUserMedia({audio: false, video: true}, function(r){console.log('ok');}, function(err){console.log(err);});
+	n.getUserMedia({audio: false, video: true}, function(st){console.log('ok'); st.stop();}, function(err){console.log(err);});
 }
 	
 function setwebcam()
@@ -35,7 +35,7 @@ function setwebcam()
 				var tempId = ids.shift();
 				ids.push(tempId);
 				var tempLabel = labels.shift();
-				labels.push(tempLabels);
+				labels.push(tempLabel);
 				if(tempLabels.indexOf("front") != -1)
 					options = {deviceId: tempId, facingMode: 'user'};
 				else
@@ -97,7 +97,7 @@ function flipCamera()
 	var tempId = ids.shift();
 	ids.push(tempId);
 	var tempLabel = labels.shift();
-	labels.push(tempLabels);
+	labels.push(tempLabel);
 	if(tempLabels.indexOf("front") != -1)
 		options = {deviceId: tempId, facingMode: 'user'};
 	else
