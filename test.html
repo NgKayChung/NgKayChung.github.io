@@ -92,7 +92,7 @@ function setwebcam()
 			n.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
-						ids.push(device.deviceId); alert(device.deviceId);
+						ids.push(device.deviceId);
 						//labels.push(device.label);
 					}
 				});
@@ -168,7 +168,7 @@ function startDecode() {
     QCodeDecoder().decodeFromCamera(v, function(er,res){
 	if(res != undefined) alert(res);
     });
-    setTimeout(captureToCanvas, 500);
+    window.setTimeout(captureToCanvas, 500);
 }
 
 /*function flipCamera()
