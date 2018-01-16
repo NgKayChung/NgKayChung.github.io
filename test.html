@@ -25,7 +25,7 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput' && device.deviceId != undefined)
+					if(device.kind === 'videoinput')
 						vidDevInfos.push(device);
 				});
 			});
