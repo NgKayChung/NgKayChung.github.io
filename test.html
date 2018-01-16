@@ -29,12 +29,12 @@ function setwebcam()
 						vidDevInfos.push(device.deviceId);
 					}
 				});
-				if(vidDevInfos.length < 1) {
-					alert('no video input device');
-					throw "no video input";
-				}
+				
 			});
-		    	
+		    	if(vidDevInfos.length < 1) {
+				alert('no video input device');
+				return;
+			}
 		        //var tempinfo = vidDevInfos.shift();
 		        //vidDevInfos.push(tempinfo);
 		    	if(front)
@@ -128,7 +128,7 @@ function flipCamera()
 </script>
 </head>
 <body>
-<button id = 'scannerbtn' onclick = 'setwebcam();'>Capture</button>
+<button id = 'scannerbtn' onclick = 'load();'>Capture</button>
 <div id = "flipp"></div>
 <div id="outdiv"></div>
 <div id = "result"></div>
