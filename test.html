@@ -73,7 +73,7 @@ function initCanvas(ww,hh)
 
 function captureToCanvas()
 {
-	try {
+    try {
         gCtx.drawImage(v,0,0);
         try {
             qrcode.decode();
@@ -131,16 +131,15 @@ function setwebcam()
 function setwebcam2(options)
 {
     document.getElementById("result").innerHTML="- scanning -";
-    
-    n.getUserMedia({video: options, audio: false}, success, error);
-	
-	setTimeout(captureToCanvas, 500);
-}
-
-function success(stream) {
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
     
+    n.getUserMedia({video: options, audio: false}, success, error);
+	
+    setTimeout(captureToCanvas, 500);
+}
+
+function success(stream) {
     //if ("srcObject" in v) {
     //	v.srcObject = stream;
     //}
