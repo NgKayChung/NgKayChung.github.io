@@ -10,20 +10,16 @@ var v=null;
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
-var front = true;
-
-function load()
-{
-	setwebcam();
-}
+var n = navigator;
 
 function setwebcam()
 {
 	var options = null;
-	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
+	
+	if(n.mediaDevices && n.mediaDevices.enumerateDevices)
 	{
 	    try{
-			navigator.mediaDevices.enumerateDevices().then(function(devices) {
+			n.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
@@ -66,7 +62,6 @@ function setwebcam2(options)
         return;
     }
     
-    var n = navigator;
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
     
@@ -129,7 +124,7 @@ function flipCamera()
 </script>
 </head>
 <body>
-<button id = 'scannerbtn' onclick = 'load();'>Capture</button>
+<button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
 <div id = "flipp"></div>
 <div id="outdiv"></div>
 <div id = "result"></div>
