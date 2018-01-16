@@ -12,10 +12,8 @@ var n = navigator;
 	
 function load()
 {
-	n.getUserMedia = n.getUserMedia ||
-                         n.webkitGetUserMedia ||
-                         n.mozGetUserMedia;
-	/*n.getUserMedia({audio: false, video: true}, function(st) {
+	/*n.getUserMedia = n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia;
+	n.getUserMedia({audio: false, video: true}, function(st) {
 		var track = stream.getTracks()[0];
 		track.stop();
 	}, function(err) {
@@ -87,17 +85,23 @@ function success(stream) {
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
     
-    QCodeDecoder().decodeFromCamera(v, function(err, res){
-	if(err) console.log(err);
-    	else document.getElementById('result').innerHTML = res;
-    });
+    startDecode();
 }
 		
 function error(err)
 {
     return;
 }
-	
+
+function startDecode()
+{
+    QCodeDecoder().decodeFromVideo(v, function(err, res){
+	if(err)
+		console.log(err);
+    	else
+		document.getElementById('result').innerHTML = res;
+    });
+}
 /*function flipCamera()
 {
 	var tempId = ids.shift();
