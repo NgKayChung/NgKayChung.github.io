@@ -26,21 +26,21 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
-						vidDevInfos.push(device);
+						vidDevInfos.push(device.label);
 					}
 				});
 				
 			});
 		        var tempinfo = vidDevInfos.shift();
-		    	alert(tempinfo.kind + ": " + device.label + " id = " + device.deviceId);
+		    	alert(tempinfo);
 		        vidDevInfos.push(tempinfo);
-		    	options = {deviceId:tempinfo.deviceId};
+		    	//options = {deviceId:tempinfo.deviceId};
 		    	/*if(front)
 				options = {};
 		        else
 				options = {facingMode: "environment"};
 			front = !front;*/
-		 	setwebcam2(options);
+		 	//setwebcam2(options);
 		}
 		catch(e)
 		{
