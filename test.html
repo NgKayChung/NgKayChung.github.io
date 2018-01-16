@@ -29,15 +29,16 @@ function setwebcam()
 						prevDevId = device.deviceId;
 					}
 				});
+				alert(prevDevId);
+				//options = {deviceId:tempinfo.deviceId};
+				/*if(front)
+					options = {};
+				else
+					options = {facingMode: "environment"};
+				front = !front;*/
+				//setwebcam2(options);
 			});
-		    	alert(prevDevId);
-		    	//options = {deviceId:tempinfo.deviceId};
-		    	/*if(front)
-				options = {};
-		        else
-				options = {facingMode: "environment"};
-			front = !front;*/
-		 	//setwebcam2(options);
+		    	
 		}
 		catch(e)
 		{
