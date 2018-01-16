@@ -116,19 +116,17 @@ function startDecode() {
       alert('Your browser doesn\'t match the required specs.');
       throw new Error('Canvas and getUserMedia are required');
     }
-    var video = document.querySelector("video");
+    var video = document.getElementById("v");
     
     // prepare a canvas element that will receive
     // the image to decode, sets the callback for
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    qr.decodeFromCamera(video, function(err, res) {
-	    if (err) 
-		    console.log(err);
-	    else
-		    document.getElementbyId("result").innerHTML = res;
-    });
+	QCodeDecoder()
+	  .decodeFromCamera(video, function(er,res){
+		console.log(res);
+	  });
 }
 
 /*function flipCamera()
