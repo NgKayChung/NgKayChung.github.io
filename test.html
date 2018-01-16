@@ -27,6 +27,7 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
+						alert(device.label + " id = " + device.deviceId);
 					}
 				});
 				var temp = ids.shift();
