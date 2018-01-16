@@ -38,7 +38,7 @@ function load()
 	}, function(err) {
 		console.log(err);
 	});*/
-	initCanvas(300, 400);
+	initCanvas(600, 800);
 	//qrcode.callback = read;
 	//setwebcam();
 }
@@ -64,6 +64,7 @@ function initCanvas(ww,hh)
 	var h = hh;
 	gCanvas.style.width = w + "px";
 	gCanvas.style.height = h + "px";
+	gCanvas.style.display = none;
 	gCanvas.width = w;
 	gCanvas.height = h;
 	gCtx = gCanvas.getContext("2d");
@@ -103,7 +104,10 @@ function setwebcam()
 				//if(tempLabel.indexOf("front") != -1)
 				//	options = {deviceId: tempId, facingMode: {exact: 'user'}};
 				//else
+				if(ids.length === 1)
 					options = {deviceId: tempId, facingMode: 'environment'};
+				else
+					options = {deviceId: tempId, facingMode: {exact: 'environment'}};
 				setwebcam2(options);
 			});
 		    	
