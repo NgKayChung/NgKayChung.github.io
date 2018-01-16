@@ -10,7 +10,7 @@ var v=null;
 var vidDevInfos = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
-var front = false;
+var front = true;
 
 function load()
 {
@@ -25,14 +25,15 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput'){
-						vidDevInfos.push(device.deviceId); alert(device.deviceId);}
+					if(device.kind === 'videoinput') {
+						vidDevInfos.push(device.deviceId);
+					}
 				});
 			});
-		    	/*if(vidDevInfos.length == 0) {
+		    	if(vidDevInfos.length < 1) {
 				alert('no video input device');
 				return;
-			}*/
+			}
 		        //var tempinfo = vidDevInfos.shift();
 		        //vidDevInfos.push(tempinfo);
 		    	if(front)
@@ -114,8 +115,8 @@ function error(err)
 	
 function flipCamera()
 {
-	var temp = vidDevInfos.shift();
-	vidDevInfos.push(temp);
+	//var temp = vidDevInfos.shift();
+	//vidDevInfos.push(temp);
 	if(front)
 		options = {facingMode: "user"};
 	else
