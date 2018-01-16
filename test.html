@@ -7,6 +7,7 @@ var stype=0;
 var webkit=false;
 var moz=false;
 var v=null;
+var ids = [];
 var prevDevId = "";
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
@@ -25,11 +26,12 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput' && device.deviceId != prevDevId) {
+					if(device.kind === 'videoinput') {
 						prevDevId = device.deviceId;
+						ids.push(device.deviceId);
 					}
 				});
-				alert(prevDevId);
+				alert(prevDevId + " " + ids.shift());
 				//options = {deviceId:tempinfo.deviceId};
 				/*if(front)
 					options = {};
