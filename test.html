@@ -25,10 +25,14 @@ function setwebcam()
 	    try{
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
-					if(device.kind === 'videoinput' && device.deviceId !== undefined)
+					if(device.kind === 'videoinput' && device.deviceId != undefined)
 						vidDevInfos.push(device);
 				});
 			});
+		    	if(vidDevInfos.length === 0) {
+				alert('no video input device');
+				return;
+			}
 		        //var tempinfo = vidDevInfos.shift();
 		        //vidDevInfos.push(tempinfo);
 		    	if(front)
@@ -50,9 +54,7 @@ function setwebcam()
 	}
 }
 	
-/*QCodeDecoder().decodeFromCamera(v, function(er,res){
-    document.getElementById('result').innerHTML = res;
-});*/
+
 
 function setwebcam2(options)
 {
@@ -99,6 +101,10 @@ function success(stream) {
 
     document.getElementById("flipp").innerHTML = fliphtml;
     document.getElementById("flipbtn").addEventListener('click', flipCamera);
+    
+    QCodeDecoder().decodeFromCamera(v, function(er,res){
+    	document.getElementById('result').innerHTML = res;
+    });
 }
 		
 function error(err)
