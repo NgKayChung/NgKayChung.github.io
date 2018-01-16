@@ -92,8 +92,8 @@ function setwebcam()
 			n.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
-						ids.push(device.deviceId);
-						//labels.push(device.label)
+						ids.push(device.deviceId); alert(device.deviceId);
+						//labels.push(device.label);
 					}
 				});
 				var tempId = ids.shift();
