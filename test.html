@@ -30,7 +30,6 @@ function setwebcam()
 						ids.push(device.deviceId);
 					}
 				});
-				alert(ids.length);
 				var temp = ids.shift();
 				ids.push(temp);
 				
@@ -67,16 +66,16 @@ function success(stream) {
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
     
-    if ("srcObject" in v) {
-    	v.srcObject = stream;
-    }
-    else {
+    //if ("srcObject" in v) {
+    //	v.srcObject = stream;
+    //}
+    //else {
     	v.src = window.URL.createObjectURL(stream);
-    }
+    //}
     
-    v.onloadedmetadata = function(e) {
-        v.play();
-    };
+    //v.onloadedmetadata = function(e) {
+        //v.play();
+    //};
     
     document.getElementById("flipp").innerHTML = fliphtml;
     document.getElementById("flipbtn").addEventListener('click', flipCamera);
