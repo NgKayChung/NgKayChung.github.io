@@ -105,8 +105,7 @@ function error(err)
 	
 function flipCamera()
 {
-	var temp = vidDevInfos.pop();
-	alert(temp);
+	var temp = vidDevInfos.shift();
 	vidDevInfos.push(temp);
 	var options = {deviceId:{exact:temp}, facingMode:{exact:(front ? 'user' : 'environment')}};
 	front = !front;
