@@ -123,10 +123,9 @@ function startDecode() {
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-	QCodeDecoder()
-	  .decodeFromCamera(video, function(er,res){
-		alert(res);
-	  });
+    settimeout(QCodeDecoder().decodeFromCamera(video, function(er,res){
+			if(res != undefined) alert(res);
+    		}, 500);
 }
 
 /*function flipCamera()
