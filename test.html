@@ -36,7 +36,7 @@ function setwebcam()
 				ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				if(tempLabels.indexOf("front") != -1)
+				if(tempLabel.indexOf("front") != -1)
 					options = {deviceId: tempId, facingMode: 'user'};
 				else
 					options = {deviceId: tempId, facingMode: 'environment'};
@@ -98,7 +98,7 @@ function flipCamera()
 	ids.push(tempId);
 	var tempLabel = labels.shift();
 	labels.push(tempLabel);
-	if(tempLabels.indexOf("front") != -1)
+	if(tempLabel.indexOf("front") != -1)
 		options = {deviceId: tempId, facingMode: 'user'};
 	else
 		options = {deviceId: tempId, facingMode: 'environment'};
