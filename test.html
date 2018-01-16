@@ -31,7 +31,7 @@ function setwebcam()
 			});
 		        var tempinfo = vidDevInfos.shift();
 		        vidDevInfos.push(tempinfo);
-		        options = {deviceId:{exact:tempinfo}, facingMode:{exact:(front ? 'user' : 'environment')}};
+		        options = {facingMode:{exact:(front ? 'user' : 'environment')}};
 			front = !front;
 		 	setwebcam2(options);
 		}
@@ -108,7 +108,7 @@ function flipCamera()
 	var temp = vidDevInfos.shift();
 	alert(temp);
 	vidDevInfos.push(temp);
-	var options = {deviceId:{exact:temp}, facingMode:{exact:(front ? 'user' : 'environment')}};
+	var options = {facingMode:{exact:(front ? 'user' : 'environment')}};
 	front = !front;
 	setwebcam2(options);
 }
