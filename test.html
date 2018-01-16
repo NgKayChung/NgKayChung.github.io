@@ -4,17 +4,18 @@
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
 var v=null;
+var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var n = navigator;
-var front = false;
 	
 function load()
 {
 	n.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
+	n.getUserMedia({audio: false, video: true}, function(r){console.log('ok');}, function(err){console.log(err);});
 }
 	
 function setwebcam()
@@ -28,16 +29,17 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
+						labels.push(device.label)
 					}
 				});
-				var temp = ids.shift();
-				ids.push(temp);
-				
-				if(front)
-					options = {deviceId: temp, facingMode: 'user'};
+				var tempId = ids.shift();
+				ids.push(tempId);
+				var tempLabel = labels.shift();
+				labels.push(tempLabels);
+				if(tempLabels.indexOf("front") != -1)
+					options = {deviceId: tempId, facingMode: 'user'};
 				else
-					options = {deviceId: temp, facingMode: 'environment'};
-				front = !front;
+					options = {deviceId: tempId, facingMode: 'environment'};
 				setwebcam2(options);
 			});
 		    	
@@ -92,18 +94,14 @@ function error(err)
 	
 function flipCamera()
 {
-	var temp = ids.shift();
-	alert(temp);
-	ids.push(temp);
-	
-	if(front) {
-		options = {deviceId: temp, facingMode: 'user'};
-	}
-	else {
-		options = {deviceId: temp, facingMode: 'environment'};
-	}
-	
-	front = !front;
+	var tempId = ids.shift();
+	ids.push(tempId);
+	var tempLabel = labels.shift();
+	labels.push(tempLabels);
+	if(tempLabels.indexOf("front") != -1)
+		options = {deviceId: tempId, facingMode: 'user'};
+	else
+		options = {deviceId: tempId, facingMode: 'environment'};
 	setwebcam2(options);
 }
 </script>
