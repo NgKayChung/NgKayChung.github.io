@@ -4,23 +4,23 @@
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
 var v=null;
-var labels = [];
+//var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
-var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
+//var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var n = navigator;
 	
 function load()
 {
-	n.getUserMedia = navigator.getUserMedia ||
-                         navigator.webkitGetUserMedia ||
-                         navigator.mozGetUserMedia;
-	n.getUserMedia({audio: false, video: true}, function(st) {
+	n.getUserMedia = n.getUserMedia ||
+                         n.webkitGetUserMedia ||
+                         n.mozGetUserMedia;
+	/*n.getUserMedia({audio: false, video: true}, function(st) {
 		var track = stream.getTracks()[0];
 		track.stop();
 	}, function(err) {
 		console.log(err);
-	});
+	});*/
 }
 	
 function setwebcam()
@@ -34,16 +34,16 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
-						labels.push(device.label)
+						//labels.push(device.label)
 					}
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				var tempLabel = labels.shift();
-				labels.push(tempLabel);
-				if(tempLabel.indexOf("front") != -1)
-					options = {deviceId: tempId, facingMode: {exact: 'user'}};
-				else
+				//var tempLabel = labels.shift();
+				//labels.push(tempLabel);
+				//if(tempLabel.indexOf("front") != -1)
+				//	options = {deviceId: tempId, facingMode: {exact: 'user'}};
+				//else
 					options = {deviceId: tempId, facingMode: {exact: 'environment'}};
 				setwebcam2(options);
 			});
@@ -84,8 +84,8 @@ function success(stream) {
         //v.play();
     //};
     
-    document.getElementById("flipp").innerHTML = fliphtml;
-    document.getElementById("flipbtn").addEventListener('click', flipCamera);
+    //document.getElementById("flipp").innerHTML = fliphtml;
+    //document.getElementById("flipbtn").addEventListener('click', flipCamera);
     
     /*QCodeDecoder().decodeFromCamera(v, function(er,res){
     	document.getElementById('result').innerHTML = res;
@@ -97,7 +97,7 @@ function error(err)
     return;
 }
 	
-function flipCamera()
+/*function flipCamera()
 {
 	var tempId = ids.shift();
 	ids.push(tempId);
@@ -109,12 +109,12 @@ function flipCamera()
 	else
 		options = {deviceId: tempId, facingMode: {exact: 'environment'}};
 	setwebcam2(options);
-}
+}*/
 </script>
 </head>
 <body onload = "load()">
 <button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
-<div id = "flipp"></div>
+<!--div id = "flipp"></div-->
 <div id="outdiv"></div>
 <div id = "result"></div>
 </body>
