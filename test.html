@@ -15,11 +15,12 @@ function load()
 	n.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
-	n.getUserMedia({audio: false, video: true}, function(st){console.log('ok');}, function(err){console.log(err);});
-	
-	var MediaStream = window.MediaStream;
-
-	MediaStream.stop();
+	n.getUserMedia({audio: false, video: true}, function(st) {
+		var track = stream.getTracks()[0];
+		track.stop();
+	}, function(err) {
+		console.log(err);
+	});
 }
 	
 function setwebcam()
