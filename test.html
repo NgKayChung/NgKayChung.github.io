@@ -8,7 +8,6 @@ var webkit=false;
 var moz=false;
 var v=null;
 var ids = [];
-var prevDevId = "";
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var front = true;
@@ -27,18 +26,19 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
-						prevDevId = device.deviceId;
 						ids.push(device.deviceId);
 					}
 				});
-				alert(prevDevId + " 1. " + ids.shift() + " 2. " + ids.shift());
-				//options = {deviceId:tempinfo.deviceId};
+				var temp = ids.shift();
+				options = {deviceId:temp};
+				ids.push(temp);
 				/*if(front)
 					options = {};
 				else
 					options = {facingMode: "environment"};
 				front = !front;*/
-				//setwebcam2(options);
+				
+				setwebcam2(options);
 			});
 		    	
 		}
@@ -102,9 +102,9 @@ function success(stream) {
     document.getElementById("flipp").innerHTML = fliphtml;
     document.getElementById("flipbtn").addEventListener('click', flipCamera);
     
-    QCodeDecoder().decodeFromCamera(v, function(er,res){
+    /*QCodeDecoder().decodeFromCamera(v, function(er,res){
     	document.getElementById('result').innerHTML = res;
-    });
+    });*/
 }
 		
 function error(err)
@@ -114,13 +114,14 @@ function error(err)
 	
 function flipCamera()
 {
-	//var temp = vidDevInfos.shift();
-	//vidDevInfos.push(temp);
-	if(front)
+	var temp = ids.shift();
+	ids.push(temp);
+	var options = {deviceId: temp};
+	/*if(front)
 		options = {facingMode: "user"};
 	else
 		options = {facingMode: "environment"};
-	front = !front;
+	front = !front;*/
 	setwebcam2(options);
 }
 </script>
