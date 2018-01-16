@@ -87,9 +87,10 @@ function success(stream) {
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
     
-    /*QCodeDecoder().decodeFromCamera(v, function(er,res){
-    	document.getElementById('result').innerHTML = res;
-    });*/
+    QCodeDecoder().decodeFromCamera(v, function(err, res){
+	if(err) console.log(err);
+    	else document.getElementById('result').innerHTML = res;
+    });
 }
 		
 function error(err)
