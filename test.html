@@ -1,12 +1,8 @@
 <html>
 <head>
 <title>Reader Test</title>
-<link rel = "manifest" href = "/manifest.webmanifest"/>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
-var stype=0;
-var webkit=false;
-var moz=false;
 var v=null;
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
@@ -15,7 +11,7 @@ var n = navigator;
 	
 function load()
 {
-	navigator.getUserMedia = navigator.getUserMedia ||
+	n.getUserMedia = navigator.getUserMedia ||
                          navigator.webkitGetUserMedia ||
                          navigator.mozGetUserMedia;
 }
@@ -55,7 +51,6 @@ function setwebcam()
 	else
 	{
 		console.log("no navigator.mediaDevices.enumerateDevices" );
-		setwebcam2(options);
 	}
 }
 	
@@ -65,44 +60,23 @@ function setwebcam2(options)
 {
     document.getElementById("result").innerHTML="- scanning -";
     
-    if(stype == 1)
-    {   
-        return;
-    }
-    
-    document.getElementById("outdiv").innerHTML = vidhtml;
-    v = document.getElementById("v");
-    
-    if(n.getUserMedia)
-    {
-	webkit=true;
-        n.getUserMedia({video: options, audio: false}, success, error);
-    }
-    else if(n.webkitGetUserMedia)
-    {
-        webkit=true;
-        n.webkitGetUserMedia({video: options, audio: false}, success, error);
-    }
-    else if(n.mozGetUserMedia)
-    {
-        moz=true;
-        n.mozGetUserMedia({video: options, audio: false}, success, error);
-    }
-
-    stype=1;
+    n.getUserMedia({video: options, audio: false}, success, error);
 }
 
 function success(stream) {
-    if(webkit)
-        v.src = window.URL.createObjectURL(stream);
-    else if(moz)
-    {
-        v.mozSrcObject = stream;
-        v.play();
+    document.getElementById("outdiv").innerHTML = vidhtml;
+    v = document.getElementById("v");
+    
+    if ("srcObject" in v) {
+    	v.srcObject = stream;
+    } else {
+    	video.src = window.URL.createObjectURL(stream);
     }
-    else
-        v.src = stream;
-
+    
+    v.onloadedmetadata = function(e) {
+        v.play();
+    };
+    
     document.getElementById("flipp").innerHTML = fliphtml;
     document.getElementById("flipbtn").addEventListener('click', flipCamera);
     
