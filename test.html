@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Reader Test</title>
-<!--script src = "qcode\build\qcode-decoder.min.js"></script-->
+<script src = "qcode\build\qcode-decoder.min.js"></script>
 <script src = "webqr\src\alignpat.js"></script>
 <script src = "webqr\src\bitmat.js"></script>
 <script src = "webqr\src\bmparser.js"></script>
@@ -39,8 +39,8 @@ function load()
 		console.log(err);
 	});*/
 	initCanvas(300, 400);
-	qrcode.callback = read;
-	setwebcam();
+	//qrcode.callback = read;
+	//setwebcam();
 }
 
 function htmlEntities(str) {
@@ -153,7 +153,7 @@ function success(stream) {
     
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
-    //startDecode();
+    startDecode();
     setTimeout(captureToCanvas, 500);
 }
 		
@@ -162,24 +162,20 @@ function error(err)
     return;
 }
 // cirocosta's decoder
-/*function startDecode() {
+function startDecode() {
     'use strict';
     var qr = new QCodeDecoder();
-    if (!(qr.isCanvasSupported() && qr.hasGetUserMedia())) {
-      alert('Your browser doesn\'t match the required specs.');
-      throw new Error('Canvas and getUserMedia are required');
-    }
-    var video = document.getElementById("v");
     
     // prepare a canvas element that will receive
     // the image to decode, sets the callback for
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    window.setTimeout(QCodeDecoder().decodeFromCamera(video, function(er,res){
-			if(res != undefined) alert(res);
-    		}), 500);
-}*/
+    alert("start decode");
+    QCodeDecoder().decodeFromCamera(v, function(er,res){
+	if(res != undefined) alert(res);
+    }), 500);
+}
 
 /*function flipCamera()
 {
