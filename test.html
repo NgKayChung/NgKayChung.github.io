@@ -29,7 +29,7 @@ function setwebcam()
 						vidDevInfos.push(device.deviceId);
 				});
 			});
-		        var tempinfo = vidDevInfos.pop();
+		        var tempinfo = vidDevInfos.shift();
 		        vidDevInfos.push(tempinfo);
 		        options = {deviceId:{exact:tempinfo}, facingMode:{exact:(front ? 'user' : 'environment')}};
 			front = !front;
