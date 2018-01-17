@@ -46,7 +46,7 @@ function load()
 			console.log(err);
 		});
 		
-		//initCanvas(400, 600);
+		initCanvas(400, 600);
 	}
 	else
 	{
@@ -69,7 +69,6 @@ function read(a)
     document.getElementById("result").innerHTML=html;
 }	
 
-
 function initCanvas(ww,hh)
 {
 	gCanvas = document.getElementById("qr-canvas");
@@ -87,7 +86,6 @@ function initCanvas(ww,hh)
 function captureToCanvas()
 {
     try {
-		gCtx.clearRect(0, 0, w, h);
         	gCtx.drawImage(v, 0, 0, w, h);
     }
     catch(e) {       
@@ -126,6 +124,7 @@ function setwebcam()
 					else {
 						options = {deviceId: tempId}; alert('environment');}
 				}
+				
 				setwebcam2(options);
 			});
 		    	
@@ -146,8 +145,6 @@ function setwebcam2(options)
     document.getElementById("result").innerHTML="- scanning -";
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
-    v.style.transform = 'rotateX(180deg)';
-    v.style.transform = 'rotateY(180deg)';
     navigator.getUserMedia({video: options, audio: false}, success, error);
 }
 
@@ -158,11 +155,11 @@ function success(stream) {
     //else {
     	v.src = window.URL.createObjectURL(stream);
     //}
-    /*v.addEventListener('play', function(){
+    v.addEventListener('play', function(){
 	    setInterval(function(){
 		    captureToCanvas();
 	    }, 10);
-    });*/
+    });
     
     //v.onloadedmetadata = function(e) {
         //v.play();
@@ -186,7 +183,7 @@ function startDecode() {
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    QCodeDecoder().decodeFromCamera(v, function(er,res){
+    QCodeDecoder().decodeFromCamera(v, function(er,res) {
 	if(res != undefined)
 		alert(res);
     });
