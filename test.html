@@ -111,12 +111,12 @@ function setwebcam()
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				//tempId = ids.shift();
-				//ids.push(tempId);
+				tempId = ids.shift();
+				ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				//tempLabel = labels.shift();
-				//labels.push(tempLabel);
+				tempLabel = labels.shift();
+				labels.push(tempLabel);
 				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
@@ -146,19 +146,7 @@ function setwebcam2(options)
     document.getElementById("result").innerHTML="- scanning -";
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
-	/////////////////////
-    let constraintList = document.getElementById("list");
-	let supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
-
-	for (let constraint in supportedConstraints) {
-	  if (supportedConstraints.hasOwnProperty(constraint)) {
-		let elem = document.createElement("li");
-
-		elem.innerHTML = "<code>" + constraint + "</code>";
-		constraintList.appendChild(elem);
-	  }
-	}
-	//////////////////////////////
+    v.style.transform = rotateY(180deg);
     navigator.getUserMedia({video: options, audio: false}, success, error);
 }
 
