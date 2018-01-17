@@ -2,7 +2,7 @@
 <head>
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
-<!--style>
+<style>
 @media screen and (max-width: 750px) and (min-width: 300px) {
 	video#v { 
 		position: fixed;
@@ -16,7 +16,7 @@
 		background-size: cover; 
 	}
 }
-</style-->
+</style>
 <script>
 var v=null;
 var labels = [];
@@ -35,6 +35,7 @@ var userStream;
 
 function load()
 {
+	document.getElementById("outdiv").innerHTML = formhtml;
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
         if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
@@ -56,6 +57,7 @@ function load()
 <script>
 function setwebcam()
 {
+	
 	//document.getElementById('scannerbtn').style.display = 'none';
 	ids = [];
 	labels = [];
