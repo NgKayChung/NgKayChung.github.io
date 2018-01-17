@@ -91,7 +91,6 @@ function captureToCanvas()
     }
     catch(e) {       
          console.log(e);
-         window.setTimeout(captureToCanvas, 500);
     }
 }
 
@@ -157,7 +156,11 @@ function success(stream) {
     //else {
     	v.src = window.URL.createObjectURL(stream);
     //}
-    
+    v.addEventListener('play', function(){
+	    setInterval(function(){
+		    captureToCanvas();
+	    }, 100);
+    });
     //v.onloadedmetadata = function(e) {
         //v.play();
     //};
@@ -165,7 +168,6 @@ function success(stream) {
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
     startDecode();
-    window.setTimeout(captureToCanvas, 500);
 }
 		
 function error(err)
