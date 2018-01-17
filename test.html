@@ -77,6 +77,7 @@ function initCanvas(ww,hh)
 	h = hh;
 	gCanvas.style.width = w + "px";
 	gCanvas.style.height = h + "px";
+	gCanvas.style.tranform = 'rotateY(180deg)';
 	gCanvas.width = w;
 	gCanvas.height = h;
 	gCtx = gCanvas.getContext("2d");
@@ -87,8 +88,8 @@ function initCanvas(ww,hh)
 function captureToCanvas()
 {
     try {
-		gCtx.fillRect(0, 0, w, h);
-        gCtx.drawImage(v, 0, 0, w, h);
+		gCtx.clearRect(0, 0, w, h);
+        	gCtx.drawImage(v, 0, 0, w, h);
     }
     catch(e) {       
          console.log(e);
