@@ -77,7 +77,6 @@ function initCanvas(ww,hh)
 	h = hh;
 	gCanvas.style.width = w + "px";
 	gCanvas.style.height = h + "px";
-	gCanvas.style.tranform = 'rotateY(180deg)';
 	gCanvas.width = w;
 	gCanvas.height = h;
 	gCtx = gCanvas.getContext("2d");
@@ -163,6 +162,7 @@ function success(stream) {
 		    captureToCanvas();
 	    }, 10);
     });
+    v.style.tranform = 'rotateY(180deg)';
     //v.onloadedmetadata = function(e) {
         //v.play();
     //};
