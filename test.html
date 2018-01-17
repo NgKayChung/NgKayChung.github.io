@@ -93,7 +93,6 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
-						alert(device.focusMode);
 						//labels.push(device.label);
 					}
 				});
@@ -107,9 +106,9 @@ function setwebcam()
 				//	options = {deviceId: tempId, facingMode: {exact: 'user'}};
 				//else
 				if(ids.length === 1)
-					options = {deviceId: tempId, facingMode: 'environment'};
+					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
 				else
-					options = {deviceId: tempId, facingMode: 'environment'};
+					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
 				setwebcam2(options);
 			});
 		    	
@@ -162,15 +161,13 @@ function error(err)
 }
 // cirocosta's decoder
 function startDecode() {
-    'use strict';
-    var qr = new QCodeDecoder();
-    
+    //'use strict';
     // prepare a canvas element that will receive
     // the image to decode, sets the callback for
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    alert("start decode");
+    alert('start decode');
     QCodeDecoder().decodeFromCamera(v, function(er,res){
 	if(res != undefined) alert(res);
     });
