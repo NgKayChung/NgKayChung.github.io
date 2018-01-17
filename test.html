@@ -30,20 +30,19 @@ var vidhtml = '<video id="v" autoplay></video>';
 	
 function load()
 {
-	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
-	if(navigator.getUserMedia) {
-		navigator.getUserMedia({audio: false, video: true}, function(st) {
-			alert('started');
-			alert(st.enabled);
-		}, function(err) {
-			console.log(err);
-		});
+	//navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+	//if(navigator.getUserMedia) {
+	//	navigator.getUserMedia({audio: false, video: true}, function(st) {
+			
+	//	}, function(err) {
+	//		console.log(err);
+	//	});
 		initCanvas(300, 500);
-	}
-	else
-	{
-		console.log('getUserMedia not supported');
-	}
+	//}
+	//else
+	//{
+	//	console.log('getUserMedia not supported');
+	//}
 	//qrcode.callback = read;
 	//setwebcam();
 }
