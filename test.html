@@ -146,7 +146,7 @@ function setwebcam2(options)
     document.getElementById("result").innerHTML="- scanning -";
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
-    
+    v.style.tranform = 'rotateY(180deg)';
     navigator.getUserMedia({video: options, audio: false}, success, error);
 }
 
@@ -162,7 +162,7 @@ function success(stream) {
 		    captureToCanvas();
 	    }, 10);
     });*/
-    //v.style.tranform = 'rotateY(180deg)';
+    
     //v.onloadedmetadata = function(e) {
         //v.play();
     //};
