@@ -31,13 +31,15 @@ var n = navigator;
 	
 function load()
 {
-	/*n.getUserMedia = n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia;
+	n.getUserMedia = (n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia);
+	if(n.getUserMedia)
 	n.getUserMedia({audio: false, video: true}, function(st) {
-		var track = stream.getTracks()[0];
-		track.stop();
+		MediaStream.addTrack(st);
+		alert('started');
 	}, function(err) {
 		console.log(err);
-	});*/
+	});
+	MediaStream.getVideoTracks()[0].stop();
 	initCanvas(300, 500);
 	//qrcode.callback = read;
 	//setwebcam();
