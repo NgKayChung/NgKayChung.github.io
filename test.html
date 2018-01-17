@@ -146,7 +146,7 @@ function setwebcam2(options)
     document.getElementById("result").innerHTML="- scanning -";
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
-    v.style.transform = 'rotateY(180deg)';
+    v.style.transform = 'rotateX(180deg)';
     navigator.getUserMedia({video: options, audio: false}, success, error);
 }
 
