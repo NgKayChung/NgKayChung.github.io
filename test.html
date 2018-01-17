@@ -125,8 +125,8 @@ function startDecode() {
     
     QCodeDecoder().decodeFromVideo(v, function(er,res) {
 		if(res != undefined) {
-			alert(res);
 			this.stop();
+			alert(res);
 			v.src = "";
 			stopMedia();
 			var scanElem = document.getElementById('scannerbtn');
