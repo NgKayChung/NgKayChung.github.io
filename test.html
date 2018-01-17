@@ -22,8 +22,10 @@
 <script>
 var gCtx = null;
 var gCanvas = null;
+var w;
+var h;
 var v=null;
-//var labels = [];
+var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 //var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
@@ -35,14 +37,14 @@ function load()
         if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
 			userStream = st;
+			var videoTracks = userStream.getVideoTracks();
+			if(videoTracks.length > 0) {
+				userStream.removeTrack(videoTracks[0]);
+			}
 		}, function(err) {
 			console.log(err);
 		});
-		var videoTracks = userStream.getVideoTracks();
-		if(videoTracks.length > 0){
-			alert('isTrack');
-			userStream.removeTrack(videoTracks[0]);
-		}
+		
 		initCanvas(300, 500);
 	}
 	else
@@ -70,8 +72,8 @@ function read(a)
 function initCanvas(ww,hh)
 {
 	gCanvas = document.getElementById("qr-canvas");
-	var w = ww;
-	var h = hh;
+	w = ww;
+	h = hh;
 	gCanvas.style.width = w + "px";
 	gCanvas.style.height = h + "px";
 	gCanvas.width = w;
@@ -84,7 +86,7 @@ function initCanvas(ww,hh)
 function captureToCanvas()
 {
     try {
-        gCtx.drawImage(v,0,0);
+        gCtx.drawImage(v, 0, 0, w, h);
     }
     catch(e) {       
          console.log(e);
@@ -103,23 +105,21 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
-						alert(device.label + " id = " + device.deviceId);
-						//labels.push(device.label);
+						labels.push(device.label);
 					}
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
 				//tempId = ids.shift();
 				//ids.push(tempId);
-				//var tempLabel = labels.shift();
-				//labels.push(tempLabel);
-				//if(tempLabel.indexOf("front") != -1)
-				//	options = {deviceId: tempId, facingMode: {exact: 'user'}};
-				//else
+				var tempLabel = labels.shift();
+				labels.push(tempLabel);
+				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
 				else
-					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
+					options = {deviceId: tempId, focusMode: false, facingMode: ((tempLabel.indexOf("front") != -1) ? 'user' : 'environment')};
+				
 				setwebcam2(options);
 			});
 		    	
@@ -144,8 +144,6 @@ function setwebcam2(options)
     v = document.getElementById("v");
     
     navigator.getUserMedia({video: options, audio: false}, success, error);
-	
-    window.setTimeout(captureToCanvas, 500);
 }
 
 function success(stream) {
@@ -168,6 +166,7 @@ function success(stream) {
 		
 function error(err)
 {
+    alert(err);
     return;
 }
 // cirocosta's decoder
@@ -180,9 +179,11 @@ function startDecode() {
     // decoder.
     alert('start decode');
     QCodeDecoder().decodeFromCamera(v, function(er,res){
-	if(res != undefined) alert(res);
+	if(res != undefined)
+		alert(res);
+	else
+		window.setTimeout(captureToCanvas, 500);
     });
-    window.setTimeout(captureToCanvas, 500);
 }
 
 /*function flipCamera()
