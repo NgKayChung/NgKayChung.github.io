@@ -27,17 +27,22 @@ var v=null;
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 //var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
+var userStream;
 
 function load()
 {
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
         if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
-			var videoTracks = st.getVideoTracks();
-			st.removeTrack(videoTrack[0]);
+			userStream = st;
 		}, function(err) {
 			console.log(err);
 		});
+		var videoTracks = userStream.getVideoTracks();
+		if(videoTracks.length > 0){
+			alert('isTrack');
+			userStream.removeTrack(videoTracks[0]);
+		}
 		initCanvas(300, 500);
 	}
 	else
