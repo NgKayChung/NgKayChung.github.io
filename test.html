@@ -93,6 +93,7 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
+						alert(device.focusMode);
 						//labels.push(device.label);
 					}
 				});
