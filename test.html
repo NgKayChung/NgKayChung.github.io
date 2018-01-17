@@ -104,7 +104,6 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
-						alert(device.brightness);
 						ids.push(device.deviceId);
 						labels.push(device.label);
 					}
@@ -122,9 +121,9 @@ function setwebcam()
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
 				else {
 					if(tempLabel.indexOf('front') != -1){
-						options = {deviceId: tempId, focusMode: false, facingMode: 'user'}; alert('user');}
+						options = {deviceId: tempId, focusMode: true, facingMode: 'user'}; alert('user');}
 					else {
-						options = {deviceId: tempId, focusMode: false, facingMode: 'environment'}; alert('environment');}
+						options = {deviceId: tempId, focusMode: true, facingMode: 'environment'}; alert('environment');}
 				}
 				setwebcam2(options);
 			});
