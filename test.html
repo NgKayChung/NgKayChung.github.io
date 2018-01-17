@@ -27,22 +27,23 @@ var v=null;
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 //var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
-	
+
 function load()
 {
-	//navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
-	//if(navigator.getUserMedia) {
-	//	navigator.getUserMedia({audio: false, video: true}, function(st) {
-			
-	//	}, function(err) {
-	//		console.log(err);
-	//	});
+	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+        if(navigator.getUserMedia) {
+		navigator.getUserMedia({audio: false, video: true}, function(st) {
+			var videoTracks = st.getVideoTracks();
+			st.removeTrack(videoTrack[0]);
+		}, function(err) {
+			console.log(err);
+		});
 		initCanvas(300, 500);
-	//}
-	//else
-	//{
-	//	console.log('getUserMedia not supported');
-	//}
+	}
+	else
+	{
+		console.log('getUserMedia not supported');
+	}
 	//qrcode.callback = read;
 	//setwebcam();
 }
