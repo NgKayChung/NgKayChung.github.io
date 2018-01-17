@@ -46,7 +46,7 @@ function load()
 			console.log(err);
 		});
 		
-		initCanvas(400, 600);
+		//initCanvas(400, 600);
 	}
 	else
 	{
@@ -111,12 +111,12 @@ function setwebcam()
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				tempId = ids.shift();
-				ids.push(tempId);
+				//tempId = ids.shift();
+				//ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				tempLabel = labels.shift();
-				labels.push(tempLabel);
+				//tempLabel = labels.shift();
+				//labels.push(tempLabel);
 				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
@@ -157,12 +157,12 @@ function success(stream) {
     //else {
     	v.src = window.URL.createObjectURL(stream);
     //}
-    v.addEventListener('play', function(){
+    /*v.addEventListener('play', function(){
 	    setInterval(function(){
 		    captureToCanvas();
 	    }, 10);
-    });
-    v.style.tranform = 'rotateY(180deg)';
+    });*/
+    //v.style.tranform = 'rotateY(180deg)';
     //v.onloadedmetadata = function(e) {
         //v.play();
     //};
