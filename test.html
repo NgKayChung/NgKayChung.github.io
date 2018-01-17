@@ -46,7 +46,7 @@ function load()
 			console.log(err);
 		});
 		
-		initCanvas(300, 500);
+		initCanvas(600, 800);
 	}
 	else
 	{
@@ -87,6 +87,7 @@ function initCanvas(ww,hh)
 function captureToCanvas()
 {
     try {
+	gCtx.fillRect(0, 0, w, h);
         gCtx.drawImage(v, 0, 0, w, h);
     }
     catch(e) {       
@@ -159,7 +160,7 @@ function success(stream) {
     v.addEventListener('play', function(){
 	    setInterval(function(){
 		    captureToCanvas();
-	    }, 33);
+	    }, 10);
     });
     //v.onloadedmetadata = function(e) {
         //v.play();
