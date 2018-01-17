@@ -3,10 +3,6 @@
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <script>
-var gCtx = null;
-var gCanvas = null;
-var w;
-var h;
 var v=null;
 var labels = [];
 var ids = [];
@@ -29,44 +25,18 @@ function load()
 			console.log(err);
 		});
 	}
-	else
-	{
+	else {
 		console.log('getUserMedia not supported');
 	}
 }
-/*
-function initCanvas(ww,hh)
-{
-	gCanvas = document.getElementById("qr-canvas");
-	w = ww;
-	h = hh;
-	gCanvas.style.width = w + "px";
-	gCanvas.style.height = h + "px";
-	gCanvas.style.visibility = 'hidden';
-	gCanvas.width = w;
-	gCanvas.height = h;
-	gCtx = gCanvas.getContext("2d");
-	gCtx.clearRect(0, 0, w, h);
-}
-
-
-function captureToCanvas()
-{
-    try {
-        	gCtx.drawImage(v, 0, 0, w, h);
-    }
-    catch(e) {       
-         console.log(e);
-    }
-}*/
 
 function setwebcam()
 {
+	document.getElementById('scannerbtn').style.display = none;
 	var options = null;
 	
-	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
-	{
-	    try{
+	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+	    try {
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
@@ -74,35 +44,26 @@ function setwebcam()
 						labels.push(device.label);
 					}
 				});
+
 				var tempId = ids.shift();
-				ids.push(tempId);
-				tempId = ids.shift();
 				ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				tempLabel = labels.shift();
-				labels.push(tempLabel);
-				
-				if(ids.length === 1)
-					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
-				else {
-					if(tempLabel.indexOf('front') != -1){
-						options = {deviceId: tempId}; alert('user');}
-					else {
-						options = {deviceId: tempId}; alert('environment');}
+
+				options = {deviceId: tempId};
+
+				if(ids.length > 1) {
+					//create flip button
 				}
 				
 				setwebcam2(options);
 			});
-		    	
 		}
-		catch(e)
-		{
+		catch(e) {
 			console.log(e);
 		}
 	}
-	else
-	{
+	else {
 		console.log("no navigator.mediaDevices.enumerateDevices" );
 	}
 }
@@ -111,7 +72,9 @@ function setwebcam2(options)
 {
     document.getElementById("result").innerHTML="- scanning -";
     document.getElementById("outdiv").innerHTML = vidhtml;
+	
     v = document.getElementById("v");
+	
     navigator.getUserMedia({video: options, audio: false}, success, error);
 }
 
@@ -120,7 +83,7 @@ function success(stream) {
     //	v.srcObject = stream;
     //}
     //else {
-    	v.src = window.URL.createObjectURL(stream);
+    v.src = window.URL.createObjectURL(stream);
     //}
     
     //document.getElementById("flipp").innerHTML = fliphtml;
@@ -133,13 +96,16 @@ function error(err)
     alert(err);
     return;
 }
-// cirocosta's decoder
+
 function startDecode() {
     'use strict';
     
     QCodeDecoder().decodeFromVideo(v, function(er,res) {
-	if(res != undefined)
-		alert(res);
+		if(res != undefined) {
+			alert(res);
+			var scanElem = document.getElementById('scannerbtn');
+			scanElem.parentNode.removeElement(scanElem);
+		}
     });
 }
 
