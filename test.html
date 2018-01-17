@@ -23,10 +23,19 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
+var formhtml = '<form method = "get">' +
+		'Full Name : <input type = "text" length = "50" id = "fullname" name = "fullname"/><br/>' +
+    		'Identity Card Number : <input type = "text" length = "12" id = "icnumber" name = "icnumber"/><br/>' +
+		'Email Address : <input type = "email" id = "emailAddress" name = "emailAddress"/><br/>' +
+    		'Phone Number : <input type = "text" id = "phoneNumber" name = "phoneNumber"/><br/>' +
+    		'<input type = "submit" name = "submit"/>$nbsp;$nbsp;$nbsp;$nbsp;$nbsp;$nbsp;$nbsp;<input type = "reset" name = "reset"/>' +
+    		'</form>';
+
 var userStream;
 
 function load()
 {
+	document.getElementById("outdiv").innerHTML = formhtml;
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
         if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
