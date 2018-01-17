@@ -46,7 +46,7 @@ function load()
 			console.log(err);
 		});
 		
-		initCanvas(600, 800);
+		initCanvas(400, 600);
 	}
 	else
 	{
@@ -123,9 +123,9 @@ function setwebcam()
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
 				else {
 					if(tempLabel.indexOf('front') != -1){
-						options = {deviceId: tempId, width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }}; alert('user');}
+						options = {deviceId: tempId}; alert('user');}
 					else {
-						options = {deviceId: tempId, width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }}; alert('environment');}
+						options = {deviceId: tempId}; alert('environment');}
 				}
 				setwebcam2(options);
 			});
