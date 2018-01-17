@@ -35,7 +35,6 @@ var userStream;
 
 function load()
 {
-	document.getElementById("outdiv").innerHTML = formhtml;
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
         if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
@@ -133,6 +132,7 @@ function startDecode() {
 			alert(res);
 			var scanElem = document.getElementById('scannerbtn');
 			scanElem.parentNode.removeElement(scanElem);
+			document.getElementById("outdiv").innerHTML = formhtml;
 		}
     });
 }
