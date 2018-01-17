@@ -2,23 +2,6 @@
 <head>
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
-<!--script src = "webqr\src\alignpat.js"></script>
-<script src = "webqr\src\bitmat.js"></script>
-<script src = "webqr\src\bmparser.js"></script>
-<script src = "webqr\src\datablock.js"></script>
-<script src = "webqr\src\databr.js"></script>
-<script src = "webqr\src\datamask.js"></script>
-<script src = "webqr\src\decoder.js"></script>
-<script src = "webqr\src\detector.js"></script>
-<script src = "webqr\src\errorlevel.js"></script>
-<script src = "webqr\src\findpat.js"></script>
-<script src = "webqr\src\formatinf.js"></script>
-<script src = "webqr\src\gf256.js"></script>
-<script src = "webqr\src\gf256poly.js"></script>
-<script src = "webqr\src\grid.js"></script>
-<script src = "webqr\src\qrcode.js"></script>
-<script src = "webqr\src\rsdecoder.js"></script>
-<script src = "webqr\src\version.js"></script-->
 <script>
 var gCtx = null;
 var gCanvas = null;
@@ -45,30 +28,13 @@ function load()
 		}, function(err) {
 			console.log(err);
 		});
-		
-		//initCanvas(400, 600);
 	}
 	else
 	{
 		console.log('getUserMedia not supported');
 	}
-	//qrcode.callback = read;
-	//setwebcam();
 }
-
-function htmlEntities(str) {
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function read(a)
-{
-    var html="<br>";
-    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
-        html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b>"+htmlEntities(a)+"</b><br><br>";
-    document.getElementById("result").innerHTML=html;
-}	
-
+/*
 function initCanvas(ww,hh)
 {
 	gCanvas = document.getElementById("qr-canvas");
@@ -92,7 +58,7 @@ function captureToCanvas()
     catch(e) {       
          console.log(e);
     }
-}
+}*/
 
 function setwebcam()
 {
@@ -110,12 +76,12 @@ function setwebcam()
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				//tempId = ids.shift();
-				//ids.push(tempId);
+				tempId = ids.shift();
+				ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				//tempLabel = labels.shift();
-				//labels.push(tempLabel);
+				tempLabel = labels.shift();
+				labels.push(tempLabel);
 				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
@@ -156,15 +122,6 @@ function success(stream) {
     //else {
     	v.src = window.URL.createObjectURL(stream);
     //}
-    /*v.addEventListener('play', function(){
-	    setInterval(function(){
-		    captureToCanvas();
-	    }, 10);
-    });*/
-    
-    //v.onloadedmetadata = function(e) {
-        //v.play();
-    //};
     
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
@@ -179,11 +136,7 @@ function error(err)
 // cirocosta's decoder
 function startDecode() {
     'use strict';
-    // prepare a canvas element that will receive
-    // the image to decode, sets the callback for
-    // the result and then prepares the
-    // videoElement to send its source to the
-    // decoder.
+    
     QCodeDecoder().decodeFromVideo(v, function(er,res) {
 	if(res != undefined)
 		alert(res);
@@ -210,6 +163,5 @@ function startDecode() {
 <!--div id = "flipp"></div-->
 <div id="outdiv"></div>
 <div id = "result"></div>
-<!--canvas id = "qr-canvas"></canvas-->
 </body>
 </html>
