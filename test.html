@@ -78,7 +78,7 @@ function captureToCanvas()
     }
     catch(e) {       
          console.log(e);
-         setTimeout(captureToCanvas, 500);
+         window.setTimeout(captureToCanvas, 500);
     }
 }
 
@@ -98,8 +98,8 @@ function setwebcam()
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				//tempId = ids.shift();
-				//ids.push(tempId);
+				tempId = ids.shift();
+				ids.push(tempId);
 				//var tempLabel = labels.shift();
 				//labels.push(tempLabel);
 				//if(tempLabel.indexOf("front") != -1)
@@ -134,7 +134,7 @@ function setwebcam2(options)
     
     n.getUserMedia({video: options, audio: false}, success, error);
 	
-    setTimeout(captureToCanvas, 500);
+    window.setTimeout(captureToCanvas, 500);
 }
 
 function success(stream) {
@@ -152,7 +152,7 @@ function success(stream) {
     //document.getElementById("flipp").innerHTML = fliphtml;
     //document.getElementById("flipbtn").addEventListener('click', flipCamera);
     startDecode();
-    setTimeout(captureToCanvas, 500);
+    window.setTimeout(captureToCanvas, 500);
 }
 		
 function error(err)
