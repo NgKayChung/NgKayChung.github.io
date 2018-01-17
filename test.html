@@ -120,6 +120,8 @@ function error(err)
     return;
 }
 
+var done = false;
+
 function startDecode() {
     'use strict';
     var qr = QCodeDecoder();
@@ -129,7 +131,8 @@ function startDecode() {
 		throw er;	
 	}
 	
-	if(res != undefined) {
+	if(res != undefined && !done) {
+		done = true;
 		alert(res);
 		qr.stop();
 		v.src = "";
@@ -139,10 +142,8 @@ function startDecode() {
 		document.getElementById('flipp').innerHTML = "";
 		document.getElementById('result').innerHTML = "Scan complete!!";
 		document.getElementById("outdiv").innerHTML = formhtml;
-		return;
 	}
     }, true);
-	
 }
 	
 function stopMedia()
