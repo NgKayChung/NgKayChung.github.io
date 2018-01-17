@@ -39,7 +39,7 @@ function load()
 		}, function(err) {
 			console.log(err);
 		});
-		MediaStream.removeTrack(MediaStream.getTracks()[0]);
+		alert(MediaStreamTrack.enabled);
 		initCanvas(300, 500);
 	}
 	else
