@@ -119,9 +119,12 @@ function setwebcam()
 				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
-				else
-					options = {deviceId: tempId, focusMode: false, facingMode: ((tempLabel.indexOf("front") != -1) ? 'user' : 'environment')};
-				
+				else {
+					if(tempLabel.indexOf('front') != -1){
+						options = {deviceId: tempId, focusMode: false, facingMode: 'user'}; alert('user');}
+					else {
+						options = {deviceId: tempId, focusMode: false, facingMode: 'environment'}; alert('environment');}
+				}
 				setwebcam2(options);
 			});
 		    	
