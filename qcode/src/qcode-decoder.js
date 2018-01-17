@@ -112,7 +112,7 @@ QCodeDecoder.prototype._captureToCanvas = function (videoElem, cb, once) {
 
   this.timerCapture = setTimeout(function () {
     this._captureToCanvas.call(this, videoElem, cb, once);
-  }.bind(this), 500);
+  }.bind(this), 100);
 };
 
 /**
@@ -150,7 +150,7 @@ QCodeDecoder.prototype.decodeFromCamera = function (videoElem, cb, once) {
 QCodeDecoder.prototype.decodeFromVideo = function (videoElem, cb, once) {
   setTimeout(function () {
     this._captureToCanvas.call(this, videoElem, cb, once);
-  }.bind(this), 500);
+  }.bind(this), 100);
 
   return this;
 };
