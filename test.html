@@ -134,8 +134,6 @@ function setwebcam()
 		console.log("no navigator.mediaDevices.enumerateDevices" );
 	}
 }
-	
-
 
 function setwebcam2(options)
 {
@@ -181,8 +179,6 @@ function startDecode() {
     QCodeDecoder().decodeFromCamera(v, function(er,res){
 	if(res != undefined)
 		alert(res);
-	else
-		window.setTimeout(captureToCanvas, 500);
     });
 }
 
