@@ -71,7 +71,11 @@ function setwebcam()
 				ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-
+				tempId = ids.shift();
+				ids.push(tempId);
+				tempLabel = labels.shift();
+				labels.push(tempLabel);
+				
 				options = {deviceId: tempId};
 
 				if(ids.length > 1) {
@@ -123,10 +127,7 @@ function error(err)
 var done = false;
 
 function startDecode() {
-    'use strict';
-    var qr = QCodeDecoder();
-    
-    qr.decodeFromVideo(v, function(er,res) {
+    QCodeDecoder().decodeFromVideo(v, function(er,res) {
 	if(er) {
 		alert(er);	
 	}
@@ -134,7 +135,7 @@ function startDecode() {
 	if(res != undefined && !done) {
 		done = true;
 		alert(res);
-		qr.stop();
+		this.stop();
 		v.src = "";
 		stopMedia();
 		var scanElem = document.getElementById('scannerbtn');
