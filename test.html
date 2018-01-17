@@ -129,7 +129,7 @@ function startDecode() {
 		throw er;	
 	}
 	
-	if(res) {
+	if(res != undefined) {
 		alert(res);
 		qr.stop();
 		v.src = "";
