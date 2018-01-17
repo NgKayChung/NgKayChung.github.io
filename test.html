@@ -145,7 +145,19 @@ function setwebcam2(options)
     document.getElementById("result").innerHTML="- scanning -";
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
-    
+	/////////////////////
+    let constraintList = document.getElementById("list");
+	let supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
+
+	for (let constraint in supportedConstraints) {
+	  if (supportedConstraints.hasOwnProperty(constraint)) {
+		let elem = document.createElement("li");
+
+		elem.innerHTML = "<code>" + constraint + "</code>";
+		constraintList.appendChild(elem);
+	  }
+	}
+	//////////////////////////////
     navigator.getUserMedia({video: options, audio: false}, success, error);
 }
 
@@ -211,5 +223,6 @@ function startDecode() {
 <div id="outdiv"></div>
 <div id = "result"></div>
 <canvas id = "qr-canvas"></canvas>
+<ul id = "list"></ul>
 </body>
 </html>
