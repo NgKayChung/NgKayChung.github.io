@@ -32,15 +32,20 @@ var n = navigator;
 function load()
 {
 	n.getUserMedia = (n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia);
-	if(n.getUserMedia)
-	n.getUserMedia({audio: false, video: true}, function(st) {
-		MediaStream.addTrack(st);
-		alert('started');
-	}, function(err) {
-		console.log(err);
-	});
-	MediaStream.getVideoTracks()[0].stop();
-	initCanvas(300, 500);
+	if(n.getUserMedia) {
+		n.getUserMedia({audio: false, video: true}, function(st) {
+			MediaStream.addTrack(st);
+			alert('started');
+		}, function(err) {
+			console.log(err);
+		});
+		MediaStream.removeTrack(MediaStream.getVideoTracks()[0]);
+		initCanvas(300, 500);
+	}
+	else
+	{
+		console.log('getUserMedia not supported');
+	}
 	//qrcode.callback = read;
 	//setwebcam();
 }
