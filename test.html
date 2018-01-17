@@ -87,7 +87,7 @@ function initCanvas(ww,hh)
 function captureToCanvas()
 {
     try {
-	gCtx.fillRect(0, 0, w, h);
+		gCtx.fillRect(0, 0, w, h);
         gCtx.drawImage(v, 0, 0, w, h);
     }
     catch(e) {       
@@ -111,12 +111,12 @@ function setwebcam()
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				//tempId = ids.shift();
-				//ids.push(tempId);
+				tempId = ids.shift();
+				ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				//tempLabel = labels.shift();
-				//labels.push(tempLabel);
+				tempLabel = labels.shift();
+				labels.push(tempLabel);
 				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
