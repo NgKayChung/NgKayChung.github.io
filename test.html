@@ -122,20 +122,23 @@ function error(err)
 
 function startDecode() {
     'use strict';
+    var qr = QCodeDecoder();
     
-    QCodeDecoder().decodeFromVideo(v, function(er,res) {
-		if(res) {
-			alert(res);
-			v.src = "";
-			stopMedia();
-			this.stop();
-			var scanElem = document.getElementById('scannerbtn');
-			scanElem.remove();
-			document.getElementById('flipp').innerHTML = "";
-			document.getElementById('result').innerHTML = "Scan complete!!";
-			document.getElementById("outdiv").innerHTML = formhtml;
-		}
-    });
+    qr.decodeFromVideo(v, function(er,res) {
+	if(er) {
+		throw er;	
+	}
+	
+	alert(res);
+	this.stop();
+	v.src = "";
+	qr.stopMedia();
+	var scanElem = document.getElementById('scannerbtn');
+	scanElem.remove();
+	document.getElementById('flipp').innerHTML = "";
+	document.getElementById('result').innerHTML = "Scan complete!!";
+	document.getElementById("outdiv").innerHTML = formhtml;
+    }, true);
 }
 	
 function stopMedia()
