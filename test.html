@@ -110,12 +110,12 @@ function setwebcam()
 				});
 				var tempId = ids.shift();
 				ids.push(tempId);
-				tempId = ids.shift();
-				ids.push(tempId);
+				//tempId = ids.shift();
+				//ids.push(tempId);
 				var tempLabel = labels.shift();
 				labels.push(tempLabel);
-				tempLabel = labels.shift();
-				labels.push(tempLabel);
+				//tempLabel = labels.shift();
+				//labels.push(tempLabel);
 				
 				if(ids.length === 1)
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
@@ -183,7 +183,6 @@ function startDecode() {
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    alert('start decode');
     QCodeDecoder().decodeFromCamera(v, function(er,res){
 	if(res != undefined)
 		alert(res);
