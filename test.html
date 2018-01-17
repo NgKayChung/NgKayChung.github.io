@@ -129,17 +129,20 @@ function startDecode() {
 		throw er;	
 	}
 	
-	alert(res);
-	return;
+	if(res) {
+		alert(res);
+		qr.stop();
+		v.src = "";
+		stopMedia();
+		var scanElem = document.getElementById('scannerbtn');
+		scanElem.remove();
+		document.getElementById('flipp').innerHTML = "";
+		document.getElementById('result').innerHTML = "Scan complete!!";
+		document.getElementById("outdiv").innerHTML = formhtml;
+		return;
+	}
     }, true);
-	qr.stop();
-	v.src = "";
-	stopMedia();
-	var scanElem = document.getElementById('scannerbtn');
-	scanElem.remove();
-	document.getElementById('flipp').innerHTML = "";
-	document.getElementById('result').innerHTML = "Scan complete!!";
-	document.getElementById("outdiv").innerHTML = formhtml;
+	
 }
 	
 function stopMedia()
