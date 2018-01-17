@@ -33,7 +33,6 @@ function load()
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
 	if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
-			MediaStream.addTrack(st);
 			alert('started');
 			alert(st.enabled);
 		}, function(err) {
