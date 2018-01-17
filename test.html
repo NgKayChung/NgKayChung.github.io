@@ -128,7 +128,7 @@ function startDecode() {
     
     qr.decodeFromVideo(v, function(er,res) {
 	if(er) {
-		throw er;	
+		alert(er);	
 	}
 	
 	if(res != undefined && !done) {
