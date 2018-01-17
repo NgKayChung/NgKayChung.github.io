@@ -130,15 +130,16 @@ function startDecode() {
 	}
 	
 	alert(res);
-	this.stop();
+	return;
+    }, true);
+	qr.stop();
 	v.src = "";
-	qr.stopMedia();
+	stopMedia();
 	var scanElem = document.getElementById('scannerbtn');
 	scanElem.remove();
 	document.getElementById('flipp').innerHTML = "";
 	document.getElementById('result').innerHTML = "Scan complete!!";
 	document.getElementById("outdiv").innerHTML = formhtml;
-    }, true);
 }
 	
 function stopMedia()
