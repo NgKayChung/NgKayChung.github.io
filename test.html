@@ -183,7 +183,7 @@ function startDecode() {
     // the result and then prepares the
     // videoElement to send its source to the
     // decoder.
-    QCodeDecoder().decodeFromVideo(v, function(er,res) {
+    QCodeDecoder().decodeFromCamera(v, function(er,res) {
 	if(res != undefined)
 		alert(res);
     });
