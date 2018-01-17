@@ -46,7 +46,7 @@ function load()
 			console.log(err);
 		});
 		
-		initCanvas(400, 600);
+		//initCanvas(400, 600);
 	}
 	else
 	{
@@ -156,11 +156,11 @@ function success(stream) {
     //else {
     	v.src = window.URL.createObjectURL(stream);
     //}
-    v.addEventListener('play', function(){
+    /*v.addEventListener('play', function(){
 	    setInterval(function(){
 		    captureToCanvas();
 	    }, 10);
-    });
+    });*/
     
     //v.onloadedmetadata = function(e) {
         //v.play();
@@ -210,6 +210,6 @@ function startDecode() {
 <!--div id = "flipp"></div-->
 <div id="outdiv"></div>
 <div id = "result"></div>
-<canvas id = "qr-canvas"></canvas>
+<!--canvas id = "qr-canvas"></canvas-->
 </body>
 </html>
