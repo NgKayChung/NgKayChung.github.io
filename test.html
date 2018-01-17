@@ -27,13 +27,12 @@ var v=null;
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 //var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
-var n = navigator;
 	
 function load()
 {
-	n.getUserMedia = (n.getUserMedia || n.webkitGetUserMedia || n.mozGetUserMedia);
-	if(n.getUserMedia) {
-		n.getUserMedia({audio: false, video: true}, function(st) {
+	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
+	if(navigator.getUserMedia) {
+		navigator.getUserMedia({audio: false, video: true}, function(st) {
 			MediaStream.addTrack(st);
 			alert('started');
 			alert(st.enabled);
@@ -93,10 +92,10 @@ function setwebcam()
 {
 	var options = null;
 	
-	if(n.mediaDevices && n.mediaDevices.enumerateDevices)
+	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
 	{
 	    try{
-			n.mediaDevices.enumerateDevices().then(function(devices) {
+			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
@@ -139,7 +138,7 @@ function setwebcam2(options)
     document.getElementById("outdiv").innerHTML = vidhtml;
     v = document.getElementById("v");
     
-    n.getUserMedia({video: options, audio: false}, success, error);
+    navigator.getUserMedia({video: options, audio: false}, success, error);
 	
     window.setTimeout(captureToCanvas, 500);
 }
