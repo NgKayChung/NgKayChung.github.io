@@ -121,9 +121,9 @@ function setwebcam()
 					options = {deviceId: tempId, focusMode: false, facingMode: 'environment'};
 				else {
 					if(tempLabel.indexOf('front') != -1){
-						options = {deviceId: tempId, width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }, frameRate:{ideal: 10, max: 15}, facingMode: 'user'}; alert('user');}
+						options = {deviceId: tempId, width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }, facingMode: 'user'}; alert('user');}
 					else {
-						options = {deviceId: tempId, width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }, frameRate:{ideal: 10, max: 15}, facingMode: 'environment'}; alert('environment');}
+						options = {deviceId: tempId, width: { min: 1024, ideal: 1280, max: 1920 }, height: { min: 776, ideal: 720, max: 1080 }, facingMode: 'environment'}; alert('environment');}
 				}
 				setwebcam2(options);
 			});
@@ -159,7 +159,7 @@ function success(stream) {
     v.addEventListener('play', function(){
 	    setInterval(function(){
 		    captureToCanvas();
-	    }, 100);
+	    }, 33);
     });
     //v.onloadedmetadata = function(e) {
         //v.play();
@@ -177,7 +177,7 @@ function error(err)
 }
 // cirocosta's decoder
 function startDecode() {
-    //'use strict';
+    'use strict';
     // prepare a canvas element that will receive
     // the image to decode, sets the callback for
     // the result and then prepares the
@@ -210,6 +210,5 @@ function startDecode() {
 <div id="outdiv"></div>
 <div id = "result"></div>
 <canvas id = "qr-canvas"></canvas>
-<ul id = "list"></ul>
 </body>
 </html>
