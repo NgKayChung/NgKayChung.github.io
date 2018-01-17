@@ -104,6 +104,7 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
+						alert(device.brightness);
 						ids.push(device.deviceId);
 						labels.push(device.label);
 					}
