@@ -30,21 +30,15 @@ var formhtml = '<form method = "get">' +
     		'Phone Number : <input type = "text" id = "phoneNumber" name = "phoneNumber"/><br/>' +
     		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
     		'</form>';
-
 var userStream;
 
 function load()
 {
-	document.getElementById("outdiv").innerHTML = formhtml;
 	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
         if(navigator.getUserMedia) {
 		navigator.getUserMedia({audio: false, video: true}, function(st) {
 			userStream = st;
-			var videoTracks = userStream.getVideoTracks();
-			if(videoTracks.length > 0) {
-				videoTracks[0].stop();
-				userStream.removeTrack(videoTracks[0]);
-			}
+			stopMedia();
 		}, function(err) {
 			console.log(err);
 		});
@@ -132,20 +126,27 @@ function startDecode() {
     QCodeDecoder().decodeFromVideo(v, function(er,res) {
 		if(res != undefined) {
 			alert(res);
+			stopMedia();
+			v.src = "";
 			var scanElem = document.getElementById('scannerbtn');
 			scanElem.parentNode.removeElement(scanElem);
 			document.getElementById("outdiv").innerHTML = formhtml;
 		}
     });
 }
-
-function flipCamera()
+	
+function stopMedia()
 {
 	var videoTracks = userStream.getVideoTracks();
 	if(videoTracks.length > 0) {
 		videoTracks[0].stop();
 		userStream.removeTrack(videoTracks[0]);
 	}
+}
+
+function flipCamera()
+{
+	stopMedia();
 	
 	var tempId = ids.shift();
 	ids.push(tempId);
