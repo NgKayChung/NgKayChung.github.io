@@ -36,10 +36,10 @@ function load()
 		n.getUserMedia({audio: false, video: true}, function(st) {
 			MediaStream.addTrack(st);
 			alert('started');
+			alert(st.enabled);
 		}, function(err) {
 			console.log(err);
 		});
-		alert(MediaStreamTrack.enabled);
 		initCanvas(300, 500);
 	}
 	else
