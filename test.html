@@ -3,7 +3,7 @@
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <style>
-@media screen and (max-width: 750px) and (min-width: 300px) {
+@media screen and (max-width: 750px) and (min-width: 250px) {
 	video#v { 
 		position: fixed;
 		right: 0;
@@ -164,7 +164,7 @@ function flipCamera()
 <body onload = "load()">
 <button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
 <div id = "flipp"></div>
-<div id="outdiv"></div>
+<div id="outdiv"><video id = "v"></video></div>
 <div id = "result"></div>
 </body>
 </html>
