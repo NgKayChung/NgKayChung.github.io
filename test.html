@@ -82,6 +82,7 @@ function setwebcam2(options)
 }
 
 function success(stream) {
+    userStream = stream;
     //if ("srcObject" in v) {
     //	v.srcObject = stream;
     //}
@@ -112,6 +113,12 @@ function startDecode() {
 
 function flipCamera()
 {
+	var videoTracks = userStream.getVideoTracks();
+	if(videoTracks.length > 0) {
+		videoTracks[0].stop();
+		userStream.removeTrack(videoTracks[0]);
+	}
+	
 	var tempId = ids.shift();
 	ids.push(tempId);
 	var tempLabel = labels.shift();
