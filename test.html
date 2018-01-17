@@ -124,18 +124,18 @@ function startDecode() {
     'use strict';
     
     QCodeDecoder().decodeFromVideo(v, function(er,res) {
-		if(res != undefined) {
-			this.stop();
+		if(res) {
 			alert(res);
 			v.src = "";
 			stopMedia();
+			this.stop();
 			var scanElem = document.getElementById('scannerbtn');
 			scanElem.remove();
 			document.getElementById('flipp').innerHTML = "";
 			document.getElementById('result').innerHTML = "Scan complete!!";
 			document.getElementById("outdiv").innerHTML = formhtml;
 		}
-    }, true);
+    });
 }
 	
 function stopMedia()
