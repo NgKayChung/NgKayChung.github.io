@@ -2,8 +2,8 @@
 <head>
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
-<style>
-@media screen and (max-width: 750px) and (min-width: 50px) {
+<!--style>
+@media screen and (max-width: 750px) {
 	#v { 
 		position: fixed;
 		right: 0;
@@ -16,7 +16,7 @@
 		background-size: cover; 
 	}
 }
-</style>
+</style-->
 <script>
 var v=null;
 var labels = [];
@@ -24,10 +24,10 @@ var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var formhtml = '<form method = "get">' +
-		'Full Name : <input type = "text" length = "50" id = "fullname" name = "fullname"/><br/>' +
-    		'Identity Card Number : <input type = "text" length = "12" id = "icnumber" name = "icnumber"/><br/>' +
-		'Email Address : <input type = "email" id = "emailAddress" name = "emailAddress"/><br/>' +
-    		'Phone Number : <input type = "text" id = "phoneNumber" name = "phoneNumber"/><br/>' +
+		'Full Name : <input type = "text" length = "50" id = "fullname" name = "fullname" required/><br/>' +
+    		'Identity Card Number : <input type = "text" length = "12" id = "icnumber" name = "icnumber" required/><br/>' +
+		'Email Address : <input type = "email" id = "emailAddress" name = "emailAddress" required/><br/>' +
+    		'Phone Number : <input type = "text" id = "phoneNumber" name = "phoneNumber" required/><br/>' +
     		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
     		'</form>';
 var userStream;
