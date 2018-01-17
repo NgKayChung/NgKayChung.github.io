@@ -128,8 +128,9 @@ function startDecode() {
 			alert(res);
 			stopMedia();
 			v.src = "";
-			//var scanElem = document.getElementById('scannerbtn');
-			//scanElem.parentNode.removeElement(scanElem);
+			var scanElem = document.getElementById('scannerbtn');
+			scanElem.remove();
+			document.getElementById('result').innerHTML = "Scan complete!!";
 			document.getElementById("outdiv").innerHTML = formhtml;
 		}
     });
