@@ -134,14 +134,10 @@ function startDecode() {
 
     qr.decodeFromVideo(v, function(er,res) {
 	if(er) {
-		errCount++;
-		if(errCount >= 5)
-			errCount = 0;
-		else 
-			alert("Please scan properly");
+		console.log(er);
 	}
 	
-	if(res != undefined && !done) {
+	if(res && !done) {
 		done = true;
 		alert(res);
 		qr.stop();
