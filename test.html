@@ -51,7 +51,7 @@ function load()
 <script>
 function setwebcam()
 {
-	
+	load();
 	//document.getElementById('scannerbtn').style.display = 'none';
 	ids = [];
 	labels = [];
@@ -127,7 +127,11 @@ function error(err)
 var done = false;
 
 function startDecode() {
-    QCodeDecoder().decodeFromVideo(v, function(er,res) {
+    'use strict';
+    
+    var qr = QCodeDecoder();
+    
+    qr.decodeFromVideo(v, function(er,res) {
 	if(er) {
 		alert(er);	
 	}
@@ -142,7 +146,7 @@ function startDecode() {
 		scanElem.remove();
 		document.getElementById('flipp').innerHTML = "";
 		document.getElementById('result').innerHTML = "Scan complete!!";
-		document.getElementById("outdiv").innerHTML = formhtml;
+		//document.getElementById("outdiv").innerHTML = formhtml;
 	}
     }, true);
 }
@@ -171,10 +175,10 @@ function flipCamera()
 }
 </script>
 </head>
-<body onload = "load()">
+<body>
 <button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
 <div id = "flipp"></div>
-<div id="outdiv"><video id = "v"></video></div>
+<div id="outdiv"></div>
 <div id = "result"></div>
 </body>
 </html>
