@@ -3,7 +3,7 @@
 <title>Reader Test</title>
 <script src = "qcode\build\qcode-decoder.min.js"></script>
 <!--style>
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1000px) {
 	#v { 
 		position: fixed;
 		right: 0;
@@ -53,6 +53,7 @@ function stopMedia()
 function load()
 {
 	if(navigator.mediaDevices.getUserMedia) {
+		alert('grb');
 		webkit = true;
 		navigator.mediaDevices.getUserMedia({audio: false, video: true}, successRes, error);
 	}
