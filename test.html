@@ -22,7 +22,6 @@ var v=null;
 var webkit=false;
 var moz=false;
 var ms=false;
-var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
@@ -85,7 +84,6 @@ function setwebcam()
 	
 	//document.getElementById('scannerbtn').style.display = 'none';
 	ids = [];
-	labels = [];
 	var options = null;
 	
 	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
@@ -93,13 +91,13 @@ function setwebcam()
 			navigator.mediaDevices.enumerateDevices().then(function(devices) {
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
-						ids.push(device.deviceId);
+						ids.unshift(device.deviceId);
 						//labels.push(device.label);
 					}
 				});
 
-				var tempId = ids.shift();
-				ids.push(tempId);
+				var tempId = ids.pop();
+				ids.unshift(tempId);
 				//var tempLabel = labels.shift();
 				//labels.push(tempLabel);
 				//tempId = ids.shift();
@@ -191,8 +189,8 @@ function flipCamera()
 {
 	stopMedia();
 	
-	var tempId = ids.shift();
-	ids.push(tempId);
+	var tempId = ids.pop();
+	ids.unshift(tempId);
 	//var tempLabel = labels.shift();
 	//labels.push(tempLabel);
 	
