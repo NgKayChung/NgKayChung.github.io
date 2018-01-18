@@ -66,7 +66,7 @@ function load()
 	}
 	else if(navigator.getUserMedia) {
 		std = true;
-		navigator.getUserMedia({audio: false, video, true}, successRes, error);
+		navigator.getUserMedia({audio: false, video: true}, successRes, error);
 	}
 	else {
 		alert('Web scanning is not supported, please proceed to upload image to complete the registration');
