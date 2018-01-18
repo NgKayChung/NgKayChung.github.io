@@ -125,16 +125,20 @@ function error(err)
 }
 
 var done = false;
+var errCount = 0;
 
 function startDecode() {
     'use strict';
     
     var qr = QCodeDecoder();
-    var errCount = 0;
 
     qr.decodeFromVideo(v, function(er,res) {
 	if(er) {
-		console.log(er);
+		errCount++;
+		if(errCount >= 5) {
+			errCount = 0;
+			console.log(er);
+		}
 	}
 	
 	if(res && !done) {
