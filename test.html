@@ -139,7 +139,7 @@ function startDecode() {
 	if(res != undefined && !done) {
 		done = true;
 		alert(res);
-		this.stop();
+		qr.stop();
 		v.src = "";
 		stopMedia();
 		var scanElem = document.getElementById('scannerbtn');
