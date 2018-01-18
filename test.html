@@ -17,9 +17,8 @@
 	}
 }
 </style-->
-<script>
+<script type = "text/javascript">
 var v=null;
-var std=false;
 var webkit=false;
 var moz=false;
 var ms=false;
@@ -36,26 +35,54 @@ var formhtml = '<form method = "get">' +
     		'</form>';
 var userStream;
 
-function load()
+function successRes(st)
 {
-	
-        if(navigator.webkitGetUserMedia) {
-		navigator.webkitGetUserMedia({audio: false, video: true}, function(st) {
-			userStream = st;
-			stopMedia();
-		}, function(err) {
-			console.log(err);
-		});
-	}
-	else {
-		console.log('getUserMedia not supported');
+	userStream = st;
+	stopMedia();
+}
+
+function stopMedia()
+{
+	var videoTracks = userStream.getVideoTracks();
+	if(videoTracks.length > 0) {
+		videoTracks[0].stop();
+		userStream.removeTrack(videoTracks[0]);
 	}
 }
+
+function load()
+{
+	if(navigator.webkitGetUserMedia) {
+		webkit = true;
+		navigator.webkitGetUserMedia({audio: false, video: true}, successRes, error);
+	}
+	else if(navigator.mozGetUserMedia) {
+		moz = true;
+		navigator.mozGetUserMedia({audio: false, video: true}, successRes, error);
+	}
+	else if(navigator.msGetUserMedia) {
+		ms = true;
+		navigator.msGetUserMedia({audio: false, video: true}, successRes, error);
+	}
+	else if(navigator.getUserMedia) {
+		std = true;
+		navigator.getUserMedia({audio: false, video, true}, successRes, error);
+	}
+	else {
+		alert('Web scanning is not supported, please proceed to upload image to complete the registration');
+		return false;
+	}
+	return true;
+}
 </script>
-<script>
+<script type = "text/javascript">
 function setwebcam()
 {
-	load();
+	/*if(!load()) {
+		//change to upload image
+		return;
+	}*/
+	
 	//document.getElementById('scannerbtn').style.display = 'none';
 	ids = [];
 	labels = [];
@@ -67,18 +94,18 @@ function setwebcam()
 				devices.forEach(function(device) {
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
-						labels.push(device.label);
+						//labels.push(device.label);
 					}
 				});
 
 				var tempId = ids.shift();
 				ids.push(tempId);
-				var tempLabel = labels.shift();
-				labels.push(tempLabel);
-				tempId = ids.shift();
-				ids.push(tempId);
-				tempLabel = labels.shift();
-				labels.push(tempLabel);
+				//var tempLabel = labels.shift();
+				//labels.push(tempLabel);
+				//tempId = ids.shift();
+				//ids.push(tempId);
+				//tempLabel = labels.shift();
+				//labels.push(tempLabel);
 				
 				options = {deviceId: tempId};
 
@@ -124,7 +151,7 @@ function success(stream) {
 		
 function error(err)
 {
-    alert(err);
+    console.log(err);
     return;
 }
 
@@ -159,15 +186,6 @@ function startDecode() {
 	}
     }, true);
 }
-	
-function stopMedia()
-{
-	var videoTracks = userStream.getVideoTracks();
-	if(videoTracks.length > 0) {
-		videoTracks[0].stop();
-		userStream.removeTrack(videoTracks[0]);
-	}
-}
 
 function flipCamera()
 {
@@ -175,8 +193,8 @@ function flipCamera()
 	
 	var tempId = ids.shift();
 	ids.push(tempId);
-	var tempLabel = labels.shift();
-	labels.push(tempLabel);
+	//var tempLabel = labels.shift();
+	//labels.push(tempLabel);
 	
 	var options = {deviceId: tempId};
 	
