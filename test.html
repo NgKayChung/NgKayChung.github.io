@@ -19,6 +19,10 @@
 </style-->
 <script>
 var v=null;
+var std=false;
+var webkit=false;
+var moz=false;
+var ms=false;
 var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
@@ -34,9 +38,9 @@ var userStream;
 
 function load()
 {
-	navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia);
-        if(navigator.getUserMedia) {
-		navigator.getUserMedia({audio: false, video: true}, function(st) {
+	
+        if(navigator.webkitGetUserMedia) {
+		navigator.webkitGetUserMedia({audio: false, video: true}, function(st) {
 			userStream = st;
 			stopMedia();
 		}, function(err) {
@@ -103,7 +107,7 @@ function setwebcam2(options)
 	
     v = document.getElementById("v");
 	
-    navigator.getUserMedia({video: options, audio: false}, success, error);
+    navigator.webkitGetUserMedia({video: options, audio: false}, success, error);
 }
 
 function success(stream) {
