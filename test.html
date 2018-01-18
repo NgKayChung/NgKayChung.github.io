@@ -52,9 +52,9 @@ function stopMedia()
 
 function load()
 {
-	if(navigator.mediaDevices.webkitGetUserMedia) {
+	if(navigator.mediaDevices.getUserMedia) {
 		webkit = true;
-		navigator.webkitGetUserMedia({audio: false, video: true}, successRes, error);
+		navigator.mediaDevices.getUserMedia({audio: false, video: true}, successRes, error);
 	}
 	else if(navigator.mozGetUserMedia) {
 		moz = true;
@@ -64,9 +64,9 @@ function load()
 		ms = true;
 		navigator.msGetUserMedia({audio: false, video: true}, successRes, error);
 	}
-	else if(navigator.mediaDevices.getUserMedia) {
+	else if(navigator.mediaDevices.webkitGetUserMedia) {
 		std = true;
-		navigator.getUserMedia({audio: false, video: true}, successRes, error);
+		navigator.mediaDevices.webkitGetUserMedia({audio: false, video: true}, successRes, error);
 	}
 	else {
 		alert('Web scanning is not supported, please proceed to upload image to complete the registration');
@@ -78,6 +78,9 @@ function load()
 <script type = "text/javascript">
 function setwebcam()
 {
+	//determine mobile device
+	//
+	
 	if(!load()) {
 		//change to upload image
 		return;
@@ -145,14 +148,14 @@ function setwebcam2(options)
 	
     v = document.getElementById("v");
 	
-    navigator.webkitGetUserMedia({video: options, audio: false}, success, error);
+    navigator.mediaDevices.getUserMedia({video: options, audio: false}, success, error);
 }
 
 function success(stream) {
     userStream = stream;
 	
-    v.src = window.URL.createObjectURL(stream);
-    
+    //v.src = window.URL.createObjectURL(stream);
+    v.srcObject = stream;
     startDecode();
 }
 		
@@ -172,22 +175,19 @@ function startDecode() {
 
     qr.decodeFromVideo(v, function(er,res) {
 		if(er) {
-			errCount++;
-			if(errCount >= 5) {
-				errCount = 0;
-				console.log(er);
-			}
+			console.log(er);
 		}
 
 		if(res && !done) {
 			done = true;
 			alert(res);
 			qr.stop();
-			v.src = "";
+			v.srcObject = null;
 			stopMedia();
 			var scanElem = document.getElementById('scannerbtn');
 			scanElem.remove();
-			document.getElementById('flipp').innerHTML = "";
+			var flipElem = document.getElementById('flipp');
+			flipElem.remove();
 			document.getElementById('result').innerHTML = "Scan complete!!";
 			//document.getElementById("outdiv").innerHTML = formhtml;
 		}
