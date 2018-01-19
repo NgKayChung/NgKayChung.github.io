@@ -52,7 +52,7 @@ function load()
 		return false;
 	}
 	
-	window.setTimeout(navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error), 500);
+	//window.setTimeout(navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error), 500);
 	return true;
 }
 
@@ -109,7 +109,7 @@ function setwebcam()
 		
 		var tempId = ids.pop();
 		ids.unshift(tempId);
-		
+		alert(ids.length);
 		if(ids.length > 1) {
 			//create flip button
 			document.getElementById("flipp").innerHTML = fliphtml;
