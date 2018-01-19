@@ -52,10 +52,7 @@ function load()
 		return false;
 	}
 	
-	enumDevices();
-	
-	if(ids.length <= 0) {
-		alert("No video input device detected, please proceed to upload image to complete the registration");
+	if(!enumDevices()) {
 		return false;
 	}
 	
@@ -73,6 +70,12 @@ function enumDevices()
 				labels.push(device.label);
 			}
 		});
+		if(ids.length <= 0) {
+			alert("No video input device detected, please proceed to upload image to complete the registration");
+			return false;
+		}
+		
+		return true;
 	}).catch(error);
 }
 
