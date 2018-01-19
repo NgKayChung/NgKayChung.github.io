@@ -21,7 +21,6 @@
 var v=null;
 var webkit=false;
 var moz=false;
-var ms=false;
 var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay></video>';
@@ -60,14 +59,6 @@ function load()
 		moz = true;
 		navigator.mozGetUserMedia({audio: false, video: true}, successRes, error);
 	}
-	else if(navigator.msGetUserMedia) {
-		ms = true;
-		navigator.msGetUserMedia({audio: false, video: true}, successRes, error);
-	}
-	else if(navigator.mediaDevices.webkitGetUserMedia) {
-		std = true;
-		navigator.mediaDevices.webkitGetUserMedia({audio: false, video: true}, successRes, error);
-	}
 	else {
 		alert('Web scanning is not supported, please proceed to upload image to complete the registration');
 		return false;
@@ -103,7 +94,7 @@ function setwebcam()
 
 				var tempId = ids.shift();
 				ids.push(tempId);
-				alert(ids.length);
+				
 				if(ids.length > 1) {
 					//create flip button
 					document.getElementById("flipp").innerHTML = fliphtml;
@@ -115,7 +106,7 @@ function setwebcam()
 						tempLabel = labels.shift();
 						labels.push(tempLabel);
 						
-						//if label is a back camera
+						//if device is a back camera
 						//scan with this camera ID
 						if(tempLabel.indexOf('back') != -1) {
 							break;
@@ -133,26 +124,12 @@ function setwebcam()
 			});
 		}
 		catch(e) {
-			console.log(e);
+			alert("Media devices are not enumerable");
 		}
 	}
 	else {
 		alert("No media device detected");
 	}
-}
-
-function success(stream) {
-    userStream = stream;
-	
-    v.src = window.URL.createObjectURL(stream);
-    //v.srcObject = stream;
-    startDecode();
-}
-		
-function error(err)
-{
-    console.log(err);
-    return;
 }
 
 function setwebcam2(options)
@@ -162,7 +139,34 @@ function setwebcam2(options)
 	
     v = document.getElementById("v");
 	
-    navigator.mediaDevices.getUserMedia({video: options, audio: false}).then(success).catch(error);
+	if(webkit) {
+		navigator.mediaDevices.getUserMedia({audio: false, video: options}).then(success).catch(error);
+	}
+	else if(moz) {
+		navigator.mozGetUserMedia({audio: false, video: options}).then(success).catch(error);
+	}
+	else {
+		return;
+	}
+}
+
+function success(stream) {
+    userStream = stream;
+	
+	if(webkit) {
+    	v.srcObject = stream;
+	}
+	else if(moz) {
+		v.mozSrcObject = stream;
+	}
+	
+    startDecode();
+}
+		
+function error(err)
+{
+    console.log(err);
+    return;
 }
 
 var done = false;
@@ -182,20 +186,33 @@ function startDecode() {
 			done = true;
 			alert(res);
 			qr.stop();
-			v.srcObject = null;
+			if(webkit) {
+				v.srcObject = null;
+			}
+			else if(moz) {
+				v.mozSrcObject = null;
+			}
 			stopMedia();
 			var scanElem = document.getElementById('scannerbtn');
 			scanElem.remove();
 			var flipElem = document.getElementById('flipp');
 			flipElem.remove();
-			document.getElementById('result').innerHTML = "Scan complete!!";
-			//document.getElementById("outdiv").innerHTML = formhtml;
+			var resElem = document.getElementById('result');
+			resElem.innerHTML = "Scanned successfully!";
+			resElem.style.color = "green";
+			document.getElementById("outdiv").innerHTML = formhtml;
 		}
     }, true);
 }
 
 function flipCamera()
 {
+	if(webkit) {
+		v.srcObject = null;
+	}
+	else if(moz) {
+		v.mozSrcObject = null;
+	}
 	stopMedia();
 	
 	var tempId = ids.shift();
