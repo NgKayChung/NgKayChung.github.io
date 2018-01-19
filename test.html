@@ -206,6 +206,9 @@ function startDecode() {
 
 function flipCamera()
 {
+	var scanElem = document.getElementById("result");
+	scanElem.innerHTML="- changing -";
+	scanElem.style.color = "yellow";
 	vidMed = v.classList.contains('med');
 	v.srcObject = null;
 	stopMedia();
