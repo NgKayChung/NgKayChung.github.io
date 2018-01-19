@@ -21,7 +21,7 @@
 var v=null;
 var labels = [];
 var ids = [];
-var vidhtml = '<video id="v"></video>';
+var vidhtml = '<video id="v" autoplay playsinline></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var formhtml = '<form method = "get">' +
 		'Full Name : <input type = "text" length = "50" id = "fullname" name = "fullname" required/><br/>' +
@@ -120,7 +120,7 @@ function setwebcam()
 		setwebcam2(options);
 	});
 }
-navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(success).catch(error);
+	
 function setwebcam2(options)
 {
 	navigator.mediaDevices.getUserMedia({audio: false, video: options}).then(success).catch(error);
@@ -133,7 +133,6 @@ function success(stream) {
     window.stream = stream;
 	
     v.srcObject = stream;
-	v.play();
 	document.getElementById("result").innerHTML="- scanning -";
 	
     //startDecode();
@@ -154,7 +153,6 @@ function startDecode() {
 		if(res && !done) {
 			done = true;
 			alert(res);
-			//qr.stop();
 			v.srcObject = null;
 			stopMedia();
 			var scanElem = document.getElementById('scannerbtn');
