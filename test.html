@@ -44,6 +44,7 @@ var formhtml = '<form method = "get">' +
     		'</form>';
 var screenhtml = '<button id = "screenbtn">Fullscreen</button>';
 var vidMed = true;
+var front = false;
 
 function load()
 {
@@ -56,7 +57,6 @@ function load()
 	} : null);*/
 		
 	if(!navigator.mediaDevices) {
-		
 		alert('No media device detected, please proceed to upload image to complete the registration');
 		return false;
 	}
@@ -124,13 +124,15 @@ function setwebcam()
 		var tempId = ids.pop();
 		ids.unshift(tempId);
 		
+		options = {deviceId: tempId};
+		
 		if(ids.length > 1) {
 			//create flip button
 			document.getElementById("flipp").innerHTML = fliphtml;
 			document.getElementById("flipbtn").addEventListener('click', flipCamera);
+			options = {deviceId: tempId, facingMode: 'environment'};
 		}
-		
-		options = {deviceId: tempId};
+	
 		setwebcam2(options);
 	});
 }
@@ -211,7 +213,9 @@ function flipCamera()
 	var tempId = ids.pop();
 	ids.unshift(tempId);
 	
-	var options = {deviceId: tempId};
+	front = !front;
+	
+	var options = {deviceId: tempId, facingMode: (front ? 'user' : 'environment')};
 	
 	setwebcam2(options);
 }
