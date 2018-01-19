@@ -34,7 +34,7 @@ var formhtml = '<form method = "get">' +
 function load()
 {
 	navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
-		navigator.getUserMedia: function(c) {
+		getUserMedia: function(c) {
 	 		return new Promise(function(y, n) {
 				(navigator.mozGetUserMedia || navigator.webkitGetUserMedia).call(navigator, c, y, n);
 			});
