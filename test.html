@@ -191,13 +191,12 @@ function startDecode() {
 			alert(res);
 			v.srcObject = null;
 			stopMedia();
-			var scanElem = document.getElementById('scannerbtn');
-			scanElem.remove();
-			var flipElem = document.getElementById('flipp');
-			flipElem.remove();
+			document.getElementById('scannerbtn').remove();
+			document.getElementById('flipp').remove();
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "Scanned successfully!";
 			resElem.style.color = "green";
+			document.getElementById('screening').remove();
 			document.getElementById("outdiv").innerHTML = formhtml;
 		}
     }, true);
