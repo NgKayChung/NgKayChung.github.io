@@ -69,9 +69,6 @@ function load()
 <script type = "text/javascript">
 function setwebcam()
 {
-	//determine mobile device
-	//
-	
 	if(!load()) {
 		//change to upload image
 		return;
@@ -89,6 +86,7 @@ function setwebcam()
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
 						labels.push(device.label);
+						alert(device.label);
 					}
 				});
 
@@ -207,12 +205,6 @@ function startDecode() {
 
 function flipCamera()
 {
-	if(webkit) {
-		v.srcObject = null;
-	}
-	else if(moz) {
-		v.mozSrcObject = null;
-	}
 	stopMedia();
 	
 	var tempId = ids.shift();
