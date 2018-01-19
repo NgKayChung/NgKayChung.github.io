@@ -5,16 +5,17 @@
 </head>
 <body>
 <form method = "get" onsubmit = "return validateInputs();">
-    Full Name<br/>
-	<input type = "text" length = "50" id = "fullname" name = "fullname" required/><br/><br/>
-    Identity Card Number<br/>
-	<input type = "text" length = "12" id = "icnumber" name = "icnumber" required/><br/><br/>
-	Email Address<br/>
-	<input type = "email" id = "emailAddress" name = "emailAddress" required/><br/><br/>
-    Phone Number<br/>
-	<input type = "text" id = "phoneNumber" name = "phoneNumber" required/><br/><br/>
-	<input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms & Conditions</a><br/><br/>
-    <input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>
+	<p><span>*</span> indicates required field</p><br/>
+	<p>Full Name <span>*</span></p>
+	<p><input type = "text" length = "50" id = "fullname" name = "fullname" required/></p><br/>
+	<p>Identity Card Number<span>*</span></p>
+	<p><input type = "text" length = "6" id = "icnumber_1" name = "icnumber_1" required/> - <input type = "text" length = "2" id = "icnumber_2" name = "icnumber3" required/> - <input type = "text" length = "4" id = "icnumber_3" name = "icnumber3" required/></p><br/>
+	<p>Email Address <span>*</span></p>
+	<p><input type = "text" id = "email_local" name = "email_local" required/> @ <input type = "text" id = "email_domain" name = "email_domain" required/></p><br/>
+	<p>Phone Number <span>*</span></p>
+	<p><input type = "text" length = "3" id = "phone_1" name = "phone_1" required/> - <input type = "text" length = "8" id = "phone_2" name = "phone_2" required/></p><br/>
+	<p><input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms & Conditions</a></p><br/>
+    <p><input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/></p>
 </form>
 </body>
 </html>
