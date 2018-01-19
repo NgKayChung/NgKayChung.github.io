@@ -7,13 +7,13 @@
 <form method = "get" onsubmit = "return validateInputs();">
 	<p><span>*</span> indicates required field</p><br/>
 	<p>Full Name <span>*</span></p>
-	<p><input type = "text" size = "25" maxlength = "50" id = "fullname" name = "fullname" required/></p><br/>
+	<p><input type = "text" id = "fullname" name = "fullname" required/></p><br/>
 	<p>Identity Card Number<span>*</span></p>
-	<p><input type = "text" size = "6" maxlength = "6" id = "icnumber_1" name = "icnumber_1" required/> - <input type = "text" size = "2" maxlength = "2" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" size = "4" maxlength = "4" id = "icnumber_3" name = "icnumber_3" required/></p><br/>
+	<p><input type = "text" id = "icnumber_1" name = "icnumber_1" required/> - <input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/></p><br/>
 	<p>Email Address <span>*</span></p>
-	<p><input type = "text" size = "8" id = "email_local" name = "email_local" required/> @ <input type = "text" size = "8" id = "email_domain" name = "email_domain" required/></p><br/>
+	<p><input type = "text" id = "email_local" name = "email_local" required/> @ <input type = "text" id = "email_domain" name = "email_domain" required/></p><br/>
 	<p>Phone Number <span>*</span></p>
-	<p><input type = "text" maxlength = "3" size = "2" id = "phone_1" name = "phone_1" required/> - <input type = "text" size = "10" maxlength = "8" id = "phone_2" name = "phone_2" required/></p><br/>
+	<p><input type = "text" id = "phone_1" name = "phone_1" required/> - <input type = "text" id = "phone_2" name = "phone_2" required/></p><br/>
 	<p><input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a></p><br/>
     <p><input type = "submit" name = "submit" value = "Submit"/></p>
 </form>
