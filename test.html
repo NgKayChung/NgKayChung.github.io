@@ -31,6 +31,19 @@ var formhtml = '<form method = "get">' +
     		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
     		'</form>';
 
+function enumerateDevices()
+{
+	navigator.mediaDevices.enumerateDevices().then(function(devices) {
+		devices.forEach(function(device) {
+			if(device.kind === 'videoinput') {
+				alert(device.label);
+				ids.push(device.deviceId);
+				labels.push(device.label);
+			}
+		});
+	}).catch(error);
+}
+
 function load()
 {
 	navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
@@ -61,18 +74,6 @@ function load()
 	
 	navigator.mediaDevices.getUserMedia({audio: false, video: {deviceid: ids[0]}}).then(successRes).catch(error);
 	return true;
-}
-
-function enumerateDevices()
-{
-	navigator.mediaDevices.enumerateDevices().then(function(devices) {
-		devices.forEach(function(device) {
-			if(device.kind === 'videoinput') {
-				ids.push(device.deviceId);
-				labels.push(device.label);
-			}
-		});
-	});
 }
 
 function successRes(st)
