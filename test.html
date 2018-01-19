@@ -114,8 +114,6 @@ function setwebcam()
 			//create flip button
 			document.getElementById("flipp").innerHTML = fliphtml;
 			document.getElementById("flipbtn").addEventListener('click', flipCamera);
-			tempId = ids.pop();
-			ids.unshift(tempId);
 		}
 		
 		options = {deviceId: tempId};
