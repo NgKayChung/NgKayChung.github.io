@@ -52,7 +52,7 @@ function load()
 		return false;
 	}
 	
-	window.setTimeout(navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error), 500);
+	//window.setTimeout(navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error), 500);
 	return true;
 }
 
@@ -88,8 +88,8 @@ function setwebcam()
 		return;
 	}
 	
-	ids = [];
-	labels = [];
+	//ids = [];
+	//labels = [];
 	
 	document.getElementById('scannerbtn').style.display = 'none';
 	
@@ -98,9 +98,7 @@ function setwebcam()
 	navigator.mediaDevices.enumerateDevices().then(function(devices) {
 		devices.forEach(function(device) {
 			if(device.kind === 'videoinput') {
-				alert(device.label);
 				ids.push(device.deviceId);
-				labels.push(device.label);
 			}
 		});
 		
@@ -109,27 +107,15 @@ function setwebcam()
 			return;
 		}
 		
-		var tempId = ids.shift();
-		ids.push(tempId);
+		var tempId = ids.pop();
+		ids.unshift(tempId);
 		
 		if(ids.length > 1) {
 			//create flip button
 			document.getElementById("flipp").innerHTML = fliphtml;
 			document.getElementById("flipbtn").addEventListener('click', flipCamera);
-				/*var tempLabel = "";
-				for(var i = 1;i <= ids.length;i++) {
-				tempLabel = labels.shift();
-				labels.push(tempLabel);
-					//if device is a back camera
-				//scan with this camera ID
-				if(tempLabel.indexOf('back') != -1) {
-					break;
-				}
-				else {
-					tempId = ids.shift();
-					ids.push(tempId);
-				}
-			}*/
+			tempId = ids.pop();
+			ids.unshift(tempId);
 		}
 		
 		options = {deviceId: tempId};
@@ -190,8 +176,8 @@ function flipCamera()
 	v.srcObject = null;
 	stopMedia();
 	
-	var tempId = ids.shift();
-	ids.push(tempId);
+	var tempId = ids.pop();
+	ids.unshift(tempId);
 	
 	var options = {deviceId: tempId};
 	
