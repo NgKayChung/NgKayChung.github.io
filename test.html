@@ -33,27 +33,6 @@ var formhtml = '<form method = "get">' +
     		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
     		'</form>';
 
-function error(err)
-{
-    console.log(err);
-    return;
-}
-
-function stopMedia()
-{
-	var videoTracks = stream.getVideoTracks();
-	if(videoTracks.length > 0) {
-		videoTracks[0].stop();
-		stream.removeTrack(videoTracks[0]);
-	}
-}
-
-function successRes(st)
-{
-	window.stream = st;
-	stopMedia();
-}
-
 function load()
 {
 	navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
@@ -70,8 +49,29 @@ function load()
 		return false;
 	}
 	
-	navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error);
+	navigator.mediaDevices.getUserMedia({audio: false, video: true}, successRes, error);
 	return true;
+}
+
+function error(err)
+{
+    console.log(err);
+    return;
+}
+
+function stopMedia()
+{
+	var videoTracks = window.stream.getVideoTracks();
+	if(videoTracks.length > 0) {
+		videoTracks[0].stop();
+		window.stream.removeTrack(videoTracks[0]);
+	}
+}
+
+function successRes(st)
+{
+	window.stream = st;
+	stopMedia();
 }
 </script>
 <script type = "text/javascript">
