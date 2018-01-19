@@ -94,31 +94,33 @@ function setwebcam()
 	document.getElementById('scannerbtn').style.display = 'none';
 	
 	var options = null;
-	try {
-		navigator.mediaDevices.enumerateDevices().then(function(devices) {
-			devices.forEach(function(device) {
-				if(device.kind === 'videoinput') {
-					alert(device.label);
-					ids.push(device.deviceId);
-					labels.push(device.label);
-				}
-			});
+	
+	navigator.mediaDevices.enumerateDevices().then(function(devices) {
+		devices.forEach(function(device) {
+			if(device.kind === 'videoinput') {
+				alert(device.label);
+				ids.push(device.deviceId);
+				labels.push(device.label);
+			}
 		});
+		
+		if(!(ids.length > 0)) {
+			alert("No video input device detected, please proceed to upload image to complete the registration");
+			return;
+		}
+		
 		var tempId = ids.shift();
 		ids.push(tempId);
-
+		
 		if(ids.length > 1) {
 			//create flip button
 			document.getElementById("flipp").innerHTML = fliphtml;
 			document.getElementById("flipbtn").addEventListener('click', flipCamera);
-
-			/*var tempLabel = "";
-
-			for(var i = 1;i <= ids.length;i++) {
+				/*var tempLabel = "";
+				for(var i = 1;i <= ids.length;i++) {
 				tempLabel = labels.shift();
 				labels.push(tempLabel);
-
-				//if device is a back camera
+					//if device is a back camera
 				//scan with this camera ID
 				if(tempLabel.indexOf('back') != -1) {
 					break;
@@ -129,16 +131,10 @@ function setwebcam()
 				}
 			}*/
 		}
-
+		
 		options = {deviceId: tempId};
-
 		setwebcam2(options);
-	}
-	catch(err) {
-		console.log(err);
-	}
-	
-	
+	});
 }
 
 function setwebcam2(options)
