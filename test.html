@@ -31,19 +31,6 @@ var formhtml = '<form method = "get">' +
     		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
     		'</form>';
 
-function enumerateDevices()
-{
-	navigator.mediaDevices.enumerateDevices().then(function(devices) {
-		devices.forEach(function(device) {
-			if(device.kind === 'videoinput') {
-				alert(device.label);
-				ids.push(device.deviceId);
-				labels.push(device.label);
-			}
-		});
-	}).catch(error);
-}
-
 function load()
 {
 	navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
@@ -65,7 +52,7 @@ function load()
 		return false;
 	}
 	
-	enumerateDevices();
+	enumDevices();
 	
 	if(ids.length <= 0) {
 		alert("No video input device detected, please proceed to upload image to complete the registration");
@@ -74,6 +61,19 @@ function load()
 	
 	navigator.mediaDevices.getUserMedia({audio: false, video: {deviceid: ids[0]}}).then(successRes).catch(error);
 	return true;
+}
+
+function enumDevices()
+{
+	navigator.mediaDevices.enumerateDevices().then(function(devices) {
+		devices.forEach(function(device) {
+			if(device.kind === 'videoinput') {
+				alert(device.label);
+				ids.push(device.deviceId);
+				labels.push(device.label);
+			}
+		});
+	}).catch(error);
 }
 
 function successRes(st)
@@ -115,7 +115,7 @@ function setwebcam()
 	
 	var options = null;
 	
-	enumerateDevices();
+	enumDevices();
 	
 	var tempId = ids.shift();
 	ids.push(tempId);
