@@ -32,20 +32,19 @@ var formhtml = '<form method = "get">' +
     		'Phone Number : <input type = "text" id = "phoneNumber" name = "phoneNumber" required/><br/>' +
     		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
     		'</form>';
-var userStream;
 
 function successRes(st)
 {
-	userStream = st;
+	window.stream = st;
 	stopMedia();
 }
 
 function stopMedia()
 {
-	var videoTracks = userStream.getVideoTracks();
+	var videoTracks = stream.getVideoTracks();
 	if(videoTracks.length > 0) {
 		videoTracks[0].stop();
-		userStream.removeTrack(videoTracks[0]);
+		stream.removeTrack(videoTracks[0]);
 	}
 }
 
@@ -149,7 +148,7 @@ function setwebcam2(options)
 }
 
 function success(stream) {
-    userStream = stream;
+    window.stream = stream;
 	
 	if(webkit) {
     	v.srcObject = stream;
@@ -168,7 +167,6 @@ function error(err)
 }
 
 var done = false;
-var errCount = 0;
 
 function startDecode() {
     'use strict';
@@ -183,13 +181,8 @@ function startDecode() {
 		if(res && !done) {
 			done = true;
 			alert(res);
-			qr.stop();
-			if(webkit) {
-				v.srcObject = null;
-			}
-			else if(moz) {
-				v.mozSrcObject = null;
-			}
+			//qr.stop();
+			//set 'v' source to null
 			stopMedia();
 			var scanElem = document.getElementById('scannerbtn');
 			scanElem.remove();
