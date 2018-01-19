@@ -58,11 +58,11 @@ function load()
 {
 	if(navigator.mediaDevices.getUserMedia) {
 		webkit = true;
-		navigator.mediaDevices.getUserMedia({audio: false, video: true}.then(successRes).catch(error);
+		navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error);
 	}
 	else if(navigator.mozGetUserMedia) {
 		moz = true;
-		navigator.mozGetUserMedia({audio: false, video: true}.then(successRes).catch(error);
+		navigator.mozGetUserMedia({audio: false, video: true}).then(successRes).catch(error);
 	}
 	else {
 		alert('Web scanning is not supported, please proceed to upload image to complete the registration');
