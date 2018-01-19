@@ -85,7 +85,7 @@ function setwebcam()
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
 						labels.push(device.label);
-						alert(device.label);
+						alert("id = " + device.device.deviceId + " label : " + device.label);
 					}
 				});
 
@@ -97,7 +97,7 @@ function setwebcam()
 					document.getElementById("flipp").innerHTML = fliphtml;
     					document.getElementById("flipbtn").addEventListener('click', flipCamera);
 					
-					var tempLabel = "";
+					/*var tempLabel = "";
 					
 					for(var i = 1;i <= ids.length;i++) {
 						tempLabel = labels.shift();
@@ -112,7 +112,7 @@ function setwebcam()
 							tempId = ids.shift();
 							ids.push(tempId);
 						}
-					}
+					}*/
 				}
 				
 				options = {deviceId: tempId};
