@@ -56,18 +56,21 @@ function successRes(st)
 
 function load()
 {
-	if(navigator.mediaDevices.getUserMedia) {
-		webkit = true;
-		navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error);
-	}
-	else if(navigator.mozGetUserMedia) {
-		moz = true;
-		navigator.mozGetUserMedia({audio: false, video: true}).then(successRes).catch(error);
-	}
-	else {
+	navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+		getUserMedia: function(c) {
+	 		return new Promise(function(y, n) {
+				(navigator.mozGetUserMedia || navigator.webkitGetUserMedia).call(navigator, c, y, n);
+			});
+		}
+	} : null);
+		
+	if(!navigator.mediaDevices) {
+		
 		alert('Web scanning is not supported, please proceed to upload image to complete the registration');
 		return false;
 	}
+	
+	navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(successRes).catch(error);
 	return true;
 }
 </script>
@@ -91,7 +94,7 @@ function setwebcam()
 					if(device.kind === 'videoinput') {
 						ids.push(device.deviceId);
 						labels.push(device.label);
-						alert("id = " + device.deviceId + " label : " + device.label);
+						alert(device.label);
 					}
 				});
 
@@ -122,7 +125,7 @@ function setwebcam()
 				}
 				
 				options = {deviceId: tempId};
-				
+								
 				setwebcam2(options);
 			});
 		}
@@ -137,31 +140,18 @@ function setwebcam()
 
 function setwebcam2(options)
 {
-    document.getElementById("result").innerHTML="- scanning -";
-    document.getElementById("outdiv").innerHTML = vidhtml;
-	
-    v = document.getElementById("v");
-	
-	if(webkit) {
-		navigator.mediaDevices.getUserMedia({audio: false, video: options}).then(success).catch(error);
-	}
-	else if(moz) {
-		navigator.mozGetUserMedia({audio: false, video: options}).then(success).catch(error);
-	}
-	else {
-		return;
-	}
+	navigator.mediaDevices.getUserMedia({audio: false, video: options}).then(success).catch(error);
 }
 
 function success(stream) {
+	document.getElementById("outdiv").innerHTML = vidhtml;
+    v = document.getElementById("v");
+	
     window.stream = stream;
 	
-	if(webkit) {
-    	v.srcObject = stream;
-	}
-	else if(moz) {
-		v.mozSrcObject = stream;
-	}
+    v.srcObject = stream;
+	
+	document.getElementById("result").innerHTML="- scanning -";
 	
     startDecode();
 }
