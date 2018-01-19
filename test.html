@@ -19,10 +19,9 @@
 	
 	video.med {
 		position: fixed;
-		left: 25%;
+		left: 20%;
 		top: 10%;
-		min-width: 50%;
-		min-height: 60%;
+		max-width: 50%;
 		width: auto;
 		height: auto;
 		z-index: -100;
@@ -215,7 +214,8 @@ function flipCamera()
 <body>
 <button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
 <div id = "flipp"></div>
-<div id="outdiv"><span id = "screening"></span></div>
+<div id="outdiv"></div>
+<div id = "screening"></div>
 <div id = "result"></div>
 </body>
 </html>
