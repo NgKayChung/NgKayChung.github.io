@@ -21,7 +21,7 @@
 var v=null;
 var labels = [];
 var ids = [];
-var vidhtml = '<video id="v" autoplay></video>';
+var vidhtml = '<video id="v"></video>';
 var fliphtml = '<button id = "flipbtn">Flip Camera</button>';
 var formhtml = '<form method = "get">' +
 		'Full Name : <input type = "text" length = "50" id = "fullname" name = "fullname" required/><br/>' +
@@ -120,7 +120,7 @@ function setwebcam()
 		setwebcam2(options);
 	});
 }
-
+navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(success).catch(error);
 function setwebcam2(options)
 {
 	navigator.mediaDevices.getUserMedia({audio: false, video: options}).then(success).catch(error);
