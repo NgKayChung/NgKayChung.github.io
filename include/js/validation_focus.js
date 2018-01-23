@@ -1,23 +1,22 @@
 function load()
 {
 	document.getElementById('fullname').addEventListener('focusin', function() {
-		alert("in");
 		this.classList.add("norm_input");
 	});
 	
 	document.getElementById('fullname').addEventListener('focusout', function() {
         var fullname = this.value;
-		alert("out");
+		alert(fullname === "");
 		if(fullname === "")
 		{
-			this.parentNode.nextSibling.innerHTML = 'Name is required';
+			document.getElementById("name-err").innerHTML = 'Name is required';
 			this.classList.add('err_input');
 			return;
 		}
 
 		if(!fullname.match(/^[A-Za-z \/\,\.\-]+$/))
 		{
-			this.parentNode.nextSibling.innerHTML = 'Invalid Name value';
+			document.getElementById("name-err").innerHTML = 'Invalid Name value';
 			this.classList.add('err_input');
 			return;
 		}
