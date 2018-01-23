@@ -2,20 +2,54 @@
 <head>
 <title>Form</title>
 <script type = "text/javascript" src = "include\js\validation.js"></script>
+<style>
+div {
+	display: block;
+}
+
+input.for-input {
+	border-radius: 5px;
+	border: 2px solid gray;
+	height: 45px;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+span.req_ind {
+	color: red;
+}
+</style>
 </head>
 <body>
-<form method = "get" onsubmit = "return validateInputs();">
-	<p><span>*</span> indicates required field</p><br/>
-	<p>Full Name <span>*</span></p>
-	<p><input type = "text" id = "fullname" name = "fullname"/></p><br/>
-	<p>Identity Card Number<span>*</span></p>
-	<p><input type = "text" id = "icnumber" name = "icnumber"/><!--input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/--></p><br/>
-	<p>Email Address <span>*</span></p>
-	<p><input type = "text" id = "emailAddress" name = "emailAddress"/><!--input type = "text" id = "email_domain" name = "email_domain" required/--></p><br/>
-	<p>Phone Number <span>*</span></p>
-	<p><input type = "text" id = "phoneNumber" name = "phoneNumber"/><!--input type = "text" id = "phone_2" name = "phone_2" required/--></p><br/>
-	<p><input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a></p><br/>
-    <p><input type = "submit" name = "submit" value = "Submit"/></p>
-</form>
+<div class = "group-wrapper">
+	<form method = "get" onsubmit = "return validateInputs();">
+		<div class = "form-row">
+			<p><span id = "req_ind">*</span> indicates required field</p>
+		</div>
+		<div class = "form-row">
+			<p>Name <span id = "req_ind">*</span></p>
+			<p><input type = "text" class = "for-input" id = "fullname" name = "fullname"/></p>
+		</div>
+		<div class = "form-row">
+			<p>Identity Card Number<span id = "req_ind">*</span></p>
+			<p><input type = "text" class = "for-input" id = "icnumber" name = "icnumber"/><!--input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/--></p>
+		</div>
+		<div class = "form-row">
+			<p>Email Address <span id = "req_ind">*</span></p>
+			<p><input type = "text" class = "for-input" id = "emailAddress" name = "emailAddress"/><!--input type = "text" id = "email_domain" name = "email_domain" required/--></p>
+		</div>
+		<div class = "form-row">
+			<p>Phone Number <span id = "req_ind">*</span></p>
+			<p><input type = "text" class = "for-input" id = "phoneNumber" name = "phoneNumber"/><!--input type = "text" id = "phone_2" name = "phone_2" required/--></p>
+		</div>
+		<div class = "form-row">
+			<p><input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a><span  id = "req_ind">*</span></p>
+		</div>
+		<div class = "form-row">
+			<p><input type = "submit" name = "submit" value = "Submit"/></p>
+		</div>
+	</form>
+</div>
 </body>
 </html>
