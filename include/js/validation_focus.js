@@ -1,5 +1,9 @@
 function load()
 {
+	document.getElementById('fullname').addEventListener('focusin', function() {
+		this.classList.add("norm_input");
+	});
+	
 	document.getElementById('fullname').addEventListener('focusout', function() {
         var fullname = this.value;
 		
@@ -12,7 +16,7 @@ function load()
 
 		if(!fullname.match(/^[A-Za-z \/\,\.\-]+$/))
 		{
-			this.parentNode.nextSibling.innerHTML = 'Invalid Name value');
+			this.parentNode.nextSibling.innerHTML = 'Invalid Name value';
 			this.classList.add('err_input');
 			return;
 		}
