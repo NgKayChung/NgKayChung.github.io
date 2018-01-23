@@ -40,7 +40,7 @@ function validateInputs()
     
     ic = ic.replace(/[^\d.]/g, "");
     
-    if(!validDOB(ic.substr(0, 6) || !validState(ic.substr(6, 2)))
+    if(!validDOB(ic.substr(0, 6)) || !validState(ic.substr(6, 2)))
     {
        alert("Invalid IC Number");
        return false;
