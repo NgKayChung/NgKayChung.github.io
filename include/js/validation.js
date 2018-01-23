@@ -63,7 +63,7 @@ function validateInputs()
     }
 
     phoneNumber = phoneNumberElem.value;
-    
+    alert("ph");
     if(phoneNumber === "")
     {
         alert("Phone Number is required");
