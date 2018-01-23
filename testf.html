@@ -4,8 +4,34 @@
 <title>Form</title>
 <script type = "text/javascript" src = "include\js\validation.js"></script>
 <style>
+body, p {
+	margin: 0;
+}
+
 div {
 	display: block;
+}
+
+.contents {
+	width: 100%;
+	padding: 10px 20px;
+}
+
+div.no-w {
+	width: 25%;
+}
+
+div.form-wrapper {
+	width: 50%;
+}
+
+div.form-row {
+	margin: 3px 0px;
+	padding: 2px 5px;
+}
+
+.form-row p {
+	margin: 5px 0px;
 }
 
 input.for-input {
@@ -22,34 +48,37 @@ input.for-input {
 </style>
 </head>
 <body>
-<div class = "group-wrapper">
-	<form method = "get" onsubmit = "return validateInputs();">
-		<div class = "form-row">
-			<p><span class = "req_ind">*</span> indicates required field</p>
-		</div>
-		<div class = "form-row">
-			<p>Name <span class = "req_ind">*</span></p>
-			<p><input type = "text" class = "for-input" id = "fullname" name = "fullname"/></p>
-		</div>
-		<div class = "form-row">
-			<p>Identity Card Number <span class = "req_ind">*</span></p>
-			<p><input type = "text" class = "for-input" id = "icnumber" name = "icnumber"/><!--input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/--></p>
-		</div>
-		<div class = "form-row">
-			<p>Email Address <span class = "req_ind">*</span></p>
-			<p><input type = "text" class = "for-input" id = "emailAddress" name = "emailAddress"/><!--input type = "text" id = "email_domain" name = "email_domain" required/--></p>
-		</div>
-		<div class = "form-row">
-			<p>Phone Number <span class = "req_ind">*</span></p>
-			<p><input type = "text" class = "for-input" id = "phoneNumber" name = "phoneNumber"/><!--input type = "text" id = "phone_2" name = "phone_2" required/--></p>
-		</div>
-		<div class = "form-row">
-			<p><input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a> <span class = "req_ind">*</span></p>
-		</div>
-		<div class = "form-row">
-			<p><input type = "submit" name = "submit" value = "Submit"/></p>
-		</div>
-	</form>
+<div class = "contents">
+	<div class = "no-w"></div>
+	<div class = "form-wrapper">
+		<form method = "get" onsubmit = "return validateInputs();">
+			<div class = "form-row">
+				<p><span class = "req_ind">*</span> indicates required field</p>
+			</div>
+			<div class = "form-row">
+				<p>Name <span class = "req_ind">*</span></p>
+				<p><input type = "text" class = "for-input" id = "fullname" name = "fullname"/></p>
+			</div>
+			<div class = "form-row">
+				<p>Identity Card Number <span class = "req_ind">*</span></p>
+				<p><input type = "text" class = "for-input" id = "icnumber" name = "icnumber"/><!--input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/--></p>
+			</div>
+			<div class = "form-row">
+				<p>Email Address <span class = "req_ind">*</span></p>
+				<p><input type = "text" class = "for-input" id = "emailAddress" name = "emailAddress"/><!--input type = "text" id = "email_domain" name = "email_domain" required/--></p>
+			</div>
+			<div class = "form-row">
+				<p>Phone Number <span class = "req_ind">*</span></p>
+				<p><input type = "text" class = "for-input" id = "phoneNumber" name = "phoneNumber"/><!--input type = "text" id = "phone_2" name = "phone_2" required/--></p>
+			</div>
+			<div class = "form-row">
+				<p><input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a> <span class = "req_ind">*</span></p>
+			</div>
+			<div class = "form-row">
+				<p><input type = "submit" name = "submit" value = "Submit"/></p>
+			</div>
+		</form>
+	</div>
 </div>
 </body>
 </html>
