@@ -142,7 +142,7 @@ function validateInputs()
     }
 
     phoneNumber = phoneNumberElem.value;
-    alert("ph");
+	
     if(phoneNumber === "")
     {
         alert("Phone Number is required");
@@ -152,7 +152,7 @@ function validateInputs()
     var pnFormat = /^([0][1][0, 2-9]{1}([\s])?[\-]([\s])?\d{3}([\s])?\d{4})+$/;
     var pnFormat011 = /^([0][1][1]([\s])?[\-]([\s])?\d{4}([\s])?\d{4})+$/;
     
-    if(!phoneNumber.match(pnFormat) || !phoneNumber.match(pnFormat011))
+    if(!phoneNumber.match(pnFormat) && !phoneNumber.match(pnFormat011))
     {
         alert("Invalid Phone Number");
         return false;
