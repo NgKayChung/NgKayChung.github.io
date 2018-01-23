@@ -4,6 +4,10 @@
 <title>Form</title>
 <script type = "text/javascript" src = "include\js\validation.js"></script>
 <style>
+* {
+	box-sizing: border-box;
+}
+
 body, p {
 	margin: 0;
 }
@@ -18,16 +22,23 @@ div, label, input[type="text"] {
 	padding: 10px 20px;
 }
 
-div.no-w {
-	position: relative;
+.contents:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+div.wrap {
 	float: left;
-	width: 25%;
+	padding: 10px;
 	height: inherit;
 }
 
+div.no-w {
+	width: 25%;
+}
+
 div.form-wrapper {
-	position: relative;
-	float: left;
 	width: 50%;
 }
 
@@ -105,6 +116,7 @@ input.for-input {
 			</div>
 		</form>
 	</div>
+	<div class = "no-wrap"></div>
 </div>
 </body>
 </html>
