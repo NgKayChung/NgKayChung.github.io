@@ -1,18 +1,18 @@
 function load()
 {
-	document.getElementById('fullname').addEventListener('onfocusout', function() {
+	document.getElementById('fullname').addEventListener('focusout', function() {
         this.style.borderColor = "red";
     });
 	
-	document.getElementById('icnumber').addEventListener('onfocusout', function() {
+	document.getElementById('icnumber').addEventListener('focusout', function() {
         this.style.borderColor = "red";
     });
 	
-	document.getElementById('emailAddress').addEventListener('onfocusout', function() {
+	document.getElementById('emailAddress').addEventListener('focusout', function() {
         this.style.borderColor = "red";
     });
 	
-	document.getElementById('phoneNumber').addEventListener('onfocusout', function() {
+	document.getElementById('phoneNumber').addEventListener('focusout', function() {
         this.style.borderColor = "red";
     });
 }
