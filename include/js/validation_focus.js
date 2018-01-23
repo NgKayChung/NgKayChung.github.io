@@ -6,7 +6,7 @@ function load()
 	
 	document.getElementById('fullname').addEventListener('focusout', function() {
         var fullname = this.value;
-		alert(fullname === "");
+		
 		if(fullname === "")
 		{
 			document.getElementById("name-err").innerHTML = 'Name is required';
