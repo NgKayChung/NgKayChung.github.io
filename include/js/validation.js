@@ -32,7 +32,7 @@ function validateInputs()
         return false;
     }
     
-    if(!ic.match(/\d{6}\-\d{2}\-\d{4}/))
+    if(!ic.match(/\d{6}(?:[\-]|[\s])?\d{2}(?:[\-]|[\s])?\d{4}/))
     {
 	   alert("Invalid IC Number");
 	   return false;
