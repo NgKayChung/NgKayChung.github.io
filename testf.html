@@ -8,20 +8,31 @@ body, p {
 	margin: 0;
 }
 
+input[type=textbox] {
+	display: block;
+	margin: auto;
+}
+
 div {
 	display: block;
 }
 
 .contents {
 	width: 100%;
+	height: 100%;
 	padding: 10px 20px;
 }
 
 div.no-w {
+	position: relative;
+	float: left;
 	width: 25%;
+	height: inherit;
 }
 
 div.form-wrapper {
+	position: relative;
+	float: left;
 	width: 50%;
 }
 
@@ -56,19 +67,19 @@ input.for-input {
 				<p><span class = "req_ind">*</span> indicates required field</p>
 			</div>
 			<div class = "form-row">
-				<p>Name <span class = "req_ind">*</span></p>
+				<label>Name <span class = "req_ind">*</span></label>
 				<p><input type = "text" class = "for-input" id = "fullname" name = "fullname"/></p>
 			</div>
 			<div class = "form-row">
-				<p>Identity Card Number <span class = "req_ind">*</span></p>
+				<label>Identity Card Number <span class = "req_ind">*</span></label>
 				<p><input type = "text" class = "for-input" id = "icnumber" name = "icnumber"/><!--input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/--></p>
 			</div>
 			<div class = "form-row">
-				<p>Email Address <span class = "req_ind">*</span></p>
+				<label>Email Address <span class = "req_ind">*</span></label>
 				<p><input type = "text" class = "for-input" id = "emailAddress" name = "emailAddress"/><!--input type = "text" id = "email_domain" name = "email_domain" required/--></p>
 			</div>
 			<div class = "form-row">
-				<p>Phone Number <span class = "req_ind">*</span></p>
+				<label>Phone Number <span class = "req_ind">*</span></label>
 				<p><input type = "text" class = "for-input" id = "phoneNumber" name = "phoneNumber"/><!--input type = "text" id = "phone_2" name = "phone_2" required/--></p>
 			</div>
 			<div class = "form-row">
