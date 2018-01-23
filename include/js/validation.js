@@ -18,7 +18,7 @@ function validateInputs()
         return false;  //  ++focus to the element
     }
     
-    if(!fullname.match(/^[A-Za-z]+$/))
+    if(!fullname.match(/^[A-Za-z ]+$/))
     {
         alert('Invalid Name');
         return false;
