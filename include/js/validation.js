@@ -1,16 +1,16 @@
-var fullname = "";
-var icnumber = "";
-var emailAddress = "";
-var phoneNumber = "";
-
 function validateInputs()
 {
+	var fullname = "";
+	var icnumber = "";
+	var emailAddress = "";
+	var phoneNumber = "";
+	
     fullnameElem = document.getElementById('fullname');
     icnumberElem = document.getElementById('icnumber');
     emailAddressElem = document.getElementById('emailAddress');
     phoneNumberElem = document.getElementById('phoneNumber');
     
-    var fullname = fullnameElem.value;
+    fullname = fullnameElem.value;
     
     if(fullname === "")
     {
@@ -24,7 +24,7 @@ function validateInputs()
         return false;
     }
     
-    var ic = icnumberElem.value;
+    ic = icnumberElem.value;
     
     if(ic === "")
     {
@@ -46,7 +46,7 @@ function validateInputs()
        return false;
     }
     
-    var emailAddress = emailAddressElem.value;
+    emailAddress = emailAddressElem.value;
     
     if(emailAddress === "")
     {
@@ -62,7 +62,7 @@ function validateInputs()
         return false; 
     }
 
-    var phoneNumber = phoneNumberElem.value;
+    phoneNumber = phoneNumberElem.value;
     
     if(phoneNumber === "")
     {
@@ -141,7 +141,6 @@ function validDOB(str)
 	return true;
 }
 
- //ic number
 function validState(str)
 {
    switch(str)
