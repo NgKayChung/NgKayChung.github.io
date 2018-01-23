@@ -1,12 +1,13 @@
 function load()
 {
 	document.getElementById('fullname').addEventListener('focusin', function() {
+		alert("in");
 		this.classList.add("norm_input");
 	});
 	
 	document.getElementById('fullname').addEventListener('focusout', function() {
         var fullname = this.value;
-		
+		alert("out");
 		if(fullname === "")
 		{
 			this.parentNode.nextSibling.innerHTML = 'Name is required';
