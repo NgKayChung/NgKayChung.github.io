@@ -84,10 +84,10 @@ function validateInputs()
 	var emailAddress = "";
 	var phoneNumber = "";
 	
-    fullnameElem = document.getElementById('fullname');
-    icnumberElem = document.getElementById('icnumber');
-    emailAddressElem = document.getElementById('emailAddress');
-    phoneNumberElem = document.getElementById('phoneNumber');
+    var fullnameElem = document.getElementById('fullname');
+    var icnumberElem = document.getElementById('icnumber');
+    var emailAddressElem = document.getElementById('emailAddress');
+    var phoneNumberElem = document.getElementById('phoneNumber');
     
     fullname = fullnameElem.value;
     
