@@ -8,7 +8,7 @@ function load()
 
 			if(classes.contains('err-input'))
 				classes.remove('err-input');
-			alert('in');
+			
 			if(classes.contains('succ-input'))
 				classes.remove('succ-input');
 		});
