@@ -77,7 +77,7 @@ function validState(str)
    }
 }
 
-function validateInputs()
+/*function validateInputs()
 {
 	var fullname = "";
 	var icnumber = "";
@@ -161,4 +161,4 @@ function validateInputs()
     alert("Completed");
 	document.querySelector("form").action = "complete.html";
     return true;
-}
+}*/
