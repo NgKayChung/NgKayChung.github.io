@@ -4,8 +4,8 @@ function load()
 	
 	//textElems.forEach(function(elem) {
 		document.getElementById('fullname').addEventListener('focus', function() {
-			setTimeout(function(e) {
-				var classes = e.classList;
+			setTimeout(function() {
+				var classes = this.classList;
 
 				if(classes.contains('err-input')){
 					alert('true');
@@ -13,7 +13,7 @@ function load()
 
 				if(classes.contains('succ-input'))
 					classes.remove('succ-input');
-			}, 10);
+			}.bind(this), 10);
 		});
 	//});
 	
