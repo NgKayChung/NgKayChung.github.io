@@ -14,10 +14,6 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	outline: none;
 }
 
-.hid {
-	display: none;
-}
-
 @media screen and (max-width: 480px) {
 	.wrap {
 		padding: 0 !important;
