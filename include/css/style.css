@@ -91,6 +91,11 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	display: inline-block;
 }
 
+#size-img {
+	width: 25px;
+	height: 25px;
+}
+
 .name-wrapper {
 	padding: 4px 2px;
 }
