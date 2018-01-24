@@ -4,14 +4,16 @@ function load()
 	
 	//textElems.forEach(function(elem) {
 		document.getElementById('fullname').addEventListener('focus', function() {
-			var classes = this.classList;
+			setTimeout(10, function() {
+				var classes = this.classList;
 
-			if(classes.contains('err-input')){
-				alert('true');
-				classes.remove('err-input');}
-			
-			if(classes.contains('succ-input'))
-				classes.remove('succ-input');
+				if(classes.contains('err-input')){
+					alert('true');
+					classes.remove('err-input');}
+
+				if(classes.contains('succ-input'))
+					classes.remove('succ-input');
+			});
 		});
 	//});
 	
