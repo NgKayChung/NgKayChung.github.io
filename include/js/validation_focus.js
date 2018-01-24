@@ -83,7 +83,7 @@ function load()
 
 		if(!emailAddress.match(emailRegex))
 		{ 
-			document.getElementById("ic-err").innerHTML = 'Invalid Email Address';
+			document.getElementById("email-err").innerHTML = 'Invalid Email Address';
 			classes.add('err_input');
 			return;
 		}
