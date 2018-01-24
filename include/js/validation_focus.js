@@ -3,7 +3,7 @@ function load()
 	var textElems = document.querySelectorAll('input[type="text"]');
 	
 	textElems.forEach(function(elem) {
-		elem.addEventListener('focusin', function() {
+		elem.addEventListener('focus', function() {
 			var classes = this.classList;
 
 			if(classes.contains('err-input'))
@@ -14,7 +14,7 @@ function load()
 		});
 	});
 	
-	document.getElementById('fullname').addEventListener('focusout', function() {
+	document.getElementById('fullname').addEventListener('blur', function() {
         var fullname = this.value;
 		var classes = this.classList;
 		//settimeout, loading/checking
@@ -36,7 +36,7 @@ function load()
 		classes.add('succ_input');
     });
 	
-	document.getElementById('icnumber').addEventListener('focusout', function() {
+	document.getElementById('icnumber').addEventListener('blur', function() {
         var ic = this.value;
     	var classes = this.classList;
 		
@@ -66,7 +66,7 @@ function load()
 		classes.add('succ_input');
     });
 	
-	document.getElementById('emailAddress').addEventListener('focusout', function() {
+	document.getElementById('emailAddress').addEventListener('blur', function() {
         var emailAddress = this.value;
     	var classes = this.classList;
 		
@@ -89,7 +89,7 @@ function load()
 		classes.add('succ_input');
     });
 	
-	document.getElementById('phoneNumber').addEventListener('focusout', function() {
+	document.getElementById('phoneNumber').addEventListener('blur', function() {
         var phoneNumber = this.value;
 		var classes = this.classList;
 		
