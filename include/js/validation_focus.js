@@ -6,10 +6,11 @@ function load()
 		document.getElementById('fullname').addEventListener('click', function() {
 			//setTimeout(function() {
 				var classes = this.classList;
-				alert('true');
-				if(classes.contains('err-input')){
-					
-					classes.remove('err-input');}
+				alert(classes[0]);
+				alert(classes.contains('err-input'));
+				alert(classes.contains('succ-input'));
+				if(classes.contains('err-input'))
+					classes.remove('err-input');
 
 				if(classes.contains('succ-input'))
 					classes.remove('succ-input');
