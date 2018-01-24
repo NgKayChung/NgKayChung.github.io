@@ -16,7 +16,7 @@ function checkForms()
 }
 
 function load()
-{/*
+{
 	var textElems = document.querySelectorAll('input[type="text"]');
 	
 	textElems.forEach(function(elem) {
@@ -158,5 +158,5 @@ function load()
 		classes.add('succ_input');
 		phoneOK = true;
 		checkForms();
-    });*/
+    });
 }
