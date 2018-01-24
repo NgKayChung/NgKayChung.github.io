@@ -6,9 +6,9 @@ function load()
 		document.getElementById('fullname').addEventListener('click', function() {
 			//setTimeout(function() {
 				var classes = this.classList;
-
+				alert('true');
 				if(classes.contains('err-input')){
-					alert('true');
+					
 					classes.remove('err-input');}
 
 				if(classes.contains('succ-input'))
