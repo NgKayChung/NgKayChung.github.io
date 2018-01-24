@@ -23,7 +23,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 		width: 0% !important;
 	}
 	
-	.form-wrapper {
+	.form-wrapper, .btn-wrapper {
 		width: 100% !important;
 	}
 }
@@ -33,7 +33,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 		width: 15% !important;
 	}
 	
-	.form-wrapper {
+	.form-wrapper, .btn-wrapper {
 		width: 70% !important;
 	}
 }
@@ -43,7 +43,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 		width: 25% !important;
 	}
 	
-	.form-wrapper {
+	.form-wrapper, .btn-wrapper {
 		width: 50% !important;
 	}
 }
@@ -70,7 +70,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	width: 33.33%;
 }
 
-.form-wrapper {
+.form-wrapper, .btn-wrapper {
 	width: 33.33%;
 }
 
