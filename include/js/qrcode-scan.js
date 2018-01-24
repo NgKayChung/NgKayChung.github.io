@@ -3,7 +3,7 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
-var screenhtml = '<button id = "screenbtn"><img src = "include\images\fullscreen_214px_215px.png" title = "Fullscreen"/></button>';
+var screenhtml = '<button id = "screenbtn"></button>';
 var vidMed = true;
 var front = false;
 
@@ -109,18 +109,19 @@ function success(stream) {
 	scanElem.innerHTML="- scanning -";
 	scanElem.style.color = "red";
 	document.getElementById('screening').innerHTML = screenhtml;
+	document.getElementById('screenbtn').style.backgroundImage = "url('include\js\images\fullscreen_214px_215px.png')";
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
 		
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
 			vidClass.add('full');
-			this.innerHTML = 'Normal screen';
+			this.style.backgroundImage = "url('include\js\images\normalscreen.png')";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
-			this.innerHTML = 'Fullscreen';
+			this.style.backgroundImage = "url('include\js\images\fullscreen_214px_215px.png')";
 		}
 	});
 	
