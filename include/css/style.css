@@ -14,6 +14,10 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	outline: none;
 }
 
+.hid {
+	display: none;
+}
+
 @media screen and (max-width: 480px) {
 	.wrap {
 		padding: 0 !important;
@@ -158,7 +162,7 @@ input.for-input {
 }
 
 .lds-eclipse {
-		position: relative;
+	  position: relative;
 	  width: 150px !important;
 	  height: 150px !important;
 	  -webkit-transform: translate(-75px, -75px) scale(0.75) translate(75px, 75px);
