@@ -34,6 +34,7 @@ function load()
 			return;
 		}
 		//show tick
+		document.getElementById("name-err").innerHTML = '';
 		classes.add('succ_input');
     });
 	
@@ -64,12 +65,13 @@ function load()
 			return;
 		}
 		
+		document.getElementById("ic-err").innerHTML = '';
 		classes.add('succ_input');
     });
 	
 	document.getElementById('emailAddress').addEventListener('focusout', function() {
-        var emailAddress = this.value;
-    	var classes = this.classList;
+		var emailAddress = this.value;
+		var classes = this.classList;
 		
 		if(emailAddress === "")
 		{
@@ -87,6 +89,7 @@ function load()
 			return;
 		}
 		
+		document.getElementById("email-err").innerHTML = '';
 		classes.add('succ_input');
     });
 	
@@ -111,6 +114,7 @@ function load()
 			return;
 		}
 		
+		document.getElementById("phone-err").innerHTML = '';
 		classes.add('succ_input');
     });
 }
