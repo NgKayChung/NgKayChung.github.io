@@ -91,9 +91,9 @@ function storeData()
 	 }];
  	var regArr = [];
  	
- 	/*if(window.localStorage.getItem('reg') !== null) {
+ 	if(window.localStorage.getItem('reg') !== null) {
 		regArr = JSON.parse(localStorage.getItem("reg"));
-	}*/
+	}
  	regArr.push(newapply);
  	window.localStorage.setItem("reg", JSON.stringify(regArr));
 	return true;
