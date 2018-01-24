@@ -8,8 +8,6 @@ function load()
 
 			if(classes.contains('err-input')) classes.remove('err-input');
 			else if(classes.contains('succ-input')) classes.remove('succ-input');
-
-			if(!classes.contains("norm_input")) classes.add('norm-input');
 		});
 	});
 	
@@ -21,7 +19,6 @@ function load()
 		if(fullname === "")
 		{
 			document.getElementById("name-err").innerHTML = 'Name is required';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;//show cross
 		}
@@ -29,12 +26,10 @@ function load()
 		if(!fullname.match(/^[A-Za-z \/\,\.\-]+$/))
 		{
 			document.getElementById("name-err").innerHTML = 'Invalid Name value';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
 		//show tick
-		classes.remove('norm-input');
 		classes.add('succ_input');
     });
 	
@@ -45,7 +40,6 @@ function load()
 		if(ic === "")
 		{
 			document.getElementById("ic-err").innerHTML = 'IC Number is required';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
@@ -53,7 +47,6 @@ function load()
 		if(!ic.match(/\d{6}(?:[\-]|[\s])?\d{2}(?:[\-]|[\s])?\d{4}/))
 		{
 		  	document.getElementById("ic-err").innerHTML = 'Invalid IC Number';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
@@ -63,12 +56,10 @@ function load()
 		if(!validDOB(ic.substr(0, 6)) || !validState(ic.substr(6, 2)))
 		{
 		   	document.getElementById("ic-err").innerHTML = 'Invalid IC Number';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
 		
-		classes.remove('norm-input');
 		classes.add('succ_input');
     });
 	
@@ -79,7 +70,6 @@ function load()
 		if(emailAddress === "")
 		{
 			document.getElementById("email-err").innerHTML = 'Email Address is required';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
@@ -89,12 +79,10 @@ function load()
 		if(!emailAddress.match(emailRegex))
 		{ 
 			document.getElementById("ic-err").innerHTML = 'Invalid Email Address';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
 		
-		classes.remove('norm-input');
 		classes.add('succ_input');
     });
 	
@@ -105,7 +93,6 @@ function load()
 		if(phoneNumber === "")
 		{
 			document.getElementById("phone-err").innerHTML = 'Phone Number is required';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
@@ -116,12 +103,10 @@ function load()
 		if(!phoneNumber.match(pnFormat) && !phoneNumber.match(pnFormat011))
 		{
 			document.getElementById("phone-err").innerHTML = 'Invalid Phone Number';
-			classes.remove('norm-input');
 			classes.add('err_input');
 			return;
 		}
 		
-		classes.remove('norm-input');
 		classes.add('succ_input');
     });
 }
