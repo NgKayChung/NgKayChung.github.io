@@ -6,8 +6,9 @@ function load()
 		elem.addEventListener('focus', function() {
 			var classes = this.classList;
 
-			if(classes.contains('err-input'))
-				classes.remove('err-input');
+			if(classes.contains('err-input')){
+				alert('true');
+				classes.remove('err-input');}
 			
 			if(classes.contains('succ-input'))
 				classes.remove('succ-input');
