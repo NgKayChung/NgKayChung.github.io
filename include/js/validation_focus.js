@@ -1,23 +1,18 @@
 function load()
 {
-	//var textElems = document.querySelectorAll('input[type="text"]');
+	var textElems = document.querySelectorAll('input[type="text"]');
 	
-	//textElems.forEach(function(elem) {
-		document.getElementById('fullname').addEventListener('click', function() {
-			//setTimeout(function() {
-				var classes = this.classList;
-				alert(classes.length);
-				alert(classes[1]);
-				alert(classes.contains('err-input'));
-				alert(classes.contains('succ-input'));
-				if(classes.contains('err-input'))
-					classes.remove('err-input');
+	textElems.forEach(function(elem) {
+		elem.addEventListener('focusin', function() {
+			var classes = this.classList;
+				
+			if(classes.contains("err-input"))
+				classes.remove("err-input");
 
-				if(classes.contains('succ-input'))
-					classes.remove('succ-input');
-			//}.bind(this), 10);
+			if(classes.contains("succ-input"))
+				classes.remove("succ-input");
 		});
-	//});
+	});
 	
 	document.getElementById('fullname').addEventListener('blur', function() {
         var fullname = this.value;
