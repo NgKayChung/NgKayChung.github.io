@@ -23,7 +23,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 		width: 0% !important;
 	}
 	
-	.form-wrapper, .btn-wrapper {
+	.form-wrapper, .qrdec-wrapper {
 		width: 100% !important;
 	}
 }
@@ -33,7 +33,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 		width: 15% !important;
 	}
 	
-	.form-wrapper, .btn-wrapper {
+	.form-wrapper, .qrdec-wrapper {
 		width: 70% !important;
 	}
 }
@@ -43,12 +43,12 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 		width: 25% !important;
 	}
 	
-	.form-wrapper, .btn-wrapper {
+	.form-wrapper, .qrdec-wrapper {
 		width: 50% !important;
 	}
 }
 
-.vid-contents {
+.qr-contents {
 	height: auto !important;
 }
 
@@ -58,7 +58,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	padding: 10px 20px;
 }
 
-.contents:after, .vid-contents:after {
+.contents:after, .qr-contents:after {
 	content: "";
 	display: table;
 	clear: both;
@@ -74,7 +74,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	width: 33.33%;
 }
 
-.form-wrapper, .btn-wrapper {
+.form-wrapper, .qrdec-wrapper {
 	width: 33.33%;
 }
 
