@@ -34,13 +34,19 @@
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
 </head>
 <body>
-<div>
-	<div>
-		<a href = "https://ngkaychung.github.io/test.html" id = "scan"><img src = "include\images\video_scanner_icon.png" width = "50" height = "40"/></a>
+<div class = "contents">
+	<div class = "wrap no-w"></div>
+	<div class = "wrap btn-wrapper">
+		<div class = "btn-grp">
+			<div>
+				<a href = "https://ngkaychung.github.io/test.html" id = "scan" title "Video QR Scan"><img src = "include\images\video_scanner_icon.png" width = "50" height = "40"/></a>
+			</div>
+			<div>
+				<a href = "https://hellovorld.github.io/test.html" id = "photo" title = "QR Image Capture / Upload"><img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/></a>
+			</div>
+		</div>
 	</div>
-	<div>
-		<a href = "https://hellovorld.github.io/test.html" id = "photo"><img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/></a>
-	</div>
+	<div class = "wrap no-w"></div>
 </div>
 <div>
 	<button id = 'scannerbtn' onclick = 'setwebcam()'>Start</button>
