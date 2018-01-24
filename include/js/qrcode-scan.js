@@ -3,7 +3,7 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
-var screenhtml = '<button id = "screenbtn">Fullscreen</button>';
+var screenhtml = '<button id = "screenbtn"><img src = "include\images\fullscreen_214px_215px.png" title = "Fullscreen"/></button>';
 var vidMed = true;
 var front = false;
 
