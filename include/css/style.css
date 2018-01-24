@@ -164,3 +164,7 @@ input.for-input {
 	  -webkit-transform: translate(-75px, -75px) scale(0.75) translate(75px, 75px);
 	  transform: translate(-75px, -75px) scale(0.75) translate(75px, 75px);
 }
+
+.frame-page {
+	border: none;
+}
