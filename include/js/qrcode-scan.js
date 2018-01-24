@@ -3,13 +3,6 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
-var formhtml = '<form method = "get">' +
-		'Full Name : <input type = "text" length = "50" id = "fullname" name = "fullname" required/><br/>' +
-    		'Identity Card Number : <input type = "text" length = "12" id = "icnumber" name = "icnumber" required/><br/>' +
-		'Email Address : <input type = "email" id = "emailAddress" name = "emailAddress" required/><br/>' +
-    		'Phone Number : <input type = "text" id = "phoneNumber" name = "phoneNumber" required/><br/>' +
-    		'<input type = "submit" name = "submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "reset" name = "reset"/>' +
-    		'</form>';
 var screenhtml = '<button id = "screenbtn">Fullscreen</button>';
 var vidMed = true;
 var front = false;
@@ -157,7 +150,7 @@ function startDecode() {
 			resElem.innerHTML = "Scanned successfully!";
 			resElem.style.color = "green";
 			document.getElementById('screening').remove();
-			document.getElementById("outdiv").innerHTML = formhtml;
+			document.getElementById("form-page").src = "testf.html";
 		}
     }, true);
 }
