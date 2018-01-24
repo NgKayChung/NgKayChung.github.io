@@ -11,7 +11,6 @@ function load()
 
 			if(classes.contains("succ_input"))
 				classes.remove("succ_input");
-			});
 		});
 	});
 	
