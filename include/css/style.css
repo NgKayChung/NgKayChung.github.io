@@ -87,6 +87,10 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	margin: 5px 0px;
 }
 
+.btn-grp div {
+	display: inline-block;
+}
+
 .name-wrapper {
 	padding: 4px 2px;
 }
