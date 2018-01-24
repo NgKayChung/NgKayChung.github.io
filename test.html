@@ -34,9 +34,9 @@
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
 </head>
 <body>
-<div class = "contents vid-contents">
+<div class = "contents qr-contents">
 	<div class = "wrap no-w"></div>
-	<div class = "wrap btn-wrapper">
+	<div class = "wrap qrdec-wrapper">
 		<div class = "btn-grp">
 			<div>
 				<a href = "https://ngkaychung.github.io/test.html" id = "scan" title "Video QR Scan"><img src = "include\images\video_scanner_icon.png" width = "50" height = "40"/></a>
@@ -45,19 +45,27 @@
 				<a href = "https://hellovorld.github.io/test.html" id = "photo" title = "QR Image Capture / Upload"><img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/></a>
 			</div>
 		</div>
+		<div>
+			<div id = "flipp"></div>
+		</div>
+		<div>
+			<div id="outdiv"></div>
+		</div>
+		<!--div>
+			<video src = "" playsinline></video>
+		</div-->
+		<div>
+			<div id = "screening"></div>
+		</div>
+		<div>
+			<div id = "result"></div>
+		</div>
+		<div>
+			<button id = 'scannerbtn' onclick = 'setwebcam()'>Start</button>
+		</div>
 	</div>
 	<div class = "wrap no-w"></div>
 </div>
-<div>
-	<button id = 'scannerbtn' onclick = 'setwebcam()'>Start</button>
-<div>
-<div id = "flipp"></div>
-<div id="outdiv"></div>
-<!--div>
-	<video src = "" playsinline></video>
-</div-->
-<div id = "screening"></div>
-<div id = "result"></div>
-<div id = "form-page"><iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe></div>
+<div id = "form-page"></div>
 </body>
 </html>
