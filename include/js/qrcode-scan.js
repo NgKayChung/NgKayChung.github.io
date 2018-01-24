@@ -150,7 +150,7 @@ function startDecode() {
 			resElem.innerHTML = "Scanned successfully!";
 			resElem.style.color = "green";
 			document.getElementById('screening').remove();
-			document.getElementById("form-page").src = "testf.html";
+			document.getElementById('form-page').innerHTML = '<iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe>';
 		}
     }, true);
 }
