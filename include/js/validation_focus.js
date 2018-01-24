@@ -1,9 +1,9 @@
 function load()
 {
-	var textElems = document.querySelectorAll('input[type="text"]');
+	//var textElems = document.querySelectorAll('input[type="text"]');
 	
-	textElems.forEach(function(elem) {
-		elem.addEventListener('focus', function() {
+	//textElems.forEach(function(elem) {
+		document.getElementById('fullname').addEventListener('focus', function() {
 			var classes = this.classList;
 
 			if(classes.contains('err-input')){
@@ -13,7 +13,7 @@ function load()
 			if(classes.contains('succ-input'))
 				classes.remove('succ-input');
 		});
-	});
+	//});
 	
 	document.getElementById('fullname').addEventListener('blur', function() {
         var fullname = this.value;
