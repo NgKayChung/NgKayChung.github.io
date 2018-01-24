@@ -6,6 +6,7 @@ function load()
 		document.getElementById('fullname').addEventListener('click', function() {
 			//setTimeout(function() {
 				var classes = this.classList;
+				alert(classes.length);
 				alert(classes[1]);
 				alert(classes.contains('err-input'));
 				alert(classes.contains('succ-input'));
