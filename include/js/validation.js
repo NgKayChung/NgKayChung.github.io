@@ -1,10 +1,5 @@
 function isLeapYear(y)
 {
-	var now = Date.now().getYear() - 100;
-	
-	if(y > now) y += 1900;
-	else y += 2000;
-	
 	return ((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0);
 }
 
@@ -37,6 +32,11 @@ function validDOB(str)
 			break;
 			
 		case 2:
+			var nowYear = Date.now().getYear() - 100;
+	
+			if(year > nowYear) year += 1900;
+			else year += 2000;
+			
 			if(isLeapYear(year))
 			{
 				if(day > 29)
