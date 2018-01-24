@@ -3,7 +3,7 @@ var icOK = false;
 var emailOK = false;
 var phoneOK = false;
 
-function checkForm()
+function checkForms()
 {
 	if(nameOK && icOK && emailOK && phoneOK)
 		document.getElementById("form-submit").disabled = false;
