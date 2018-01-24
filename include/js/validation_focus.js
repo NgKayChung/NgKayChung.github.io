@@ -6,8 +6,11 @@ function load()
 		elem.addEventListener('focusin', function() {
 			var classes = this.classList;
 
-			if(classes.contains('err-input')) classes.remove('err-input');
-			else if(classes.contains('succ-input')) classes.remove('succ-input');
+			if(classes.contains('err-input'))
+				classes.remove('err-input');
+			alert('in');
+			if(classes.contains('succ-input'))
+				classes.remove('succ-input');
 		});
 	});
 	
