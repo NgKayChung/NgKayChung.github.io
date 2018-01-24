@@ -34,13 +34,24 @@
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
 </head>
 <body>
-<p><a href = "https://ngkaychung.github.io/test.html" id = "scan"><img src = "include\images\video_scanner_icon.png" width = "50" height = "40"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "https://hellovorld.github.io/test.html" id = "photo"><img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/></a></p>
-<button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
+<div>
+	<div>
+		<a href = "https://ngkaychung.github.io/test.html" id = "scan"><img src = "include\images\video_scanner_icon.png" width = "50" height = "40"/></a>
+	</div>
+	<div>
+		<a href = "https://hellovorld.github.io/test.html" id = "photo"><img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/></a>
+	</div>
+</div>
+<div>
+	<button id = 'scannerbtn' onclick = 'setwebcam()'>Capture</button>
+<div>
 <div id = "flipp"></div>
 <div id="outdiv"></div>
-<video src = "" playsinline></video>
+<div>
+	<video src = "" playsinline></video>
+</div>
 <div id = "screening"></div>
 <div id = "result"></div>
-<iframe src = "testf.html" width = "100%" height = "100%" style = "{border: none; display: none;}"></iframe>
+<iframe id = "form-page" class = "frame-page" src = "" width = "100%" height = "100%"></iframe>
 </body>
 </html>
