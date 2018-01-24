@@ -1,3 +1,16 @@
+var nameOK = false;
+var icOK = false;
+var emailOK = false;
+var phoneOK = false;
+
+function checkForm()
+{
+	if(nameOK && icOK && emailOK && phoneOK)
+		document.getElementById("form-submit").disabled = false;
+	else
+		document.getElementById("form-submit").disabled = true;
+}
+
 function load()
 {
 	var textElems = document.querySelectorAll('input[type="text"]');
@@ -17,6 +30,9 @@ function load()
 	document.getElementById('fullname').addEventListener('focusout', function() {
         var fullname = this.value;
 		var classes = this.classList;
+		
+		nameOK = false;
+		
 		//settimeout, loading/checking
 		
 		if(fullname === "")
@@ -35,11 +51,15 @@ function load()
 		//show tick
 		document.getElementById("name-err").innerHTML = '';
 		classes.add('succ_input');
+		nameOK = true;
+		checkForms();
     });
 	
 	document.getElementById('icnumber').addEventListener('focusout', function() {
         var ic = this.value;
     	var classes = this.classList;
+		
+		icOK = false;
 		
 		if(ic === "")
 		{
@@ -66,11 +86,15 @@ function load()
 		
 		document.getElementById("ic-err").innerHTML = '';
 		classes.add('succ_input');
+		icOK = true;
+		checkForms();
     });
 	
 	document.getElementById('emailAddress').addEventListener('focusout', function() {
 		var emailAddress = this.value;
 		var classes = this.classList;
+		
+		emailOK = false;
 		
 		if(emailAddress === "")
 		{
@@ -90,11 +114,15 @@ function load()
 		
 		document.getElementById("email-err").innerHTML = '';
 		classes.add('succ_input');
+		emailOK = true;
+		checkForms();
     });
 	
 	document.getElementById('phoneNumber').addEventListener('focusout', function() {
         var phoneNumber = this.value;
 		var classes = this.classList;
+		
+		phoneOK = false;
 		
 		if(phoneNumber === "")
 		{
@@ -115,5 +143,7 @@ function load()
 		
 		document.getElementById("phone-err").innerHTML = '';
 		classes.add('succ_input');
+		phoneOK = true;
+		checkForms();
     });
 }
