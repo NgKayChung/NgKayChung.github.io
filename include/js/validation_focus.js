@@ -5,10 +5,14 @@ var phoneOK = false;
 
 function checkForms()
 {
-	if(nameOK && icOK && emailOK && phoneOK)
+	if(nameOK && icOK && emailOK && phoneOK) {
 		document.getElementById("form-submit").disabled = false;
-	else
+		document.getElementById("form-submit").title = "You can submit now";
+	}
+	else {
 		document.getElementById("form-submit").disabled = true;
+		document.getElementById("form-submit").title = "Please fill in the above fields correctly before submit";
+	}
 }
 
 function load()
@@ -39,6 +43,7 @@ function load()
 		{
 			document.getElementById("name-err").innerHTML = 'Name is required';
 			classes.add('err_input');
+			checkForms();
 			return;//show cross
 		}
 
@@ -46,6 +51,7 @@ function load()
 		{
 			document.getElementById("name-err").innerHTML = 'Invalid Name value';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 		//show tick
@@ -65,6 +71,7 @@ function load()
 		{
 			document.getElementById("ic-err").innerHTML = 'IC Number is required';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 
@@ -72,6 +79,7 @@ function load()
 		{
 		  	document.getElementById("ic-err").innerHTML = 'Invalid IC Number';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 
@@ -81,6 +89,7 @@ function load()
 		{
 		   	document.getElementById("ic-err").innerHTML = 'Invalid IC Number';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 		
@@ -100,6 +109,7 @@ function load()
 		{
 			document.getElementById("email-err").innerHTML = 'Email Address is required';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 
@@ -109,6 +119,7 @@ function load()
 		{ 
 			document.getElementById("email-err").innerHTML = 'Invalid Email Address';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 		
@@ -128,6 +139,7 @@ function load()
 		{
 			document.getElementById("phone-err").innerHTML = 'Phone Number is required';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 
@@ -138,6 +150,7 @@ function load()
 		{
 			document.getElementById("phone-err").innerHTML = 'Invalid Phone Number';
 			classes.add('err_input');
+			checkForms();
 			return;
 		}
 		
