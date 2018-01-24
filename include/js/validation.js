@@ -76,7 +76,7 @@ function validState(str)
            return false;
    }
 }
-
+/*
 function storeData()
 {	var fullnameElem = document.getElementById('fullname');
     var icnumberElem = document.getElementById('icnumber');
@@ -94,12 +94,13 @@ function storeData()
  	if(window.localStorage.getItem('reg') !== null) {
 		regArr = JSON.parse(localStorage.getItem("reg"));
 	}
+	
  	regArr.push(newapply);
  	window.localStorage.setItem("reg", JSON.stringify(regArr));
 	return true;
 }
-
-/*function validateInputs()
+*/
+function validateInputs()
 {
 	var fullname = "";
 	var icnumber = "";
@@ -183,4 +184,4 @@ function storeData()
     alert("Completed");
 	document.querySelector("form").action = "complete.html";
     return true;
-}*/
+}
