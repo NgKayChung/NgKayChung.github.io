@@ -109,19 +109,19 @@ function success(stream) {
 	scanElem.innerHTML="- scanning -";
 	scanElem.style.color = "red";
 	document.getElementById('screening').innerHTML = screenhtml;
-	document.getElementById('screenbtn').style.backgroundImage = "url('include\js\images\fullscreen_214px_215px.png')";
+	document.getElementById('screenbtn').style.backgroundImage = "url('include\images\fullscreen_224px_224px.png')";
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
 		
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
 			vidClass.add('full');
-			this.style.backgroundImage = "url('include\js\images\normalscreen.png')";
+			this.style.backgroundImage = "url('include\images\normalscreen_223px_224px.png')";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
-			this.style.backgroundImage = "url('include\js\images\fullscreen_214px_215px.png')";
+			this.style.backgroundImage = "url('include\images\fullscreen_224px_224px.png')";
 		}
 	});
 	
