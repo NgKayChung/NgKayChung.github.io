@@ -47,7 +47,7 @@ function load()
 			return;//show cross
 		}
 
-		if(!fullname.match(/^[A-Za-z \/\,\.\-]+$/))
+		if(!fullname.match(/^[A-Za-z \/\,\.\-]{10,}$/))
 		{
 			document.getElementById("name-err").innerHTML = 'Invalid Name value';
 			classes.add('err_input');
