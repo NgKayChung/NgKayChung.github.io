@@ -77,6 +77,12 @@ function validState(str)
    }
 }
 
+function storeData()
+{
+	alert("Store data here");
+	return true;
+}
+
 /*function validateInputs()
 {
 	var fullname = "";
