@@ -3,7 +3,7 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
-var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include\images\fullscreen_224px_224px.png"/></div>';
+var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
 var vidMed = true;
 var front = false;
 
@@ -115,12 +115,12 @@ function success(stream) {
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
 			vidClass.add('full');
-			document.getElementById('size-img').src = "include\images\normalscreen_223px_224px.png";
+			document.getElementById('size-img').src = "include/images/normalscreen_223px_224px.png";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
-			document.getElementById('size-img').src = "include\images\fullscreen_224px_224px.png";
+			document.getElementById('size-img').src = "include/images/fullscreen_224px_224px.png";
 		}
 	});
 	
