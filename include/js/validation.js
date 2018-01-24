@@ -100,6 +100,7 @@ function storeData()
 	return true;
 }
 */
+/*
 function validateInputs()
 {
 	var fullname = "";
@@ -185,3 +186,4 @@ function validateInputs()
 	document.querySelector("form").action = "complete.html";
     return true;
 }
+*/
