@@ -48,7 +48,7 @@ function load()
 			return;
 		}
 
-		if(!ic.match(/\d{6}(?:[\-]|[\s])?\d{2}(?:[\-]|[\s])?\d{4}/))
+		if(!ic.match(/^(\d{6}([\-])?\d{2}([\-])?\d{4})+$/))
 		{
 		  	document.getElementById("ic-err").innerHTML = 'Invalid IC Number';
 			classes.add('err_input');
@@ -103,8 +103,8 @@ function load()
 			return;
 		}
 
-		var pnFormat = /^([0][1][0, 2-9]{1}([\s])?[\-]([\s])?\d{3}([\s])?\d{4})+$/;
-		var pnFormat011 = /^([0][1][1]([\s])?[\-]([\s])?\d{4}([\s])?\d{4})+$/;
+		var pnFormat = /^([0][1][0, 2-9]{1}([\s])?[\-]?([\s])?\d{3}([\s])?\d{4})+$/;
+		var pnFormat011 = /^([0][1][1]([\s])?[\-]?([\s])?\d{4}([\s])?\d{4})+$/;
 
 		if(!phoneNumber.match(pnFormat) && !phoneNumber.match(pnFormat011))
 		{
