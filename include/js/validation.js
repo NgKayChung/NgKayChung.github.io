@@ -78,8 +78,24 @@ function validState(str)
 }
 
 function storeData()
-{
-	alert("Store data here");
+{	var fullnameElem = document.getElementById('fullname');
+    var icnumberElem = document.getElementById('icnumber');
+    var emailAddressElem = document.getElementById('emailAddress');
+    var phoneNumberElem = document.getElementById('phoneNumber');
+ 
+	var newapply = [{
+	     "name":        fullnameElem.value,
+	     "ic":         icnumberElem.value,
+	     "email": emailAddressElem.value,
+	     "phone": phoneNumberElem.value
+	 }];
+ 	var regArr = [];
+ 	
+ 	if(window.localStorage.getItem('reg') !== undefined) {
+		regArr = JSON.parse(localStorage.getItem("reg"));
+	}
+ 	regArr.push(newapply);
+ 	window.localStorage.setItem("reg", JSON.stringify(regArr));
 	return true;
 }
 
