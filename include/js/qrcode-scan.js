@@ -3,7 +3,7 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
-var screenhtml = '<button id = "screenbtn"></button>';
+var screenhtml = '<button id = "screenbtn"><img id = "size-img" src = "include\images\fullscreen_224px_224px.png" alt = "Fullscreen"/></button>';
 var vidMed = true;
 var front = false;
 
@@ -109,19 +109,18 @@ function success(stream) {
 	scanElem.innerHTML="- scanning -";
 	scanElem.style.color = "red";
 	document.getElementById('screening').innerHTML = screenhtml;
-	document.getElementById('screenbtn').style.backgroundImage = "url('include\images\fullscreen_224px_224px.png')";
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
 		
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
 			vidClass.add('full');
-			this.style.backgroundImage = "url('include\images\normalscreen_223px_224px.png')";
+			document.getElementById('size-img').src = "include\images\normalscreen_223px_224px.png";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
-			this.style.backgroundImage = "url('include\images\fullscreen_224px_224px.png')";
+			document.getElementById('size-img').src = "include\images\fullscreen_224px_224px.png";
 		}
 	});
 	
