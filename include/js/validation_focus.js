@@ -4,7 +4,7 @@ function load()
 	
 	//textElems.forEach(function(elem) {
 		document.getElementById('fullname').addEventListener('focus', function() {
-			setTimeout(function() {
+			setTimeout(function(this) {
 				var classes = this.classList;
 
 				if(classes.contains('err-input')){
