@@ -218,7 +218,7 @@ function startDecode() {
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
 			document.getElementById('outdiv').innerHTML = formhtml;
-			load();
+			//load();
 		}
     }, true);
 }
