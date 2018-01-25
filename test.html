@@ -28,7 +28,6 @@
 	
 #outdiv {
 	border: 1px solid #000000;
-	cursor: pointer;
 }
 
 #outdiv video {
@@ -46,6 +45,10 @@
 .right {
 	text-align: right;
 }
+	
+.icon {
+	cursor: pointer;
+}
 </style>
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
 </head>
@@ -55,29 +58,28 @@
 	<div class = "wrap qrdec-wrapper">
 		<div class = "btn-grp">
 			<div class = "icon-wrap left">
-				<div id = "scan" class = "vidscan-wrap" title "Video QR Scan" onclick = "setwebcam()">
+				<div id = "scan" class = "icon vidscan-wrap" title "Video QR Scan" onclick = "setwebcam()">
 					<img src = "include\images\video_scanner_icon.png" width = "45" height = "40"/>
 				</div>
 			</div>
 			<div class = "icon-wrap right">
-				<div id = "photo" class = "imgup-wrap" title = "QR Image Capture / Upload" onclick = "setimg()">
+				<div id = "photo" class = "icon imgup-wrap" title = "QR Image Capture / Upload" onclick = "setimg()">
 					<img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/>
 				</div>
 			</div>
 		</div>
 		<div>
-			<div id="outdiv"><video src = "" playsinline></video></div>
+			<div id = "outdiv"><video src = "" playsinline></video></div>
 			<div id = "form-page"></div>
 		</div>
 		<div>
-			<div id = "flipp"></div>
+			<div>
+				<div id = "flipp"></div>
+			</div>
+			<div>
+				<div id = "screening"></div>
+			</div>
 		</div>
-		<div>
-			<div id = "screening"></div>
-		</div>
-		<!--div>
-			<video src = "" playsinline></video>
-		</div-->
 		<div>
 			<div id = "result"></div>
 		</div>
