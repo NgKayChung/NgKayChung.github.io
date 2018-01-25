@@ -77,52 +77,54 @@ function validState(str)
    }
 }
 
-//The Person Object used to store data in the LocalStorage 
-var Person = { 
-Name: "", 
-ICNo: "", 
-Email: "", 
-MobileNo: "" 
+var Person = {
+	Name:     "",
+	ICNo:     "",
+	Email:    "",
+	MobileNo: ""
 };
 
-function saveitem() {
+function saveitem()
+{
 	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
-    var lscount = localStorage.length; //Get the Length of the LocalStorage
-    //Read all elements on UI using class name 
-    var inputs = document.querySelectorAll("input[type='text']"); 
-            Person.Name = inputs[0].value; 
-            Person.ICNo = inputs[1].value; 
-            Person.Email = inputs[2].value; 
-            Person.MobileNo = inputs[3].value; 
-    
-    //Convert the object into JSON ans store it in LocalStorage 
-            localStorage.setItem("Record" + lscount + 1, JSON.stringify(Person)); 
-    //Reload the Page 
-	alert('save');
-	loaddata();
 	
+    var lscount = localStorage.length;
+	
+    var inputs = document.querySelectorAll("input[type='text']");
+	
+    Person.Name = inputs[0].value;
+    Person.ICNo = inputs[1].value;
+    Person.Email = inputs[2].value;
+    Person.MobileNo = inputs[3].value;
+    
+    localStorage.setItem("Record" + lscount + 1, JSON.stringify(Person));
+	
+	//to display to table
+	loaddata();
 }
 
-function loaddata() { 
-    var datacount = localStorage.length; 
-    if (datacount > 0) 
+function loaddata()
+{
+    var datacount = localStorage.length;
+	
+    if (datacount > 0)
     { 
-        var render = "<table border='1'>"; 
-        render += "<tr><th>Name</th><th>ICNo</th><th>Email</th><th>MobileNo</th></tr>"; 
-        for (i = 0; i < datacount; i++) { 
-            var key = localStorage.key(i); //Get  the Key 
-            var person = localStorage.getItem(key); //Get Data from Key 
-            var data = JSON.parse(person); //Parse the Data back into the object 
+        var render = "<table border='1'>";
+        render += "<tr><th>Name</th><th>ICNo</th><th>Email</th><th>MobileNo</th></tr>";
+        for (i = 0; i < datacount; i++) {
+            var key = localStorage.key(i);
+            var person = localStorage.getItem(key);
+            var data = JSON.parse(person);
             
             render += "<tr><td>" + data.Name + " </td>"; 
             render += "<td>" + data.ICNo + "</td>"; 
             render += "<td>" + data.Email + "</td>"; 
             render += "<td>" + data.MobileNo + "</td></tr>"; 
-        } 
-        render+="</table>"; 
-        document.getElementById('dvcontainer').innerHTML = render; 
+        }
+		
+        render+="</table>";
+        document.getElementById('dvcontainer').innerHTML = render;
     }
-	alert('load');
 }
 
 /*
