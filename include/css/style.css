@@ -114,7 +114,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	display: none;
 }
 
-#size-img, #flipp img {
+#size-img, #flipbtn img {
 	width: 25px;
 	height: 25px;
 }
