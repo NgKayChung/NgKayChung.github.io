@@ -222,14 +222,12 @@ var done = false;
 
 function searchInStorage(elem)
 {
+	alert(elem);
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i] === elem) {
 			found = true;
-			return;
 		}
 	}
-	
-	found = false;
 }
 
 function startDecode() {
