@@ -77,46 +77,31 @@ function validState(str)
    }
 }
 
-(function () { 
 //The Person Object used to store data in the LocalStorage 
 var Person = { 
-Id: 0, 
 Name: "", 
 ICNo: "", 
 Email: "", 
 MobileNo: "" 
 };
 
-//JavaScript object containing methods for LocalStorage management 
-var applogic = {
-//Clear All Entries, by reading all elements having class as c1 
-clearuielements: function () { 
-    var inputs = document.getElementsByClassName("c1"); 
-    for (i = 0; i < inputs.length; i++) { 
-        inputs[i].value = ""; 
-    } 
-},
-//Save Entry in the Localstorage by eading values entered in the 
-//UI 
-saveitem: function () {
+function saveitem() {
 	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
     var lscount = localStorage.length; //Get the Length of the LocalStorage
     //Read all elements on UI using class name 
-    var inputs = document.getElementsByClassName("c1"); 
-            Person.Id = inputs[0].value; 
+    var inputs = document.querySelectorAll("input[type='text']"); 
             Person.Name = inputs[1].value; 
             Person.ICNo = inputs[2].value; 
             Person.Email = inputs[3].value; 
             Person.MobileNo = inputs[4].value; 
     
     //Convert the object into JSON ans store it in LocalStorage 
-            localStorage.setItem("Person_" + lscount, JSON.stringify(Person)); 
+            localStorage.setItem("Record" + lscount + 1, JSON.stringify(Person)); 
     //Reload the Page 
-            location.reload();
-	applogic.loaddata(); 
-},
-//Method to Read Data from the local Storage 
-loaddata: function () { 
+	loaddata(); 
+}
+
+function loaddata() { 
     var datacount = localStorage.length; 
     if (datacount > 0) 
     { 
@@ -127,17 +112,15 @@ loaddata: function () {
             var person = localStorage.getItem(key); //Get Data from Key 
             var data = JSON.parse(person); //Parse the Data back into the object 
             
-            render += "<tr><td>" + data.Id + "</td><td>" + data.Name + " </td>"; 
+            render += "<tr><td>" + data.Name + " </td>"; 
             render += "<td>" + data.ICNo + "</td>"; 
             render += "<td>" + data.Email + "</td>"; 
             render += "<td>" + data.MobileNo + "</td></tr>"; 
         } 
         render+="</table>"; 
-        dvcontainer.innerHTML = render; 
+        document.getElementById('dvcontainer').innerHTML = render; 
     } 
 }
-}; 
-})(); 
 
 /*
 function validateInputs()
