@@ -106,6 +106,10 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	height: 200px;
 }
 
+#decimg {
+	display: none;
+}
+
 #size-img {
 	width: 25px;
 	height: 25px;
