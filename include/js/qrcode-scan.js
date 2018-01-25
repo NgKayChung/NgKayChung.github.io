@@ -200,7 +200,8 @@ function decodeImage()
 	 
     qr.decodeFromImage(upImageElem, function(err, res){
 		if(err) {
-			alert("Cannot read QR code from the image");
+			alert("Cannot read QR code from the image, please upload again");
+			setimg();
 		}
 
 		if(res && !done) {
