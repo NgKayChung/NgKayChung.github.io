@@ -98,7 +98,8 @@ clearuielements: function () {
 },
 //Save Entry in the Localstorage by eading values entered in the 
 //UI 
-saveitem: function () { 
+saveitem: function () {
+	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
     var lscount = localStorage.length; //Get the Length of the LocalStorage
     //Read all elements on UI using class name 
     var inputs = document.getElementsByClassName("c1"); 
