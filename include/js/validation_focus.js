@@ -164,5 +164,5 @@ function load()
 	
 	//Save object into the localstorage 
 var submit = document.getElementById('form-submit'); 
-submit.addEventListener('click', applogic.saveitem, false);
+submit.addEventListener('click', saveitem, false);
 }
