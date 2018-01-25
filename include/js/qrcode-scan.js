@@ -108,7 +108,7 @@ function success(stream) {
     window.stream = stream;
 	
     v.srcObject = stream;
-	id(ids.length > 1) {
+	if(ids.length > 1) {
 		//create flip button
 		document.getElementById("flipp").innerHTML = fliphtml;
 		document.getElementById("flipbtn").addEventListener('click', flipCamera);	
