@@ -12,7 +12,68 @@ var imghtml='<div id="qrfile">' +
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
 var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip-cam-512.png" alt = "Change Camera"/></div>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
-var iframehtml = '<div id = "form-page"><iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe></div>';
+var formhtml = '<div class = "contents">' +
+'	<div class = "wrap no-w"></div>' +
+'	<div class = "wrap form-wrapper">' +
+		'<!--div class="lds-css ng-scope">' +
+		'	<div style="width: 100%; height: 100%" class="lds-eclipse">' +
+		'		<div></div>' +
+		'	</div>' +
+		'</div-->' +
+		'<form method = "get">' +
+		'	<div class = "form-row">' +
+		'		<p><span class = "req_ind">*</span> indicates required field</p>' +
+		'	</div>' +
+		'	<div class = "form-row">' +
+		'		<div class = "name-wrapper">' +
+		'			<label>Name <span class = "req_ind">*</span></label>' +
+		'		</div>' +
+		'		<div class = "input-wrapper">' +
+		'			<input type = "text" class = "for-input" id = "fullname" name = "fullname"/>' +
+		'		</div>' +
+		'		<div id = "name-err" class = "err"></div>' +
+		'	</div>' +
+		'	<div class = "form-row">' +
+		'		<div class = "name-wrapper">' +
+		'			<label>Identity Card Number <span class = "req_ind">*</span></label>' +
+		'		</div>' +
+		'		<div class = "input-wrapper">' +
+		'			<input type = "text" class = "for-input" id = "icnumber" name = "icnumber"/><!--input type = "text" id = "icnumber_2" name = "icnumber_2" required/> - <input type = "text" id = "icnumber_3" name = "icnumber_3" required/-->' +
+		'		</div>' +
+		'		<div id = "ic-err" class = "err"></div>' +
+		'	</div>' +
+		'	<div class = "form-row">' +
+		'		<div class = "name-wrapper">' +
+		'			<label>Email Address <span class = "req_ind">*</span></label>' +
+		'		</div>' +
+		'		<div class = "input-wrapper">' +
+		'			<input type = "text" class = "for-input" id = "emailAddress" name = "emailAddress"/><!--input type = "text" id = "email_domain" name = "email_domain" required/-->' +
+		'		</div>' +
+		'		<div id = "email-err" class = "err"></div>' +
+		'	</div>' +
+		'	<div class = "form-row">' +
+			'	<div class = "name-wrapper">' +
+			'		<label>Phone Number <span class = "req_ind">*</span></label>' +
+			'	</div>' +
+			'	<div class = "input-wrapper">' +
+			'		<input type = "text" class = "for-input" id = "phoneNumber" name = "phoneNumber"/><!--input type = "text" id = "phone_2" name = "phone_2" required/-->' +
+			'	</div>' +
+			'	<div id = "phone-err" class = "err"></div>' +
+		'	</div>' +
+		'	<div class = "form-row">' +
+		'		<div class = "input-wrapper">' +
+		'			<input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a>&nbsp;<span class = "req_ind">*</span>' +
+			'	</div>' +
+			'</div>' +
+			'<div class = "form-row">' +
+			'	<div class = "input-wrapper">' +
+			'		<input type = "submit" id = "form-submit" name = "submit" value = "Submit" title = "Please fill in the above fields correctly before submit" disabled/>' +
+			'	</div>' +
+			'</div>' +
+		'</form>' +
+	'</div>' +
+	'<div class = "wrap no-w"></div>' +
+'</div>';
 var vidMed = true;
 var front = false;
 
@@ -156,7 +217,7 @@ function startDecode() {
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
-			document.getElementById('outdiv').innerHTML = iframehtml;
+			document.getElementById('outdiv').innerHTML = formhtml;
 		}
     }, true);
 }
@@ -214,7 +275,7 @@ function decodeImage()
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
-			document.getElementById('outdiv').innerHTML = iframehtml;
+			document.getElementById('outdiv').innerHTML = formhtml;
 		}
 	}, true);
 }
