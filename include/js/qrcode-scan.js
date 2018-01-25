@@ -253,7 +253,7 @@ function startDecode() {
 
 		if(res && !done) {
 			done = true;
-			setInterval(searchInStorage, 1000, res);
+			setTimeout(searchInStorage, 1000, res);
 			if(found) {
 				alert(res + " is a valid receipt ID");
 				var resElem = document.getElementById('result');
@@ -323,13 +323,13 @@ function decodeImage()
 
 		if(res && !done) {
 			done=true;
-			setInterval(searchInStorage, 1000, res);
+			setTimeout(searchInStorage, 1000, res);
 			if(found) {
 				alert(res + " is a valid receipt ID");
 				var resElem = document.getElementById('result');
 				resElem.innerHTML = "QR code successfully read and submitted !";
 				resElem.style.color = "green";
-				setInterval(function() {
+				setTimeout(function() {
 					document.getElementById('outdiv').innerHTML = formhtml;
 					load();
 				}, 2000);
