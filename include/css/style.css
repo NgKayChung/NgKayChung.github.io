@@ -101,6 +101,11 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	text-align: center;
 }
 
+#output {
+	width: 200px;
+	height: 200px;
+}
+
 #size-img {
 	width: 25px;
 	height: 25px;
