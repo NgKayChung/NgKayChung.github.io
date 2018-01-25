@@ -82,11 +82,8 @@ var found;
 
 function insertQRData()
 {
-	if(localStorage.length === 0) {
-    	localStorage.setItem("QR1", JSON.stringify("3409532"));
-	localStorage.setItem("QR2", JSON.stringify("0195248"));
-	localStorage.setItem("QR3", JSON.stringify("8362941"));
-	}
+	if(localStorage.length === 0)
+    		localStorage.setItem("QR", JSON.stringify(["3409532", "0195248", "8362941"]));
 }
 
 function getQRData()
@@ -95,14 +92,8 @@ function getQRData()
 	
     if (datacount > 0)
     { 
-        for (i = 0; i < datacount; i++) {
-            var key = localStorage.key(i);
-		if(!key.contains('QR')) {
-			continue;
-		}
-            var id = localStorage.getItem(key);
-            qrData.push(JSON.parse(id)); 
-        }
+            var key = localStorage.key(0);
+            qrData = localStorage.getItem(key);
     }
 }
 
