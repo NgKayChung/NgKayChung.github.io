@@ -2,7 +2,7 @@ var v = null;
 var upImageElem = null;
 var labels = [];
 var ids = [];
-var vidhtml = '<video id="v" autoplay playsinline></video>';
+var vidhtml = '<div><video id="v" autoplay playsinline></video></div>';
 var imghtml='<div id="qrfile">' +
             '<div id="imgupcon"><p>Select an image file</p>' +
 	    	'<input type="file" accept = "image/*" onchange = "handleFile(this.files)"/>' +
