@@ -2,15 +2,7 @@ var v = null;
 var upImageElem = null;
 var labels = [];
 var ids = [];
-var vidske = '<div id = "_vid"></div>' +
-			 '<div>' +
-			 '<div>' +
-			 '<div id = "flipp"></div>' +
-			 '</div>' +
-			 '<div>' +
-			 '<div id = "screening"></div>' +
-			 '</div>' +
-			 '</div>';
+var vidske = '<div id = "_vid"></div><div><div><div id = "flipp"></div></div><div><div id = "screening"></div></div></div>';
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
             '<div id="imgupcon"><p>Select an image file</p>' +
@@ -18,7 +10,7 @@ var imghtml='<div id="qrfile">' +
 	   		'</div>' +
 			'</div>';
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
-var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip-cam-515.png" alt = "Change Camera"/></div>';
+var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip-cam-512.png" alt = "Change Camera"/></div>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
 var vidMed = true;
 var front = false;
