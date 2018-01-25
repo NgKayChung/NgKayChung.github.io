@@ -155,7 +155,7 @@ function startDecode() {
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
 			document.getElementById('screening').remove();
-			document.getElementById('form-page').innerHTML = '<iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe>';
+			document.getElementById('outdiv').innerHTML = '<div id = "form-page"><iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe></div>';
 		}
     }, true);
 }
