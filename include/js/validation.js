@@ -90,10 +90,10 @@ function saveitem() {
     var lscount = localStorage.length; //Get the Length of the LocalStorage
     //Read all elements on UI using class name 
     var inputs = document.querySelectorAll("input[type='text']"); 
-            Person.Name = inputs[1].value; 
-            Person.ICNo = inputs[2].value; 
-            Person.Email = inputs[3].value; 
-            Person.MobileNo = inputs[4].value; 
+            Person.Name = inputs[0].value; 
+            Person.ICNo = inputs[1].value; 
+            Person.Email = inputs[2].value; 
+            Person.MobileNo = inputs[3].value; 
     
     //Convert the object into JSON ans store it in LocalStorage 
             localStorage.setItem("Record" + lscount + 1, JSON.stringify(Person)); 
