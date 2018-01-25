@@ -226,8 +226,9 @@ function searchInStorage()
 	alert(currentScanned);
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i] == currentScanned) {
-			found = true;alert(true);
+			found = true;
 		}
+		alert(qrData[i]);
 	}
 }
 
