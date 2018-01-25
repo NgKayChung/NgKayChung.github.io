@@ -96,7 +96,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 }
 
 #result {
-	color: 'red';
+	text-align: center;
 }
 
 #imgupcon {
