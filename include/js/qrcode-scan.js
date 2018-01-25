@@ -164,11 +164,9 @@ function startDecode() {
 			alert(res);
 			v.srcObject = null;
 			stopMedia();
-			document.getElementById('flipp').remove();
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
-			document.getElementById('screening').remove();
 			document.getElementById('outdiv').innerHTML = '<div id = "form-page"><iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe></div>';
 		}
     }, true);
@@ -238,6 +236,9 @@ function submitImage()
 
 function setimg()
 {
+	if(window.stream) {
+		stopMedia();
+	}
 	done = false;
 	document.getElementById("result").innerHTML="";
     document.getElementById("outdiv").innerHTML = imghtml;
