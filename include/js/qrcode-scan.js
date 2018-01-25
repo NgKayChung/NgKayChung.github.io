@@ -223,14 +223,12 @@ var done = false;
 
 function searchInStorage()
 {
-	setTimeout(function() {
-		alert(currentScanned);
-		for(var i = 0;i < qrData.length;i++) {
-			if(qrData[i] === currentScanned) {
-				found = true;
-			}
+	alert(currentScanned);
+	for(var i = 0;i < qrData.length;i++) {
+		if(qrData[i] === currentScanned) {
+			found = true;
 		}
-	}, 2000);
+	}
 }
 
 function startDecode() {
@@ -250,22 +248,22 @@ function startDecode() {
 		}
     });
 	searchInStorage();
+	setTimeout(function(){
 	if(found) {
-				alert(currentScanned + " is a valid receipt ID");
-				var resElem = document.getElementById('result');
-				resElem.innerHTML = "QR code successfully read and submitted !";
-				resElem.style.color = "green";
-				setTimeout(function() {
-					document.getElementById('outdiv').innerHTML = formhtml;
-					load();
-				}, 2000);
-			}
-			else {
-				alert(currentScanned + " is not a valid receipt ID");
-				v.srcObject = null;
-				stopMedia();
-				location.reload();
-			}
+		alert(currentScanned + " is a valid receipt ID");
+		var resElem = document.getElementById('result');
+		resElem.innerHTML = "QR code successfully read and submitted !";
+		resElem.style.color = "green";
+		document.getElementById('outdiv').innerHTML = formhtml;
+		load();
+	}
+	else {
+		alert(currentScanned + " is not a valid receipt ID");
+		v.srcObject = null;
+		stopMedia();
+		location.reload();
+	}
+	}, 2000);
 }
 
 function flipCamera()
@@ -323,20 +321,20 @@ function decodeImage()
 	}, true);
 	
 	searchInStorage();
+	setTimeout(function(){
 	if(found) {
 		alert(currentScanned + " is a valid receipt ID");
 		var resElem = document.getElementById('result');
 		resElem.innerHTML = "QR code successfully read and submitted !";
 		resElem.style.color = "green";
-		setTimeout(function() {
-			document.getElementById('outdiv').innerHTML = formhtml;
-			load();
-		}, 2000);
+		document.getElementById('outdiv').innerHTML = formhtml;
+		load();
 	}
 	else {
 		alert(currentScanned + " is not a valid receipt ID");
 		setimg();
 	}
+	}, 2000);
 }
 
 function submitImage()
