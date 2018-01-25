@@ -223,12 +223,14 @@ var done = false;
 
 function searchInStorage()
 {
-	alert(currentScanned);
-	for(var i = 0;i < qrData.length;i++) {
-		if(qrData[i] === currentScanned) {
-			found = true;
+	setTimeout(function() {
+		alert(currentScanned);
+		for(var i = 0;i < qrData.length;i++) {
+			if(qrData[i] === currentScanned) {
+				found = true;
+			}
 		}
-	}
+	}, 2000);
 }
 
 function startDecode() {
@@ -247,7 +249,7 @@ function startDecode() {
 			return;
 		}
     });
-	setTimeout(searchInStorage, 2000);
+	searchInStorage();
 	if(found) {
 				alert(currentScanned + " is a valid receipt ID");
 				var resElem = document.getElementById('result');
@@ -320,7 +322,7 @@ function decodeImage()
 		}
 	}, true);
 	
-	setTimeout(searchInStorage, 2000);
+	searchInStorage();
 	if(found) {
 		alert(currentScanned + " is a valid receipt ID");
 		var resElem = document.getElementById('result');
