@@ -4,11 +4,11 @@ var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
-            '<div id="imgupcon">Select an image file' +
+            '<div id="imgupcon"><p>Select an image file</p>' +
 	    	'<input type="file" accept = "image/*" onchange = "handleFile(this.files)"/>' +
 	   		'</div>' +
 			'</div>';
-var imgsubhtml = '<img id = "output" src = ""/><button onlick = "decodeImage()">Submit Image</button>';
+var imgsubhtml = '<img id = "output" src = ""/><div><button onlick = "decodeImage()">Submit Image</button></div>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
 var vidMed = true;
