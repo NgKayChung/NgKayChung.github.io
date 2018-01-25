@@ -95,6 +95,12 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	display: inline-block;
 }
 
+#imgupcon {
+	padding: 20px;
+	margin: 10px 0px;
+	text-align: center;
+}
+
 #size-img {
 	width: 25px;
 	height: 25px;
