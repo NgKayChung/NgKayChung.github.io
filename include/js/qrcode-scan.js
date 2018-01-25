@@ -2,6 +2,15 @@ var v = null;
 var upImageElem = null;
 var labels = [];
 var ids = [];
+var vidske = '<div id = "_vid"></div>' +
+			 '<div>' +
+			 '<div>' +
+			 '<div id = "flipp"></div>' +
+			 '</div>' +
+			 '<div>' +
+			 '<div id = "screening"></div>' +
+			 '</div>' +
+			 '</div>';
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
             '<div id="imgupcon"><p>Select an image file</p>' +
@@ -52,6 +61,7 @@ function stopMedia()
 
 function setwebcam()
 {
+	document.getElementById('outdiv').innerHTML = vidske;
 	done = false;
 	ids = [];
 	labels = [];
