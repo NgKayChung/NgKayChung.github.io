@@ -79,6 +79,7 @@ var vidMed = true;
 var front = false;
 var qrData = [];
 var found;
+var currentScanned = "";
 
 function insertQRData()
 {
@@ -220,11 +221,11 @@ function success(stream) {
 
 var done = false;
 
-function searchInStorage(elem)
+function searchInStorage()
 {
-	alert(elem);
+	alert(currentScanned);
 	for(var i = 0;i < qrData.length;i++) {
-		if(qrData[i] === elem) {
+		if(qrData[i] === currentScanned) {
 			found = true;
 		}
 	}
@@ -242,8 +243,12 @@ function startDecode() {
 
 		if(res && !done) {
 			done = true;
-			setTimeout(searchInStorage, 3000, res);
-			if(found) {
+			currentScanned = res;
+			return;
+		}
+    });
+	setTimeout(searchInStorage, 2000);
+	if(found) {
 				alert(res + " is a valid receipt ID");
 				var resElem = document.getElementById('result');
 				resElem.innerHTML = "QR code successfully read and submitted !";
@@ -259,8 +264,6 @@ function startDecode() {
 				stopMedia();
 				location.reload();
 			}
-		}
-    });
 }
 
 function flipCamera()
@@ -311,24 +314,27 @@ function decodeImage()
 		}
 
 		if(res && !done) {
-			done=true;
-			setTimeout(searchInStorage, 3000, res);
-			if(found) {
-				alert(res + " is a valid receipt ID");
-				var resElem = document.getElementById('result');
-				resElem.innerHTML = "QR code successfully read and submitted !";
-				resElem.style.color = "green";
-				setTimeout(function() {
-					document.getElementById('outdiv').innerHTML = formhtml;
-					load();
-				}, 2000);
-			}
-			else {
-				alert(res + " is not a valid receipt ID");
-				setimg();
-			}
+			done = true;
+			currentScanned = res;
+			return;
 		}
 	}, true);
+	
+	setTimeout(searchInStorage, 2000);
+	if(found) {
+		alert(res + " is a valid receipt ID");
+		var resElem = document.getElementById('result');
+		resElem.innerHTML = "QR code successfully read and submitted !";
+		resElem.style.color = "green";
+		setTimeout(function() {
+			document.getElementById('outdiv').innerHTML = formhtml;
+			load();
+		}, 2000);
+	}
+	else {
+		alert(res + " is not a valid receipt ID");
+		setimg();
+	}
 }
 
 function submitImage()
