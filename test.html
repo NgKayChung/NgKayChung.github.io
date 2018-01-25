@@ -6,7 +6,7 @@
 <script type = "text/javascript" src = "include\js\validation.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "include\css\style.css"/>
 <style>
-@media screen and (max-width: 1024px) {
+/*@media screen and (max-width: 1024px) {*/
 	video.full { 
 		position: fixed;
 		right: 0;
@@ -20,15 +20,26 @@
 	}
 	
 	video.med {
-		left: 20%;
 		max-width: 50%;
 		width: auto;
 		height: auto;
 	}
-}
+/*}*/
 	
 #outdiv {
 	border: 2px solid #000000;
+}
+
+.icon-wrap {
+	width: 49%;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
 }
 </style>
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
@@ -38,13 +49,13 @@
 	<div class = "wrap no-w"></div>
 	<div class = "wrap qrdec-wrapper">
 		<div class = "btn-grp">
-			<div>
-				<div id = "scan" title "Video QR Scan" onclick = "setwebcam()">
+			<div class = "icon-wrap left">
+				<div id = "scan" class = "vidscan-wrap" title "Video QR Scan" onclick = "setwebcam()">
 					<img src = "include\images\video_scanner_icon.png" width = "45" height = "40"/>
 				</div>
 			</div>
-			<div>
-				<div id = "photo" title = "QR Image Capture / Upload" onclick = "setimg()">
+			<div class = "icon-wrap right">
+				<div id = "photo" class = "imgup-wrap" title = "QR Image Capture / Upload" onclick = "setimg()">
 					<img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/>
 				</div>
 			</div>
