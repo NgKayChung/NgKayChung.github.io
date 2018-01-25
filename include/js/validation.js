@@ -108,7 +108,7 @@ function loaddata() {
     if (datacount > 0) 
     { 
         var render = "<table border='1'>"; 
-        render += "<tr><th>Id</th><th>Name</th><th>ICNo</th>” + “<th>Email</th><th>MobileNo</th></tr>"; 
+        render += "<tr><th>Name</th><th>ICNo</th><th>Email</th><th>MobileNo</th></tr>"; 
         for (i = 0; i < datacount; i++) { 
             var key = localStorage.key(i); //Get  the Key 
             var person = localStorage.getItem(key); //Get Data from Key 
