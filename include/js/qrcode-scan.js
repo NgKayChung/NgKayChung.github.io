@@ -20,7 +20,7 @@ var formhtml = '<div class = "contents">' +
 		'		<div></div>' +
 		'	</div>' +
 		'</div-->' +
-		'<form>' +
+		
 		'	<div class = "form-row">' +
 		'		<p><span class = "req_ind">*</span> indicates required field</p>' +
 		'	</div>' +
@@ -70,7 +70,6 @@ var formhtml = '<div class = "contents">' +
 			'		<button id = "form-submit" title = "Please fill in the above fields correctly before submit" disabled/>Submit</button>' +
 			'	</div>' +
 			'</div>' +
-		'</form>' +
 	'</div>' +
 	'<div class = "wrap no-w"></div>' +
 '</div>';
