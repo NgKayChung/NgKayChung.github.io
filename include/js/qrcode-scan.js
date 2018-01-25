@@ -12,6 +12,7 @@ var imghtml='<div id="qrfile">' +
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
 var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip-cam-512.png" alt = "Change Camera"/></div>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
+var iframehtml = '<div id = "form-page"><iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe></div>';
 var vidMed = true;
 var front = false;
 
@@ -53,18 +54,14 @@ function stopMedia()
 
 function setwebcam()
 {
+	document.getElementById('result').innerHTML = "";
 	document.getElementById('outdiv').innerHTML = vidske;
 	done = false;
 	ids = [];
-	labels = [];
 	
 	if(!load()) {
-		//change to upload image
 		return;
 	}
-	
-	//ids = [];
-	//labels = [];
 	
 	var options = null;
 	
@@ -159,7 +156,7 @@ function startDecode() {
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
-			document.getElementById('outdiv').innerHTML = '<div id = "form-page"><iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe></div>';
+			document.getElementById('outdiv').innerHTML = iframehtml;
 		}
     }, true);
 }
@@ -217,6 +214,7 @@ function decodeImage()
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
+			document.getElementById('outdiv').innerHTML = iframehtml;
 		}
 	}, true);
 }
