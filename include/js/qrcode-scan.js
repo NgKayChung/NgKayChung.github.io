@@ -8,7 +8,7 @@ var imghtml='<div id="qrfile">' +
 	    	'<input type="file" accept = "image/*" onchange = "handleFile(this.files)"/>' +
 	   		'</div>' +
 			'</div>';
-var imgsubhtml = '<img id = "output" src = ""/><button onlick = "submitImage()">Submit Image</button>';
+var imgsubhtml = '<img id = "output" src = ""/><button onlick = "decodeImage()">Submit Image</button>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
 var vidMed = true;
