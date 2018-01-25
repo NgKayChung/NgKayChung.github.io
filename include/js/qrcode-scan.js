@@ -9,7 +9,7 @@ var imghtml='<div id="qrfile">' +
 	   		'</div>' +
 			'</div>';
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
-var fliphtml = '<button id = "flipbtn">Change Camera</button>';
+var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip-cam-515.png" alt = "Change Camera"/></div>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
 var vidMed = true;
 var front = false;
