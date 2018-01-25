@@ -26,6 +26,10 @@
 		height: auto;
 	}
 }
+	
+#outdiv {
+	border: 2px solid #000000;
+}
 </style>
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
 </head>
@@ -35,20 +39,24 @@
 	<div class = "wrap qrdec-wrapper">
 		<div class = "btn-grp">
 			<div>
-				<a href = "https://ngkaychung.github.io/test.html" id = "scan" title "Video QR Scan"><img src = "include\images\video_scanner_icon.png" width = "45" height = "40"/></a>
+				<div id = "scan" title "Video QR Scan" onclick = "setwebcam()">
+					<img src = "include\images\video_scanner_icon.png" width = "45" height = "40"/>
+				</div>
 			</div>
 			<div>
-				<a href = "https://hellovorld.github.io/test.html" id = "photo" title = "QR Image Capture / Upload"><img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/></a>
+				<div id = "photo" title = "QR Image Capture / Upload" onclick = "setimg()">
+					<img src = "include\images\photo_capture_icon.png" width = "40" height = "40"/>
+				</div>
 			</div>
+		</div>
+		<div>
+			<div id="outdiv"><video src = "" playsinline></video></div>
 		</div>
 		<div>
 			<div id = "flipp"></div>
 		</div>
 		<div>
 			<div id = "screening"></div>
-		</div>
-		<div>
-			<div id="outdiv"></div>
 		</div>
 		<!--div>
 			<video src = "" playsinline></video>
@@ -57,8 +65,14 @@
 			<div id = "result"></div>
 		</div>
 		<div>
-			<button id = 'scannerbtn' onclick = 'setwebcam()'>Start</button>
-		</div>
+			<h3>Instruction : </h3>
+			<ul>
+				<li> IOS 11 is supported for video scanning ONLY with Safari browser</li>
+				<li> IOS version below 11 should proceed to image upload</li>
+				<li> Click / Tap the above icons for QR code reading method</li>
+				<li> Please be reminded that you should allow this page to access to camera / photo gallery when prompted</li>
+			</ul>
+		<div>
 	</div>
 	<div class = "wrap no-w"></div>
 </div>
