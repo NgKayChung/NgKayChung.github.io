@@ -247,7 +247,7 @@ function startDecode() {
     var qr = QCodeDecoder();
 
     qr.decodeFromVideo(v, function(er,res) {
-		if(er) {
+		if(er && !done) {
 			console.log(er);
 		}
 
@@ -316,7 +316,7 @@ function decodeImage()
     var qr = QCodeDecoder();
 	 
     qr.decodeFromImage(upImageElem, function(err, res){
-		if(err) {
+		if(err && !done) {
 			alert("Cannot read QR code from the image, please upload again");
 			setimg();
 		}
@@ -329,7 +329,7 @@ function decodeImage()
 				var resElem = document.getElementById('result');
 				resElem.innerHTML = "QR code successfully read and submitted !";
 				resElem.style.color = "green";
-				setTimeout(function() {
+				setInterval(function() {
 					document.getElementById('outdiv').innerHTML = formhtml;
 					load();
 				}, 2000);
