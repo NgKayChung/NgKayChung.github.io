@@ -98,7 +98,9 @@ function saveitem() {
     //Convert the object into JSON ans store it in LocalStorage 
             localStorage.setItem("Record" + lscount + 1, JSON.stringify(Person)); 
     //Reload the Page 
-	loaddata(); 
+	alert('save');
+	loaddata();
+	
 }
 
 function loaddata() { 
@@ -119,7 +121,8 @@ function loaddata() {
         } 
         render+="</table>"; 
         document.getElementById('dvcontainer').innerHTML = render; 
-    } 
+    }
+	alert('load');
 }
 
 /*
