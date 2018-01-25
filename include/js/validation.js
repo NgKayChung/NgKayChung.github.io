@@ -112,7 +112,8 @@ saveitem: function () {
     //Convert the object into JSON ans store it in LocalStorage 
             localStorage.setItem("Person_" + lscount, JSON.stringify(Person)); 
     //Reload the Page 
-            location.reload(); 
+            location.reload();
+	applogic.loaddata(); 
 },
 //Method to Read Data from the local Storage 
 loaddata: function () { 
@@ -135,13 +136,6 @@ loaddata: function () {
         dvcontainer.innerHTML = render; 
     } 
 },
-};
-//Save object into the localstorage 
-var submit = document.getElementById('form-submit'); 
-submit.addEventListener('click', applogic.saveitem, false); 
-//On Load of window load data from local storage 
-window.onload = function () { 
-applogic.loaddata(); 
 }; 
 })(); 
 
