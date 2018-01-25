@@ -20,7 +20,7 @@ var formhtml = '<div class = "contents">' +
 		'		<div></div>' +
 		'	</div>' +
 		'</div-->' +
-		
+		//'<form>'
 		'	<div class = "form-row">' +
 		'		<p><span class = "req_ind">*</span> indicates required field</p>' +
 		'	</div>' +
@@ -71,12 +71,13 @@ var formhtml = '<div class = "contents">' +
 			'	</div>' +
 			'</div>' +
 	'</div>' +
+    	//'</form>'
 	'<div class = "wrap no-w"></div>' +
 '</div>';
 var vidMed = true;
 var front = false;
 
-function load()
+function searchDevices()
 {
 	if(!navigator.mediaDevices) {
 		alert('No media device detected, please proceed to upload image to complete the registration');
@@ -119,7 +120,7 @@ function setwebcam()
 	done = false;
 	ids = [];
 	
-	if(!load()) {
+	if(!searchDevices()) {
 		return;
 	}
 	
