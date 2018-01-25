@@ -135,7 +135,7 @@ loaddata: function () {
         render+="</table>"; 
         dvcontainer.innerHTML = render; 
     } 
-},
+}
 }; 
 })(); 
 
