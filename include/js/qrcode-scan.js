@@ -1,7 +1,14 @@
-var v=null;
+var v = null;
+var upImageElem = null;
 var labels = [];
 var ids = [];
 var vidhtml = '<video id="v" autoplay playsinline></video>';
+var imghtml='<div id="qrfile">' +
+            '<div id="imgupcon">Select an image file' +
+	    	'<input type="file" accept = "image/*" onchange = "handleFile(this.files)"/>' +
+	   		'</div>' +
+			'</div>';
+var imgsubhtml = '<img id = "output" src = ""/><button onlick = "submitImage()">Submit Image</button>';
 var fliphtml = '<button id = "flipbtn">Change Camera</button>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_224px_224px.png"/></div>';
 var vidMed = true;
@@ -45,6 +52,7 @@ function stopMedia()
 
 function setwebcam()
 {
+	done = false;
 	ids = [];
 	labels = [];
 	
@@ -169,4 +177,50 @@ function flipCamera()
 	var options = {deviceId: tempId, facingMode: (front ? 'user' : 'environment')};
 	
 	setwebcam2(options);
+}
+
+function handleFile(f)
+{
+	if(f.length > 1) {
+		alert("Please upload only one image file");
+		return;
+	}
+	var imageContents = document.getElementById('imgupcon');
+	imageContents.innerHTML = imgsubhtml;
+	
+    upImageElem = document.getElementById('output');
+    upImageElem.src = URL.createObjectURL(f[0]);
+}
+
+function decodeImage()
+{
+	'use strict';
+    
+    var qr = QCodeDecoder();
+	 
+    qr.decodeFromImage(upImageElem, function(err, res){
+		if(err) {
+			console.log(er);
+		}
+
+		if(res && !done) {
+			done=true;
+			alert(res);
+			var resElem = document.getElementById('result');
+			resElem.innerHTML = "QR code successfully read and submitted !";
+			resElem.style.color = "green";
+		}
+	}, true);
+}
+
+function submitImage()
+{
+	decodeImage();
+}
+
+function setimg()
+{
+	done = false;
+	document.getElementById("result").innerHTML="";
+    document.getElementById("outdiv").innerHTML = imghtml;
 }
