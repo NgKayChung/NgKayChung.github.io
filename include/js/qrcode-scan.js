@@ -84,7 +84,7 @@ var currentScanned = "";
 function insertQRData()
 {
 	if(localStorage.length === 0)
-    		localStorage.setItem("QR", JSON.stringify(['3409532', '0195248', '8362941']));
+    		localStorage.setItem("Receipt ID", JSON.stringify(['3409532', '0195248', '8362941']));
 }
 
 function getQRData()
