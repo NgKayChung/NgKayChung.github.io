@@ -225,7 +225,7 @@ function searchInStorage()
 {
 	alert(currentScanned);
 	for(var i = 0;i < qrData.length;i++) {
-		if(qrData[i] === currentScanned) {
+		if(qrData[i] == currentScanned) {
 			found = true;alert(true);
 		}
 	}
@@ -260,7 +260,7 @@ function startDecode() {
 				stopMedia();
 				location.reload();
 			}
-			}, 2000);
+			}, 1000);
 		}
     });
 }
@@ -329,7 +329,7 @@ function decodeImage()
 				alert(currentScanned + " is not a valid receipt ID");
 				setimg();
 			}
-			}, 2000);
+			}, 1000);
 		}
 	}, true);
 }
