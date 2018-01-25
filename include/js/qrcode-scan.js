@@ -218,6 +218,7 @@ function startDecode() {
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
 			document.getElementById('outdiv').innerHTML = formhtml;
+			load();
 		}
     }, true);
 }
@@ -276,6 +277,7 @@ function decodeImage()
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
 			document.getElementById('outdiv').innerHTML = formhtml;
+			load();
 		}
 	}, true);
 }
