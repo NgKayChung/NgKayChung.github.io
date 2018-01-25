@@ -56,8 +56,6 @@ function setwebcam()
 	//ids = [];
 	//labels = [];
 	
-	document.getElementById('scannerbtn').style.display = 'none';
-	
 	var options = null;
 	
 	navigator.mediaDevices.enumerateDevices().then(function(devices) {
@@ -144,10 +142,9 @@ function startDecode() {
 			alert(res);
 			v.srcObject = null;
 			stopMedia();
-			document.getElementById('scannerbtn').remove();
 			document.getElementById('flipp').remove();
 			var resElem = document.getElementById('result');
-			resElem.innerHTML = "Scanned successfully!";
+			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
 			document.getElementById('screening').remove();
 			document.getElementById('form-page').innerHTML = '<iframe class = "frame-page" src = "testf.html" width = "100%" height = "100%"></iframe>';
