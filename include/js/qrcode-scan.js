@@ -84,9 +84,6 @@ function setwebcam()
 		options = {deviceId: tempId};
 		
 		if(ids.length > 1) {
-			//create flip button
-			document.getElementById("flipp").innerHTML = fliphtml;
-			document.getElementById("flipbtn").addEventListener('click', flipCamera);
 			options = {deviceId: tempId, facingMode: 'environment'};
 		}
 	
@@ -111,9 +108,16 @@ function success(stream) {
     window.stream = stream;
 	
     v.srcObject = stream;
+	id(ids.length > 1) {
+		//create flip button
+		document.getElementById("flipp").innerHTML = fliphtml;
+		document.getElementById("flipbtn").addEventListener('click', flipCamera);	
+	}
+	
 	var scanElem = document.getElementById("result");
 	scanElem.innerHTML="- scanning -";
 	scanElem.style.color = "red";
+	
 	document.getElementById('screening').innerHTML = screenhtml;
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
