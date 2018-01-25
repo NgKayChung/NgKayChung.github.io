@@ -249,7 +249,7 @@ function startDecode() {
     });
 	setTimeout(searchInStorage, 2000);
 	if(found) {
-				alert(res + " is a valid receipt ID");
+				alert(currentScanned + " is a valid receipt ID");
 				var resElem = document.getElementById('result');
 				resElem.innerHTML = "QR code successfully read and submitted !";
 				resElem.style.color = "green";
@@ -259,7 +259,7 @@ function startDecode() {
 				}, 2000);
 			}
 			else {
-				alert(res + " is not a valid receipt ID");
+				alert(currentScanned + " is not a valid receipt ID");
 				v.srcObject = null;
 				stopMedia();
 				location.reload();
@@ -322,7 +322,7 @@ function decodeImage()
 	
 	setTimeout(searchInStorage, 2000);
 	if(found) {
-		alert(res + " is a valid receipt ID");
+		alert(currentScanned + " is a valid receipt ID");
 		var resElem = document.getElementById('result');
 		resElem.innerHTML = "QR code successfully read and submitted !";
 		resElem.style.color = "green";
@@ -332,7 +332,7 @@ function decodeImage()
 		}, 2000);
 	}
 	else {
-		alert(res + " is not a valid receipt ID");
+		alert(currentScanned + " is not a valid receipt ID");
 		setimg();
 	}
 }
