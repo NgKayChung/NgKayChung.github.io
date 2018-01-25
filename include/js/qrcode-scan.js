@@ -217,10 +217,12 @@ function startDecode() {
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
+			setTimeout(function() {
 			document.getElementById('outdiv').innerHTML = formhtml;
-			//load();
+			load();
+			}, 2000);
 		}
-    }, true);
+    });
 }
 
 function flipCamera()
@@ -276,8 +278,10 @@ function decodeImage()
 			var resElem = document.getElementById('result');
 			resElem.innerHTML = "QR code successfully read and submitted !";
 			resElem.style.color = "green";
+			setTimeout(function() {
 			document.getElementById('outdiv').innerHTML = formhtml;
 			load();
+			}, 2000);
 		}
 	}, true);
 }
