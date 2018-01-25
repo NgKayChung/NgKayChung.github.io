@@ -20,7 +20,7 @@ var formhtml = '<div class = "contents">' +
 		'		<div></div>' +
 		'	</div>' +
 		'</div-->' +
-		'<form method = "get">' +
+		'<form>' +
 		'	<div class = "form-row">' +
 		'		<p><span class = "req_ind">*</span> indicates required field</p>' +
 		'	</div>' +
