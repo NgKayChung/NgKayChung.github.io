@@ -94,7 +94,7 @@ function getQRData()
 {
 	for(var i = 0;i < localStorage.length;i++) {
 		if(localStorage.getItem("ID" + (i + 1)))
-			qrData.push(localStorage.getItem("ID" + (i + 1)));
+			qrData.push(JSON.parse(localStorage.getItem("ID" + (i + 1))));
 	}
 }
 
