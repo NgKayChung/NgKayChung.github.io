@@ -83,19 +83,19 @@ var currentScanned = "";
 
 function insertQRData()
 {
-	if(localStorage.length === 0)
-    		localStorage.setItem("Receipt ID", ['3409532', '0195248', '8362941']);
+	if(localStorage.length === 0) {
+    		localStorage.setItem("ID1", JSON.stringify('3409532'));
+		localStorage.setItem("ID2", JSON.stringify('0195248'));
+		localStorage.setItem("ID3", JSON.stringify('8362941'));
+	}
 }
 
 function getQRData()
 {
-	var datacount = localStorage.length;
-	
-    if (datacount > 0)
-    { 
-            var key = localStorage.key(0);
-            qrData = localStorage.getItem(key);
-    }
+	for(var i = 0;i < localStorage.length;i++) {
+		if(localStorage.getItem("ID" + (i + 1)))
+			qrData.push(localStorage.getItem("ID" + (i + 1)));
+	}
 }
 
 function searchDevices()
@@ -223,7 +223,6 @@ var done = false;
 
 function searchInStorage()
 {
-	alert(currentScanned);
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i] == currentScanned) {
 			found = true;
