@@ -67,7 +67,7 @@ var formhtml = '<div class = "contents">' +
 			'</div>' +
 			'<div class = "form-row">' +
 			'	<div class = "input-wrapper">' +
-			'		<input type = "submit" id = "form-submit" name = "submit" value = "Submit" title = "Please fill in the above fields correctly before submit" disabled/>' +
+			'		<button id = "form-submit" title = "Please fill in the above fields correctly before submit" disabled/>Submit</button>' +
 			'	</div>' +
 			'</div>' +
 		'</form>' +
