@@ -2,7 +2,7 @@ var v = null;
 var upImageElem = null;
 var labels = [];
 var ids = [];
-var vidhtml = '<div><video id="v" autoplay playsinline></video></div>';
+var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
             '<div id="imgupcon"><p>Select an image file</p>' +
 	    	'<input type="file" accept = "image/*" onchange = "handleFile(this.files)"/>' +
@@ -100,7 +100,7 @@ function setwebcam2(options)
 }
 
 function success(stream) {
-	document.getElementById("outdiv").innerHTML = vidhtml;
+	document.getElementById("_vid").innerHTML = vidhtml;
     v = document.getElementById("v");
 	
 	if(vidMed)
