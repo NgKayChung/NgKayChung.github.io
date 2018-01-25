@@ -77,12 +77,33 @@ var formhtml = '<div class = "contents">' +
 '</div>';
 var vidMed = true;
 var front = false;
+var qrData = [];
+var found;
 
 function insertQRData()
 {
-    localStorage.setItem("QR1", JSON.stringify("3409532"));
+	if(localStorage.length === 0) {
+    	localStorage.setItem("QR1", JSON.stringify("3409532"));
 	localStorage.setItem("QR2", JSON.stringify("0195248"));
 	localStorage.setItem("QR3", JSON.stringify("8362941"));
+	}
+}
+
+function getQRData()
+{
+	var datacount = localStorage.length;
+	
+    if (datacount > 0)
+    { 
+        for (i = 0; i < datacount; i++) {
+            var key = localStorage.key(i);
+		if(!key.contains('QR')) {
+			continue;
+		}
+            var id = localStorage.getItem(key);
+            qrData.push(JSON.parse(id)); 
+        }
+    }
 }
 
 function searchDevices()
@@ -154,7 +175,8 @@ function setwebcam()
 		if(ids.length > 1) {
 			options = {deviceId: tempId, facingMode: 'environment'};
 		}
-	
+		
+		getQRData();
 		setwebcam2(options);
 	});
 }
@@ -207,9 +229,21 @@ function success(stream) {
 
 var done = false;
 
+function searchInStorage(elem)
+{
+	for(var i = 0;i < qrData.length;i++) {
+		if(qrData[i] === elem) {
+			found = true;
+			return;
+		}
+	}
+	
+	found = false;
+}
+
 function startDecode() {
     'use strict';
-    
+    found = false;
     var qr = QCodeDecoder();
 
     qr.decodeFromVideo(v, function(er,res) {
@@ -219,16 +253,23 @@ function startDecode() {
 
 		if(res && !done) {
 			done = true;
-			alert(res);
-			v.srcObject = null;
-			stopMedia();
-			var resElem = document.getElementById('result');
-			resElem.innerHTML = "QR code successfully read and submitted !";
-			resElem.style.color = "green";
-			setTimeout(function() {
-			document.getElementById('outdiv').innerHTML = formhtml;
-			load();
-			}, 2000);
+			setTimeout(searchInStorage, 1000, res);
+			if(found) {
+				alert(res + " is a valid receipt ID");
+				var resElem = document.getElementById('result');
+				resElem.innerHTML = "QR code successfully read and submitted !";
+				resElem.style.color = "green";
+				setTimeout(function() {
+					document.getElementById('outdiv').innerHTML = formhtml;
+					load();
+				}, 2000);
+			}
+			else {
+				alert(res + " is not a valid receipt ID");
+				v.srcObject = null;
+				stopMedia();
+				location.reload();
+			}
 		}
     });
 }
@@ -271,7 +312,7 @@ function handleFile(f)
 function decodeImage()
 {
 	'use strict';
-    
+    found = false;
     var qr = QCodeDecoder();
 	 
     qr.decodeFromImage(upImageElem, function(err, res){
@@ -282,14 +323,21 @@ function decodeImage()
 
 		if(res && !done) {
 			done=true;
-			alert(res);
-			var resElem = document.getElementById('result');
-			resElem.innerHTML = "QR code successfully read and submitted !";
-			resElem.style.color = "green";
-			setTimeout(function() {
-			document.getElementById('outdiv').innerHTML = formhtml;
-			load();
-			}, 2000);
+			setTimeout(searchInStorage, 1000, res);
+			if(found) {
+				alert(res + " is a valid receipt ID");
+				var resElem = document.getElementById('result');
+				resElem.innerHTML = "QR code successfully read and submitted !";
+				resElem.style.color = "green";
+				setTimeout(function() {
+					document.getElementById('outdiv').innerHTML = formhtml;
+					load();
+				}, 2000);
+			}
+			else {
+				alert(res + " is not a valid receipt ID");
+				setimg();
+			}
 		}
 	}, true);
 }
@@ -307,4 +355,5 @@ function setimg()
 	done = false;
 	document.getElementById("result").innerHTML="";
     document.getElementById("outdiv").innerHTML = imghtml;
+	getQRData();
 }
