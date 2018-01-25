@@ -88,7 +88,7 @@ function saveitem()
 {
 	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
 	
-    var lscount = localStorage.length;
+    var lscount = localStorage.length - 3;
 	
     var inputs = document.querySelectorAll("input[type='text']");
 	
