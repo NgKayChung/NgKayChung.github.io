@@ -78,6 +78,13 @@ var formhtml = '<div class = "contents">' +
 var vidMed = true;
 var front = false;
 
+function insertQRData()
+{
+    localStorage.setItem("QR1", JSON.stringify("3409532"));
+	localStorage.setItem("QR2", JSON.stringify("0195248"));
+	localStorage.setItem("QR3", JSON.stringify("8362941"));
+}
+
 function searchDevices()
 {
 	if(!navigator.mediaDevices) {
