@@ -113,6 +113,9 @@ function loaddata()
         render += "<tr><th>Name</th><th>ICNo</th><th>Email</th><th>MobileNo</th></tr>";
         for (i = 0; i < datacount; i++) {
             var key = localStorage.key(i);
+		if(!key.contains('Record')) {
+			continue;
+		}
             var person = localStorage.getItem(key);
             var data = JSON.parse(person);
             
