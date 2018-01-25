@@ -77,6 +77,73 @@ function validState(str)
    }
 }
 
+(function () { 
+//The Person Object used to store data in the LocalStorage 
+var Person = { 
+Id: 0, 
+Name: "", 
+ICNo: "", 
+Email: "", 
+MobileNo: "" 
+};
+
+//JavaScript object containing methods for LocalStorage management 
+var applogic = {
+//Clear All Entries, by reading all elements having class as c1 
+clearuielements: function () { 
+    var inputs = document.getElementsByClassName("c1"); 
+    for (i = 0; i < inputs.length; i++) { 
+        inputs[i].value = ""; 
+    } 
+},
+//Save Entry in the Localstorage by eading values entered in the 
+//UI 
+saveitem: function () { 
+    var lscount = localStorage.length; //Get the Length of the LocalStorage
+    //Read all elements on UI using class name 
+    var inputs = document.getElementsByClassName("c1"); 
+            Person.Id = inputs[0].value; 
+            Person.Name = inputs[1].value; 
+            Person.ICNo = inputs[2].value; 
+            Person.Email = inputs[3].value; 
+            Person.MobileNo = inputs[4].value; 
+    
+    //Convert the object into JSON ans store it in LocalStorage 
+            localStorage.setItem("Person_" + lscount, JSON.stringify(Person)); 
+    //Reload the Page 
+            location.reload(); 
+},
+//Method to Read Data from the local Storage 
+loaddata: function () { 
+    var datacount = localStorage.length; 
+    if (datacount > 0) 
+    { 
+        var render = "<table border='1'>"; 
+        render += "<tr><th>Id</th><th>Name</th><th>ICNo</th>” + “<th>Email</th><th>MobileNo</th></tr>"; 
+        for (i = 0; i < datacount; i++) { 
+            var key = localStorage.key(i); //Get  the Key 
+            var person = localStorage.getItem(key); //Get Data from Key 
+            var data = JSON.parse(person); //Parse the Data back into the object 
+            
+            render += "<tr><td>" + data.Id + "</td><td>" + data.Name + " </td>"; 
+            render += "<td>" + data.ICNo + "</td>"; 
+            render += "<td>" + data.Email + "</td>"; 
+            render += "<td>" + data.MobileNo + "</td></tr>"; 
+        } 
+        render+="</table>"; 
+        dvcontainer.innerHTML = render; 
+    } 
+},
+};
+//Save object into the localstorage 
+var submit = document.getElementById('form-submit'); 
+submit.addEventListener('click', applogic.saveitem, false); 
+//On Load of window load data from local storage 
+window.onload = function () { 
+applogic.loaddata(); 
+}; 
+})(); 
+
 /*
 function validateInputs()
 {
