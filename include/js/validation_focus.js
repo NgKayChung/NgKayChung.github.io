@@ -161,4 +161,8 @@ function load()
 		phoneOK = true;
 		checkForms();
     });
+	
+	//Save object into the localstorage 
+var submit = document.getElementById('form-submit'); 
+submit.addEventListener('click', applogic.saveitem, false);
 }
