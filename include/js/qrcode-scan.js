@@ -113,7 +113,6 @@ function success(stream) {
     v.srcObject = stream;
 	var scanElem = document.getElementById("result");
 	scanElem.innerHTML="- scanning -";
-	scanElem.style.color = "red";
 	document.getElementById('screening').innerHTML = screenhtml;
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
