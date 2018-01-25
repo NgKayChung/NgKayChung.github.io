@@ -244,26 +244,25 @@ function startDecode() {
 		if(res && !done) {
 			done = true;
 			currentScanned = res;
-			return;
+			searchInStorage();
+			setTimeout(function(){
+			if(found) {
+				alert(currentScanned + " is a valid receipt ID");
+				var resElem = document.getElementById('result');
+				resElem.innerHTML = "QR code successfully read and submitted !";
+				resElem.style.color = "green";
+				document.getElementById('outdiv').innerHTML = formhtml;
+				load();
+			}
+			else {
+				alert(currentScanned + " is not a valid receipt ID");
+				v.srcObject = null;
+				stopMedia();
+				location.reload();
+			}
+			}, 2000);
 		}
     });
-	searchInStorage();
-	setTimeout(function(){
-	if(found) {
-		alert(currentScanned + " is a valid receipt ID");
-		var resElem = document.getElementById('result');
-		resElem.innerHTML = "QR code successfully read and submitted !";
-		resElem.style.color = "green";
-		document.getElementById('outdiv').innerHTML = formhtml;
-		load();
-	}
-	else {
-		alert(currentScanned + " is not a valid receipt ID");
-		v.srcObject = null;
-		stopMedia();
-		location.reload();
-	}
-	}, 2000);
 }
 
 function flipCamera()
@@ -316,25 +315,23 @@ function decodeImage()
 		if(res && !done) {
 			done = true;
 			currentScanned = res;
-			return;
+			searchInStorage();
+			setTimeout(function(){
+			if(found) {
+				alert(currentScanned + " is a valid receipt ID");
+				var resElem = document.getElementById('result');
+				resElem.innerHTML = "QR code successfully read and submitted !";
+				resElem.style.color = "green";
+				document.getElementById('outdiv').innerHTML = formhtml;
+				load();
+			}
+			else {
+				alert(currentScanned + " is not a valid receipt ID");
+				setimg();
+			}
+			}, 2000);
 		}
 	}, true);
-	
-	searchInStorage();
-	setTimeout(function(){
-	if(found) {
-		alert(currentScanned + " is a valid receipt ID");
-		var resElem = document.getElementById('result');
-		resElem.innerHTML = "QR code successfully read and submitted !";
-		resElem.style.color = "green";
-		document.getElementById('outdiv').innerHTML = formhtml;
-		load();
-	}
-	else {
-		alert(currentScanned + " is not a valid receipt ID");
-		setimg();
-	}
-	}, 2000);
 }
 
 function submitImage()
