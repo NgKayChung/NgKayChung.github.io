@@ -2,7 +2,7 @@ var v = null;
 var upImageElem = null;
 var labels = [];
 var ids = [];
-var vidske = '<div class = "video-contents"><div class = "empty"></div><div id = "_vid" class = "vid-div"></div><div class = "empty"></div></div><div class = "screenbtn-group">' +
+var vidske = '<div class = "video-contents"><div class = "empty"></div><div id = "_vid" class = "vid-div"></div><div class = "empty"></div></div><div class = "screenbtn-group screennorm">' +
 			 '<div id = "flipp"></div><div id = "screening"></div></div>';
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
@@ -203,15 +203,20 @@ function success(stream) {
 	document.getElementById('screening').innerHTML = screenhtml;
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
+		var screenClasses = document.getElementById('screenbtn-group').classList;
 		
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
 			vidClass.add('full');
+			screenClasses.remove('screennorm');
+			screenClasses.add('screenfull');
 			document.getElementById('size-img').src = "include/images/normalscreen_223px_223px.png";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
+			screenClasses.remove('screenfull');
+			screenClasses.add('screennorm');
 			document.getElementById('size-img').src = "include/images/fullscreen_212px_212px.png";
 		}
 	});
