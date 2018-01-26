@@ -82,8 +82,8 @@ var found;
 var currentScanned = "";
 
 var QR = {
-	"ID": "";
-	"registered": false;
+	"ID": "",
+	"registered": false
 };
 
 function insertQRData()
