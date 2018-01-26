@@ -113,7 +113,8 @@ function loaddata()
         var render = "<table border='1'>";
         render += "<tr><th>Name</th><th>ICNo</th><th>Email</th><th>MobileNo</th></tr>";
         for (var i = 0; i < datacount; i++) {
-		if(localStorage.key(i) !== "Record"+recnum) {
+		var key = localStorage.key(i);
+		if(key !== "Record"+recnum) {
 			continue;
 		}
 		recnum++;
