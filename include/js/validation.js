@@ -88,7 +88,7 @@ function saveitem()
 {
 	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
 	
-    var lscount = localStorage.length - 3;
+    var lscount = localStorage.length - qrData.length;
 	
     var inputs = document.querySelectorAll("input[type='text']");
 	
@@ -107,7 +107,7 @@ function loaddata()
 {
     var datacount = localStorage.length;
 	
-    if (datacount > qrdata.length)
+    if (datacount > qrData.length)
     {
 	    var recnum = 1;
         var render = "<table border='1'>";
