@@ -2,7 +2,7 @@ var v = null;
 var upImageElem = null;
 var labels = [];
 var ids = [];
-var vidske = '<div class = "video-contents"><div class = "empty"></div><div id = "_vid" class = "vid-div"></div><div class = "empty"></div></div><div>' +
+var vidske = '<div class = "video-contents"><div class = "empty"></div><div id = "_vid" class = "vid-div"></div><div class = "empty"></div></div><div class = "screenbtn-group">' +
 			 '<div id = "flipp"></div><div id = "screening"></div></div>';
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
