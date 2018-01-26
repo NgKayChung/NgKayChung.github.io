@@ -81,20 +81,24 @@ var qrData = [];
 var found;
 var currentScanned = "";
 
+var QR = {
+	"
+
 function insertQRData()
 {
 	if(localStorage.length === 0) {
-    		localStorage.setItem("ID1", JSON.stringify('3409532'));
-		localStorage.setItem("ID2", JSON.stringify('0195248'));
-		localStorage.setItem("ID3", JSON.stringify('8362941'));
+    		localStorage.setItem("QR1", JSON.stringify('3409532'));
+		localStorage.setItem("QR2", JSON.stringify('0195248'));
+		localStorage.setItem("QR3", JSON.stringify('8362941'));
 	}
 }
 
 function getQRData()
 {
 	for(var i = 0;i < localStorage.length;i++) {
-		if(localStorage.getItem("ID" + (i + 1)))
-			qrData.push(JSON.parse(localStorage.getItem("ID" + (i + 1))));
+		alert(localStorage.key(i));
+		if(localStorage.getItem("QR" + (i + 1)))
+			qrData.push(JSON.parse(localStorage.getItem("QR" + (i + 1))));
 	}
 }
 
