@@ -97,7 +97,7 @@ function saveitem()
     Person.Email = inputs[2].value;
     Person.MobileNo = inputs[3].value;
     
-    localStorage.setItem("Record" + lscount + 1, JSON.stringify(Person));
+    localStorage.setItem(("Record" + (lscount + 1)), JSON.stringify(Person));
 	
 	//to display to table
 	loaddata();
