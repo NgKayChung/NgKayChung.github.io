@@ -203,7 +203,7 @@ function success(stream) {
 	document.getElementById('screening').innerHTML = screenhtml;
 	document.getElementById('screenbtn').addEventListener('click', function() {
 		var vidClass = v.classList;
-		var screenClasses = document.getElementById('screenbtn-group').classList;
+		var screenClasses = document.getElementById('sc-grp').classList;
 		
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
