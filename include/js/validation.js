@@ -107,15 +107,16 @@ function loaddata()
 {
     var datacount = localStorage.length;
 	
-    if (datacount > 0)
-    { 
+    if (datacount > qrdata.length)
+    {
+	    var recnum = 1;
         var render = "<table border='1'>";
         render += "<tr><th>Name</th><th>ICNo</th><th>Email</th><th>MobileNo</th></tr>";
-        for (i = 0; i < datacount; i++) {
-            var key = localStorage.key(i);
-		if(!key.contains('Record')) {
+        for (var i = 0; i < datacount; i++) {
+		if(localStorage.key(i) !== "Record"+recnum) {
 			continue;
 		}
+		recnum++;
             var person = localStorage.getItem(key);
             var data = JSON.parse(person);
             
