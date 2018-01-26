@@ -12,7 +12,7 @@ var imghtml='<div id="qrfile">' +
 			'</div>';
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
 var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip-cam-512.png" alt = "Change Camera"/></div>';
-var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_214px_215px.png"/></div>';
+var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_212px_212px.png"/></div>';
 var formhtml = '<div class = "contents">' +
 '	<div class = "wrap no-w"></div>' +
 '	<div class = "wrap form-wrapper">' +
@@ -207,12 +207,12 @@ function success(stream) {
 		if(vidClass.contains('med')) {
 			vidClass.remove('med');
 			vidClass.add('full');
-			document.getElementById('size-img').src = "include/images/normalscreen_217px_218px.png";
+			document.getElementById('size-img').src = "include/images/normalscreen_223px_223px.png";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
-			document.getElementById('size-img').src = "include/images/fullscreen_214px_215px.png";
+			document.getElementById('size-img').src = "include/images/fullscreen_212px_212px.png";
 		}
 	});
 	
