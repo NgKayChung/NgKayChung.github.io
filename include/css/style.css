@@ -77,6 +77,7 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 .wrap {
 	padding: 10px;
 	height: inherit;
+	float: left;
 }
 
 .no-w {
