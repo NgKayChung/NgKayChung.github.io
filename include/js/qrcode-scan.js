@@ -98,7 +98,6 @@ function insertQRData()
 function getQRData()
 {
 	for(var i = 0;i < localStorage.length;i++) {
-		alert(localStorage.key(i) === "QR1");
 		if(localStorage.getItem("QR" + (i + 1)))
 			qrData.push(JSON.parse(localStorage.getItem("QR" + (i + 1))));
 	}
