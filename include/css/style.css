@@ -28,7 +28,17 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	}
 }
 
-@media screen and (min-width: 480px) and (max-width: 690px) {
+@media screen and (min-width: 480px) and (max-width: 600px) {
+	.no-w {
+		width: 5% !important;
+	}
+	
+	.form-wrapper, .qrdec-wrapper {
+		width: 90% !important;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 880px) {
 	.no-w {
 		width: 15% !important;
 	}
@@ -38,13 +48,13 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 	}
 }
 
-@media screen and (min-width: 690px) and (max-width: 1024px) {
+@media screen and (min-width: 600px) and (max-width: 880px) {
 	.no-w {
-		width: 25% !important;
+		width: 20% !important;
 	}
 	
 	.form-wrapper, .qrdec-wrapper {
-		width: 50% !important;
+		width: 60% !important;
 	}
 }
 
@@ -65,17 +75,16 @@ input[type="text"], input[type="checkbox"], input[type="submit"] {
 }
 
 .wrap {
-	float: left;
 	padding: 10px;
 	height: inherit;
 }
 
 .no-w {
-	width: 33.33%;
+	width: 25%;
 }
 
 .form-wrapper, .qrdec-wrapper {
-	width: 33.33%;
+	width: 50%;
 }
 
 .form-row {
