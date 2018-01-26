@@ -75,6 +75,21 @@ var formhtml = '<div class = "contents">' +
     	//'</form>'
 	'<div class = "wrap no-w"></div>' +
 '</div>';
+var instructionhtml = '<div id="id01" class="w3-modal">' +
+		    	'<div class="w3-modal-content w3-card-4 w3-animate-zoom" >' +
+		      		'<div class="w3-center"><br>' +
+						'<span onclick="document.getElementById("id01").style.display="none"" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>' +
+						'<h3>Instruction : </h3>' +
+						'<ul>' +
+							'<li> IOS 11 is supported for video scanning ONLY with Safari browser</li>' +
+							'<li> IOS version below 11 should proceed to image upload</li>' +
+							'<li> In case if your device does not support video scanning, please proceed to image upload</li>' +
+							'<li> Click / Tap the above icons for QR code reading method</li>' +
+							'<li> Please be reminded that you should allow this page to access to camera / photo gallery when prompted</li>' +
+						'</ul>' +
+					'</div>' +
+				'</div>' +
+			'</div>';
 var vidMed = true;
 var front = false;
 var qrData = [];
@@ -141,6 +156,8 @@ function stopMedia()
 
 function setwebcam()
 {
+	document.getElementById('temp').innerHTML = instructionhtml;
+	document.getElementById('inst_btn').style.display = "block";
 	document.getElementById('result').innerHTML = "";
 	document.getElementById('outdiv').innerHTML = vidske;
 	done = false;
@@ -350,6 +367,8 @@ function submitImage()
 
 function setimg()
 {
+	document.getElementById('temp').innerHTML = instructionhtml;
+	document.getElementById('inst_btn').style.display = "block";
 	if(window.stream) {
 		stopMedia();
 	}
