@@ -161,7 +161,7 @@ function load()
 		phoneOK = true;
 		checkForms();
     });
-	
+	document.getElementById('inst_btn').remove();
 	//Save object into the localstorage 
 var submit = document.getElementById('form-submit'); 
 submit.addEventListener('click', saveitem, false);
