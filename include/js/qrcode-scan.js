@@ -27,7 +27,7 @@ var formhtml = '<div class = "contents">' +
 		'	</div>' +
 		'	<div class = "form-row">' +
 		'		<div class = "name-wrapper">' +
-		'			<label>Name <span class = "req_ind">*</span></label>' +
+		'			<label>Full Name As Per IC<span class = "req_ind">*</span></label>' +
 		'		</div>' +
 		'		<div class = "input-wrapper">' +
 		'			<input type = "text" class = "for-input" id = "fullname" name = "fullname"/>' +
