@@ -84,6 +84,13 @@ var Person = {
 	MobileNo: ""
 };
 
+function saveQR()
+{
+	for(var i = 0;i < qrData.length;i++) {
+		localStorage.setItem(("QR" + (i + 1)), JSON.stringify(qrData[i]));
+	}
+}
+
 function saveitem()
 {
 	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
