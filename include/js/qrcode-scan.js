@@ -276,7 +276,7 @@ function searchInStorage()
 {
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i].getID() === currentScanned) {
-			 return i;
+			 foundindex = i;
 		}
 	}
 }
@@ -294,7 +294,7 @@ function startDecode() {
 			done = true;
 			currentScanned = res;
 			
-			foundindex = searchInStorage();
+			searchInStorage();
 			
 			setTimeout(function(){
 			if(foundindex !== -1) {
@@ -379,7 +379,7 @@ function decodeImage()
 			done = true;
 			currentScanned = res;
 			
-			foundindex = searchInStorage();
+			searchInStorage();
 			
 			setTimeout(function(){
 			if(foundindex !== -1) {
