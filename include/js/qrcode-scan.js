@@ -109,6 +109,10 @@ function QR(id) {
 	this.isRegistered = function() {
 		return this.registered;
 	}
+	
+	this.setRegistered = function() {
+		this.registered = true;
+	}
 };
 
 function insertQRData()
