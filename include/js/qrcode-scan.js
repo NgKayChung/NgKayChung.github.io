@@ -101,18 +101,6 @@ var foundindex = -1;
 function QR(id) {
 	this.ID = id;
 	this.registered = false;
-	
-	this.getID = function() {
-		return this.ID;
-	}
-	
-	this.isRegistered = function() {
-		return this.registered;
-	}
-	
-	this.setRegistered = function() {
-		this.registered = true;
-	}
 };
 
 function insertQRData()
@@ -299,7 +287,7 @@ function startDecode() {
 			
 			setTimeout(function(){
 			if(foundindex != -1) {
-				if(qrData[foundindex].isRegistered()) {
+				if(qrData[foundindex].registered) {
 					alert(currentScanned + " already registered and used");
 					v.srcObject = null;
 					stopMedia();
@@ -384,7 +372,7 @@ function decodeImage()
 			
 			setTimeout(function(){
 			if(foundindex != -1) {
-				if(qrData[foundindex].isRegistered()) {
+				if(qrData[foundindex].registered) {
 					alert(currentScanned + " already registered and used");
 					setimg();
 				}
