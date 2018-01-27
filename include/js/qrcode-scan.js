@@ -16,13 +16,13 @@ var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/imag
 var formhtml = '<div class = "contents">' +
 '	<div class = "wrap no-w"></div>' +
 '	<div class = "wrap form-wrapper">' +
-		'<div class = "overlay-screen">' +
+		'<!--div class = "overlay-screen">' +
 		'<div class="lds-css ng-scope">' +
 		'	<div style="width: 100%; height: 100%" class="lds-eclipse">' +
 		'		<div></div>' +
 		'	</div>' +
 		'</div>' +
-		'</div>' +
+		'</div-->' +
 		//'<form>'
 		'	<div class = "form-row">' +
 		'		<p><span class = "req_ind">*</span> indicates required field</p>' +
