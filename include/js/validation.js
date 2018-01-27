@@ -86,7 +86,7 @@ var Person = {
 
 function saveQR()
 {
-	qrData[foundindex].setRegistered();
+	qrData[foundindex].registered = true;
 	for(var i = 0;i < qrData.length;i++) {
 		localStorage.setItem(("QR" + (i + 1)), JSON.stringify(qrData[i]));
 	}
