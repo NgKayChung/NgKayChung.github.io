@@ -265,7 +265,6 @@ function searchInStorage()
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i].ID === currentScanned) {
 			 foundindex = i;
-			alert(foundindex);
 		}
 	}
 }
