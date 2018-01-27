@@ -275,7 +275,7 @@ var done = false;
 function searchInStorage()
 {
 	for(var i = 0;i < qrData.length;i++) {
-		if(qrData[i].getID === currentScanned) {
+		if(qrData[i].getID() === currentScanned) {
 			 return i;
 		}
 	}
