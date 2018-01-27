@@ -298,7 +298,7 @@ function startDecode() {
 			
 			setTimeout(function(){
 			if(foundindex !== -1) {
-				if(qrData[foundindex].isRegistered) {
+				if(qrData[foundindex].isRegistered()) {
 					alert(currentScanned + " already registered and used");
 					v.srcObject = null;
 					stopMedia();
@@ -383,7 +383,7 @@ function decodeImage()
 			
 			setTimeout(function(){
 			if(foundindex !== -1) {
-				if(qrData[foundindex].isRegistered) {
+				if(qrData[foundindex].isRegistered()) {
 					alert(currentScanned + " already registered and used");
 					setimg();
 				}
