@@ -96,7 +96,7 @@ var vidMed = true;
 var front = false;
 var qrData = [];
 var currentScanned = "";
-var foundindex;
+var foundindex = -1;
 
 function QR(id) {
 	this.ID = id;
@@ -276,17 +276,15 @@ function searchInStorage()
 {
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i].getID === currentScanned) {
-			alert(qrData[i].getID);
 			 return i;
 		}
 	}
-	return -1;
 }
 
 function startDecode() {
     'use strict';
     var qr = QCodeDecoder();
-
+	foundindex = -1;
     qr.decodeFromVideo(v, function(er,res) {
 		if(er && !done) {
 			console.log(er);
@@ -368,7 +366,9 @@ function decodeImage()
 {
 	'use strict';
     var qr = QCodeDecoder();
-	 
+	
+	 foundindex = -1;
+	
     qr.decodeFromImage(upImageElem, function(err, res){
 		if(err && !done) {
 			alert("Cannot read QR code from the image, please upload again");
