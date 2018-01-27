@@ -78,7 +78,7 @@ var formhtml = '<div class = "contents">' +
 var instructionhtml = '<div id="id01" class="w3-modal">' +
 		    	'<div class="w3-modal-content w3-card-4 w3-animate-zoom" >' +
 		      		'<div class="w3-center"><br>' +
-						'<span onclick="document.getElementById("id01").style.display="none"" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>' +
+						'<span onclick="document.getElementById(\'id01\').style.display=\'none\'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>' +
 						'<h3>Instruction : </h3>' +
 						'<ul>' +
 							'<li> IOS 11 is supported for video scanning ONLY with Safari browser</li>' +
