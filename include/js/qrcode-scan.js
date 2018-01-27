@@ -96,6 +96,7 @@ var vidMed = true;
 var front = false;
 var qrData = [];
 var currentScanned = "";
+var foundindex;
 
 function QR(id) {
 	this.ID = id;
@@ -271,7 +272,7 @@ function searchInStorage()
 {
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i].getID === currentScanned) {
-			 return qrData[i];
+			 return i;
 		}
 	}
 	return -1;
@@ -290,11 +291,11 @@ function startDecode() {
 			done = true;
 			currentScanned = res;
 			
-			var qr = searchInStorage();
+			foundindex = searchInStorage();
 			
 			setTimeout(function(){
-			if(qr !== -1) {
-				if(qr.isRegistered) {
+			if(foundindex !== -1) {
+				if(qrData[foundindex].isRegistered) {
 					alert(currentScanned + " already registered and used");
 					v.srcObject = null;
 					stopMedia();
@@ -373,11 +374,11 @@ function decodeImage()
 			done = true;
 			currentScanned = res;
 			
-			var qr = searchInStorage();
+			foundindex = searchInStorage();
 			
 			setTimeout(function(){
-			if(qr !== -1) {
-				if(qr.isRegistered) {
+			if(foundindex !== -1) {
+				if(qrData[foundindex].isRegistered) {
 					alert(currentScanned + " already registered and used");
 					setimg();
 				}
