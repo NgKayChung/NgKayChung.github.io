@@ -16,11 +16,13 @@ var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/imag
 var formhtml = '<div class = "contents">' +
 '	<div class = "wrap no-w"></div>' +
 '	<div class = "wrap form-wrapper">' +
-		'<!--div class="lds-css ng-scope">' +
+		'<div class = "overlay-screen">' +
+		'<div class="lds-css ng-scope">' +
 		'	<div style="width: 100%; height: 100%" class="lds-eclipse">' +
 		'		<div></div>' +
 		'	</div>' +
-		'</div-->' +
+		'</div>' +
+		'</div>' +
 		//'<form>'
 		'	<div class = "form-row">' +
 		'		<p><span class = "req_ind">*</span> indicates required field</p>' +
@@ -93,20 +95,27 @@ var instructionhtml = '<div id="id01" class="w3-modal">' +
 var vidMed = true;
 var front = false;
 var qrData = [];
-var found;
 var currentScanned = "";
 
-var QR = {
-	"ID": "",
-	"registered": false
+function QR(id) {
+	this.ID = id;
+	this.registered = false;
+	
+	this.getID = function() {
+		return this.ID;
+	}
+	
+	this.isRegistered = function() {
+		return this.registered;
+	}
 };
 
 function insertQRData()
 {
 	if(localStorage.length === 0) {
-    		localStorage.setItem("QR1", JSON.stringify('3409532'));
-		localStorage.setItem("QR2", JSON.stringify('0195248'));
-		localStorage.setItem("QR3", JSON.stringify('2335432'));
+    	localStorage.setItem("QR1", JSON.stringify(new QR("3409532")));
+		localStorage.setItem("QR2", JSON.stringify(new QR("0195248")));
+		localStorage.setItem("QR3", JSON.stringify(new QR("2335432")));
 	}
 }
 
@@ -116,6 +125,19 @@ function getQRData()
 		if(localStorage.getItem("QR" + (i + 1)))
 			qrData.push(JSON.parse(localStorage.getItem("QR" + (i + 1))));
 	}
+}
+
+function initialize()
+{
+	document.getElementById('temp').innerHTML = instructionhtml;
+	document.getElementById('inst_btn').style.display = "block";
+	
+	if(window.stream) {
+		stopMedia();
+	}
+	
+	done = false;
+	document.getElementById("result").innerHTML="";
 }
 
 function searchDevices()
@@ -156,11 +178,8 @@ function stopMedia()
 
 function setwebcam()
 {
-	document.getElementById('temp').innerHTML = instructionhtml;
-	document.getElementById('inst_btn').style.display = "block";
-	document.getElementById('result').innerHTML = "";
+	initialize();
 	document.getElementById('outdiv').innerHTML = vidske;
-	done = false;
 	ids = [];
 	
 	if(!searchDevices()) {
@@ -251,15 +270,15 @@ var done = false;
 function searchInStorage()
 {
 	for(var i = 0;i < qrData.length;i++) {
-		if(qrData[i] == currentScanned) {
-			found = true;
+		if(qrData[i].getID === currentScanned) {
+			 return qrData[i];
 		}
 	}
+	return -1;
 }
 
 function startDecode() {
     'use strict';
-    found = false;
     var qr = QCodeDecoder();
 
     qr.decodeFromVideo(v, function(er,res) {
@@ -270,15 +289,25 @@ function startDecode() {
 		if(res && !done) {
 			done = true;
 			currentScanned = res;
-			searchInStorage();
+			
+			var qr = searchInStorage();
+			
 			setTimeout(function(){
-			if(found) {
-				alert(currentScanned + " is a valid receipt ID");
-				var resElem = document.getElementById('result');
-				resElem.innerHTML = "QR code successfully read and submitted !";
-				resElem.style.color = "green";
-				document.getElementById('outdiv').innerHTML = formhtml;
-				load();
+			if(qr !== -1) {
+				if(qr.isRegistered) {
+					alert(currentScanned + " already registered and used");
+					v.srcObject = null;
+					stopMedia();
+					location.reload();
+				}
+				else {
+					alert(currentScanned + " is a valid receipt ID");
+					var resElem = document.getElementById('result');
+					resElem.innerHTML = "QR code successfully read and submitted !";
+					resElem.style.color = "green";
+					document.getElementById('outdiv').innerHTML = formhtml;
+					load();
+				}
 			}
 			else {
 				alert(currentScanned + " is not a valid receipt ID");
@@ -286,13 +315,15 @@ function startDecode() {
 				stopMedia();
 				location.reload();
 			}
-			}, 1000);
+			}, 500);
 		}
     });
 }
 
 function flipCamera()
 {
+	//hide buttons
+	document.getElementById('sc-grp').style.visibility = "collapse";
 	var scanElem = document.getElementById("result");
 	scanElem.innerHTML="- changing -";
 	scanElem.style.color = "yellow";
@@ -308,6 +339,7 @@ function flipCamera()
 	var options = {deviceId: tempId, facingMode: (front ? 'user' : 'environment')};
 	
 	setwebcam2(options);
+	document.getElementById('sc-grp').style.visibility = "visible";
 }
 
 function handleFile(f)
@@ -329,7 +361,6 @@ function handleFile(f)
 function decodeImage()
 {
 	'use strict';
-    found = false;
     var qr = QCodeDecoder();
 	 
     qr.decodeFromImage(upImageElem, function(err, res){
@@ -341,21 +372,29 @@ function decodeImage()
 		if(res && !done) {
 			done = true;
 			currentScanned = res;
-			searchInStorage();
+			
+			var qr = searchInStorage();
+			
 			setTimeout(function(){
-			if(found) {
-				alert(currentScanned + " is a valid receipt ID");
-				var resElem = document.getElementById('result');
-				resElem.innerHTML = "QR code successfully read and submitted !";
-				resElem.style.color = "green";
-				document.getElementById('outdiv').innerHTML = formhtml;
-				load();
+			if(qr !== -1) {
+				if(qr.isRegistered) {
+					alert(currentScanned + " already registered and used");
+					setimg();
+				}
+				else {
+					alert(currentScanned + " is a valid receipt ID");
+					var resElem = document.getElementById('result');
+					resElem.innerHTML = "QR code successfully read and submitted !";
+					resElem.style.color = "green";
+					document.getElementById('outdiv').innerHTML = formhtml;
+					load();
+				}
 			}
 			else {
 				alert(currentScanned + " is not a valid receipt ID");
 				setimg();
 			}
-			}, 1000);
+			}, 500);
 		}
 	}, true);
 }
@@ -367,13 +406,7 @@ function submitImage()
 
 function setimg()
 {
-	document.getElementById('temp').innerHTML = instructionhtml;
-	document.getElementById('inst_btn').style.display = "block";
-	if(window.stream) {
-		stopMedia();
-	}
-	done = false;
-	document.getElementById("result").innerHTML="";
+	initialize();
     document.getElementById("outdiv").innerHTML = imghtml;
 	getQRData();
 }
