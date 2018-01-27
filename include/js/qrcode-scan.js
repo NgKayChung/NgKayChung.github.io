@@ -118,7 +118,7 @@ function QR(id) {
 function insertQRData()
 {
 	if(localStorage.length === 0) {
-    	localStorage.setItem("QR1", JSON.stringify(new QR("3409532")));
+    		localStorage.setItem("QR1", JSON.stringify(new QR("3409532")));
 		localStorage.setItem("QR2", JSON.stringify(new QR("0195248")));
 		localStorage.setItem("QR3", JSON.stringify(new QR("2335432")));
 	}
@@ -320,7 +320,7 @@ function startDecode() {
 				stopMedia();
 				location.reload();
 			}
-			}, 500);
+			}, 1000);
 		}
     });
 }
@@ -399,7 +399,7 @@ function decodeImage()
 				alert(currentScanned + " is not a valid receipt ID");
 				setimg();
 			}
-			}, 500);
+			}, 1000);
 		}
 	}, true);
 }
