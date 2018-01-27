@@ -84,17 +84,15 @@ var Person = {
 	MobileNo: ""
 };
 
-function saveQR()
+function saveRegisteredQR()
 {
 	qrData[foundindex].registered = true;
-	for(var i = 0;i < qrData.length;i++) {
-		localStorage.setItem(("QR" + (i + 1)), JSON.stringify(qrData[i]));
-	}
+	localStorage.setItem(("QR" + (foundindex + 1)), JSON.stringify(qrData[foundindex]));
 }
 
 function saveitem()
 {
-	saveQR();
+	saveRegisteredQR();
 	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
 	
     var lscount = localStorage.length - qrData.length;
