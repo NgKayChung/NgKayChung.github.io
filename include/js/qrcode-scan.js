@@ -277,6 +277,7 @@ function searchInStorage()
 	for(var i = 0;i < qrData.length;i++) {
 		if(qrData[i].getID() === currentScanned) {
 			 foundindex = i;
+			alert(foundindex);
 		}
 	}
 }
@@ -297,7 +298,7 @@ function startDecode() {
 			searchInStorage();
 			
 			setTimeout(function(){
-			if(foundindex !== -1) {
+			if(foundindex != -1) {
 				if(qrData[foundindex].isRegistered()) {
 					alert(currentScanned + " already registered and used");
 					v.srcObject = null;
@@ -382,7 +383,7 @@ function decodeImage()
 			searchInStorage();
 			
 			setTimeout(function(){
-			if(foundindex !== -1) {
+			if(foundindex != -1) {
 				if(qrData[foundindex].isRegistered()) {
 					alert(currentScanned + " already registered and used");
 					setimg();
