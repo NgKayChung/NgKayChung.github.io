@@ -140,11 +140,11 @@ video.med {
 
 @media screen and (min-width: 600px) and (max-width: 880px) {
 	.no-w {
-		width: 15% !important;
+		width: 20% !important;
 	}
 	
 	.form-wrapper, .qrdec-wrapper {
-		width: 70% !important;
+		width: 60% !important;
 	}
 	
 	.screennorm {
@@ -152,16 +152,6 @@ video.med {
 		left: 38%;
 	}
 }
-
-/*@media screen and (min-width: 600px) and (max-width: 880px) {
-	.no-w {
-		width: 20% !important;
-	}
-	
-	.form-wrapper, .qrdec-wrapper {
-		width: 60% !important;
-	}
-}*/
 
 .qr-contents {
 	height: auto !important;
