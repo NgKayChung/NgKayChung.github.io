@@ -190,7 +190,7 @@ function setwebcam()
 		
 		if(!(ids.length > 0)) {
 			alert("No video input device detected, please proceed to upload image to complete the registration");
-			return;
+			//return;
 		}
 		
 		var tempId = ids.pop();
