@@ -290,7 +290,7 @@ function startDecode() {
 			currentScanned = res;
 			
 			searchInStorage();
-			
+			alert(foundindex);
 			setTimeout(function(){
 			if(foundindex != -1) {
 				if(qrData[foundindex].registered) {
@@ -375,7 +375,7 @@ function decodeImage()
 			currentScanned = res;
 			
 			searchInStorage();
-			
+			alert(foundindex);
 			setTimeout(function(){
 			if(foundindex != -1) {
 				if(qrData[foundindex].registered) {
