@@ -392,7 +392,7 @@ function decodeImage()
 			}
 			else {
 				alert(currentScanned + " is not a valid receipt ID");
-				setimg();
+				location.reload();
 			}
 			}, 1000);
 		}
