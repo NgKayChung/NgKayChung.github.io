@@ -111,7 +111,7 @@ function QR(id) {
 
 function insertQRData()
 {
-	if(localStorage.length === 0) {
+	if(localStorage.length <= 0) {
     		localStorage.setItem("QR1", JSON.stringify(new QR("DP2201801260263")));
 		localStorage.setItem("QR2", JSON.stringify(new QR("DP2201801250350")));
 		localStorage.setItem("QR3", JSON.stringify(new QR("DP2201801239403")));
@@ -128,6 +128,7 @@ function getQRData()
 
 function initialize()
 {
+	insertQRData();
 	document.getElementById('temp').innerHTML = instructionhtml;
 	document.getElementById('inst_btn').style.display = "block";
 	
