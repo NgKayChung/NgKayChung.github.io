@@ -91,6 +91,7 @@ video.med {
 	
 #screenbtn, #flipbtn {
 	background-color: #FFFFFF;
+	border: 1px solid #000000;
 	border-radius: 5px;
 }
 
