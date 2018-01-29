@@ -29,7 +29,7 @@ var formhtml = '<div class = "contents">' +
 		'	</div>' +
 		'	<div class = "form-row">' +
 		'		<div class = "name-wrapper">' +
-		'			<label>Full Name As Per IC<span class = "req_ind">*</span></label>' +
+		'			<label>Full Name As Per IC <span class = "req_ind">*</span></label>' +
 		'		</div>' +
 		'		<div class = "input-wrapper">' +
 		'			<input type = "text" class = "for-input" id = "fullname" name = "fullname"/>' +
@@ -65,7 +65,12 @@ var formhtml = '<div class = "contents">' +
 		'	</div>' +
 		'	<div class = "form-row">' +
 		'		<div class = "input-wrapper">' +
-		'			<input type = "checkbox" id = "tnc" name = "tnc" required/> I have read and agreed to the <a href = "#">Terms &amp; Conditions</a>&nbsp;<span class = "req_ind">*</span>' +
+    					'<div>' +
+					'<input type = "checkbox" id = "tnc" name = "tnc" required/>' +
+					'</div>' +
+    					'<div>' +
+    					'I have read and agreed to the <a href = "#">Terms &amp; Conditions</a>&nbsp;<span class = "req_ind">*</span>' +
+    					'</div>' +
 			'	</div>' +
 			'</div>' +
 			'<div class = "form-row">' +
