@@ -11,8 +11,8 @@ var imghtml='<div id="qrfile">' +
 	   		'</div>' +
 			'</div>';
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
-var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip_cam_96px_61px.png" alt = "Change Camera"/></div>';
-var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_94px_94px.png"/></div>';
+var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip_cam_95px_76px.png" alt = "Change Camera"/></div>';
+var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_96px_95px.png"/></div>';
 var formhtml = '<div class = "contents">' +
 '	<div class = "wrap no-w"></div>' +
 '	<div class = "wrap form-wrapper">' +
@@ -244,14 +244,14 @@ function success(stream) {
 			vidClass.add('full');
 			screenClasses.remove('screennorm');
 			screenClasses.add('screenfull');
-			document.getElementById('size-img').src = "include/images/normalscreen_97px_97px.png";
+			document.getElementById('size-img').src = "include/images/normalscreen_95px_95px.png";
 		}
 		else if(vidClass.contains('full')) {
 			vidClass.remove('full');
 			vidClass.add('med');
 			screenClasses.remove('screenfull');
 			screenClasses.add('screennorm');
-			document.getElementById('size-img').src = "include/images/fullscreen_94px_94px.png";
+			document.getElementById('size-img').src = "include/images/fullscreen_96px_95px.png";
 		}
 	});
 	
