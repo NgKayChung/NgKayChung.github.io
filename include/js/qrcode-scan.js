@@ -64,13 +64,14 @@ var formhtml = '<div class = "contents">' +
 			'	<div id = "phone-err" class = "err"></div>' +
 		'	</div>' +
 		'	<div class = "form-row">' +
-		'		<div class = "input-wrapper">' +
-    					'<div>' +
+		'		<div class = "input-wrapper termsandcond">' +
+    					'<div class = "tncbox">' +
 					'<input type = "checkbox" id = "tnc" name = "tnc" required/>' +
 					'</div>' +
-    					'<div>' +
+    					'<div class = "tncdesc">' +
     					'I have read and agreed to the <a href = "#">Terms &amp; Conditions</a>&nbsp;<span class = "req_ind">*</span>' +
     					'</div>' +
+    					'<div class = "clear"></div>' +
 			'	</div>' +
 			'</div>' +
 			'<div class = "form-row">' +
