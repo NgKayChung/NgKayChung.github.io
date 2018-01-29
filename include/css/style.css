@@ -192,6 +192,22 @@ video.med {
 	margin: 5px 0px;
 }
 
+.termsandcond {
+	overflow: auto;
+	width: 100%;
+}
+
+.tncbox { 
+	float: left;
+	width: 12%;
+	padding: 5px;
+}
+
+.tncdesc {
+	float: left;
+	width: 88%;
+}
+
 .btn-grp {
 	width: 100%;
 	padding: 5px;
