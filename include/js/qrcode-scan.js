@@ -379,7 +379,7 @@ function decodeImage()
 			if(foundindex != -1) {
 				if(qrData[foundindex].registered) {
 					alert(currentScanned + " already registered and used");
-					setimg();
+					location.reload();
 				}
 				else {
 					alert(currentScanned + " is a valid receipt ID");
