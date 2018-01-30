@@ -10,6 +10,13 @@ div, label, input[type="text"] {
 	display: block;
 }
 
+header {
+	display: inline-block;
+	text-align: center;
+	padding: 5px;
+	width: 100%;
+}
+
 input[type="text"], input[type="checkbox"], input[type="submit"] {
 	outline: none;
 }
@@ -21,6 +28,18 @@ ul {
 
 li {
 	padding: 5px 0px;
+}
+
+#kklogo {
+	padding: 10px;
+}
+
+#kklogo img {
+	width: 210px;
+}
+
+#titlename {
+	padding: 3px;
 }
 
 video.full { 
@@ -123,7 +142,7 @@ video.med {
 		width: 0% !important;
 	}
 	
-	.form-wrapper, .qrdec-wrapper {
+	.headmain, .form-wrapper, .qrdec-wrapper {
 		width: 100% !important;
 	}
 }
@@ -133,7 +152,7 @@ video.med {
 		width: 5% !important;
 	}
 	
-	.form-wrapper, .qrdec-wrapper {
+	.headmain, .form-wrapper, .qrdec-wrapper {
 		width: 90% !important;
 	}
 }
@@ -143,7 +162,7 @@ video.med {
 		width: 20% !important;
 	}
 	
-	.form-wrapper, .qrdec-wrapper {
+	.headmain, .form-wrapper, .qrdec-wrapper {
 		width: 60% !important;
 	}
 	
