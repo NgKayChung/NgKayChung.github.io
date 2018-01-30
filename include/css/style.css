@@ -142,7 +142,7 @@ video.med {
 		width: 0% !important;
 	}
 	
-	.headmain, .form-wrapper, .qrdec-wrapper {
+	.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
 		width: 100% !important;
 	}
 }
@@ -152,7 +152,7 @@ video.med {
 		width: 5% !important;
 	}
 	
-	.headmain, .form-wrapper, .qrdec-wrapper {
+	.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
 		width: 90% !important;
 	}
 }
@@ -162,7 +162,7 @@ video.med {
 		width: 20% !important;
 	}
 	
-	.headmain, .form-wrapper, .qrdec-wrapper {
+	.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
 		width: 60% !important;
 	}
 	
@@ -198,8 +198,12 @@ video.med {
 	width: 25%;
 }
 
-.headmain, .form-wrapper, .qrdec-wrapper {
+.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
 	width: 50%;
+}
+
+.side {
+	height: 100% !important;
 }
 
 .form-row {
