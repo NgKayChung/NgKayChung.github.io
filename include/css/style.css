@@ -162,11 +162,11 @@ video.med {
 	}
 	
 	.side-w {
-		width: 10% !important;
+		width: 5% !important;
 	}
 	
 	.allwrap {
-		width: 80% !important;
+		width: 90% !important;
 	}
 	
 	.headmain, .form-wrapper, .qrdec-wrapper {
@@ -201,11 +201,19 @@ video.med {
 	float: left;
 }
 
-.no-w, .side-w {
+.side-w {
+	width: 15%;
+}
+
+.no-w{
 	width: 25%;
 }
 
-.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
+.allwrap {
+	width: 70%;
+}
+
+.headmain, .form-wrapper, .qrdec-wrapper {
 	width: 50%;
 }
 
