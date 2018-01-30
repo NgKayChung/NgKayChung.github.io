@@ -130,6 +130,12 @@ video.med {
 	clear: both;
 }
 
+.empty {
+	float: left;
+	width: 25%;
+	min-height: 10px;
+}
+
 @media screen and (max-width: 480px) {
 	.wrap {
 		padding: 0 !important;
