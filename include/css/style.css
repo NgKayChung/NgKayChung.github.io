@@ -10,6 +10,10 @@ div, label, input[type="text"] {
 	display: block;
 }
 
+input[type="file"] {
+	display: none;
+}
+
 header {
 	display: inline-block;
 	text-align: center;
@@ -244,6 +248,12 @@ video.med {
 .tncdesc {
 	float: left;
 	width: 88%;
+}
+
+.upimg {
+	padding: 20px;
+	border: 2px solid black;
+	border-radius: 7px;
 }
 
 .btn-grp {
