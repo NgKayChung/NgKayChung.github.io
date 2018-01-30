@@ -147,7 +147,7 @@ video.med {
 }
 
 @media screen and (min-width: 480px) and (max-width: 600px) {
-	.no-w {
+	.no-w, .side-w {
 		width: 5% !important;
 	}
 	
@@ -201,7 +201,7 @@ video.med {
 	float: left;
 }
 
-.no-w {
+.no-w, .side-w {
 	width: 25%;
 }
 
