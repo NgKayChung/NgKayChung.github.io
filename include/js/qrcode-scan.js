@@ -6,8 +6,8 @@ var vidske = '<div class = "video-contents"><div class = "empty"></div><div id =
 			 '<div id = "flipp"></div><div id = "screening"></div></div>';
 var vidhtml = '<video id="v" autoplay playsinline></video>';
 var imghtml='<div id="qrfile">' +
-            '<div id="imgupcon"><p>Select an image file</p>' +
-	    	'<input type="file" accept = "image/*" onchange = "handleFile(this.files)"/>' +
+            '<div id="imgupcon"><label class = "upimg" for = "upimagebtn">Select an image file</label>' +
+	    	'<input type="file" id = "upimagebtn" accept = "image/*" onchange = "handleFile(this.files)"/>' +
 	   		'</div>' +
 			'</div>';
 var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitImage()">Submit Image</button><img id = "decimg" src = ""/></div>';
