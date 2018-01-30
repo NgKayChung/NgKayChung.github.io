@@ -15,7 +15,7 @@ input[type="file"] {
 }
 
 .pg-contents-wrapper {
-	height: 
+	height: auto;
 	background-color: #F67820;
 }
 
@@ -201,6 +201,7 @@ video.med {
 
 .allwrap {
 	width: 70%;
+	background-color: #FFFFFF;
 }
 
 .headmain, .form-wrapper, .qrdec-wrapper {
