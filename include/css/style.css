@@ -101,12 +101,6 @@ video.med {
 	z-index: 100 !important;
 }
 
-.empty {
-	float: left;
-	width: 25%;
-	min-height: 10px;
-}
-
 #screening, #flipp {
 	padding-bottom: 5px;
 }
@@ -141,30 +135,16 @@ video.med {
 		padding: 0 !important;
 	}
 	
-	.no-w, .side-w {
+	.side-w {
 		width: 0% !important;
 	}
 	
-	.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
+	.allwrap {
 		width: 100% !important;
 	}
 }
 
 @media screen and (min-width: 480px) and (max-width: 600px) {
-	.no-w, .side-w {
-		width: 5% !important;
-	}
-	
-	.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
-		width: 90% !important;
-	}
-}
-
-@media screen and (min-width: 600px) and (max-width: 880px) {
-	.no-w {
-		width: 20% !important;
-	}
-	
 	.side-w {
 		width: 5% !important;
 	}
@@ -172,9 +152,15 @@ video.med {
 	.allwrap {
 		width: 90% !important;
 	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 880px) {
+	.side-w {
+		width: 5% !important;
+	}
 	
-	.headmain, .form-wrapper, .qrdec-wrapper {
-		width: 60% !important;
+	.allwrap {
+		width: 90% !important;
 	}
 	
 	.screennorm {
@@ -193,12 +179,6 @@ video.med {
 	padding: 10px 20px;
 }
 
-.contents:after, .qr-contents:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 .wrap {
 	padding: 10px;
 	height: inherit;
@@ -209,20 +189,16 @@ video.med {
 	width: 15%;
 }
 
-.no-w{
-	width: 25%;
-}
-
 .allwrap {
 	width: 70%;
 }
 
 .headmain, .form-wrapper, .qrdec-wrapper {
-	width: 50%;
+	width: 100%;
 }
 
 .side {
-	height: 100% !important;
+	height: 100%;
 	background-color: #F67820;
 }
 
