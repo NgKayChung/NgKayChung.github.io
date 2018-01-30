@@ -10,79 +10,81 @@
 <script type = "text/javascript" src = "include\js\qrcode-scan.js"></script>
 </head>
 <body>
-<div class = "wrap side-w side"></div>
-<div class = "wrap allwrap">
-	<header>
-		<div class = "wrap no-w"></div>
-		<div class = "wrap headmain">
-			<div id = "kklogo"><img src = "http://www.kkgroup.my/images/user/content/KK_logo.jpg"/></div>
-			<div id = "titlename">
-				<label>SCAN TO WIN !!</label>
-			</div>
-		</div>
-		<div class = "wrap no-w"></div>
-	</header>
-	<div class = "clear"></div>
-	<div class = "contents qr-contents">
-		<div class = "wrap no-w"></div>
-		<div class = "wrap qrdec-wrapper">
-			<div class = "btn-grp">
-				<div class = "icon-wrap">
-					<div id = "scan" class = "icon vidscan-wrap hvr-float" title "Video QR Scan" onclick = "setwebcam()">
-						<img src = "include/images/video_scanner_icon.png" width = "45" height = "40"/>
-					</div>
-				</div>
-				<div class = "icon-wrap">
-					<div id = "photo" class = "icon imgup-wrap hvr-float" title = "QR Image Capture / Upload" onclick = "setimg()">
-						<img src = "include/images/image_upload_icon.png" width = "45" height = "40"/>
-					</div>
-				</div>
-			</div>
-			<div class="clear"></div>
-			<div>
-				<div>
-					<div id = "result"></div>
-				</div>
-				<div id = "outdiv">
-					<div class = "video-contents">
-						<div class = "empty"></div>
-						<div id = "_vid" class = "vid-div"></div>
-						<div class = "empty"></div>
-					</div>
-					<div id = "sc-grp" class = "screenbtn-group screennorm">
-							<div id = "flipp"></div>
-							<div id = "screening"></div>
-					</div>
-				</div>
-			</div>
-			<button id = "inst_btn" onclick="document.getElementById('id01').style.display='block'" class="button button1">READ INSTRUCTIONS</button>
-			<div id = "temp">
-				<div id="id01" class="w3-modal">
-					<div class="w3-modal-content w3-card-4 w3-animate-zoom" >
-						<div class="w3-center"><br>
-							<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
-							<h3>Instruction : </h3>
-							<ul>
-								<li> IOS 11 is supported for video scanning ONLY with Safari browser</li>
-								<li> IOS version below 11 should proceed to image upload</li>
-								<li> In case if your device does not support video scanning, please proceed to image upload</li>
-								<li> Click / Tap the above icons for QR code reading method</li>
-								<li> Please be reminded that you should allow this page to access to camera / photo gallery when prompted</li>
-							</ul>
-						</div>
-					</div>
+<div class = "pg-contents-wrapper">
+	<div class = "wrap side-w side"></div>
+	<div class = "wrap allwrap">
+		<header>
+			<div class = "wrap no-w"></div>
+			<div class = "wrap headmain">
+				<div id = "kklogo"><img src = "http://www.kkgroup.my/images/user/content/KK_logo.jpg"/></div>
+				<div id = "titlename">
+					<label>SCAN TO WIN !!</label>
 				</div>
 			</div>
 			<div class = "wrap no-w"></div>
-			
+		</header>
+		<div class = "clear"></div>
+		<div class = "contents qr-contents">
+			<div class = "wrap no-w"></div>
+			<div class = "wrap qrdec-wrapper">
+				<div class = "btn-grp">
+					<div class = "icon-wrap">
+						<div id = "scan" class = "icon vidscan-wrap hvr-float" title "Video QR Scan" onclick = "setwebcam()">
+							<img src = "include/images/video_scanner_icon.png" width = "45" height = "40"/>
+						</div>
+					</div>
+					<div class = "icon-wrap">
+						<div id = "photo" class = "icon imgup-wrap hvr-float" title = "QR Image Capture / Upload" onclick = "setimg()">
+							<img src = "include/images/image_upload_icon.png" width = "45" height = "40"/>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div>
+					<div>
+						<div id = "result"></div>
+					</div>
+					<div id = "outdiv">
+						<div class = "video-contents">
+							<div class = "empty"></div>
+							<div id = "_vid" class = "vid-div"></div>
+							<div class = "empty"></div>
+						</div>
+						<div id = "sc-grp" class = "screenbtn-group screennorm">
+								<div id = "flipp"></div>
+								<div id = "screening"></div>
+						</div>
+					</div>
+				</div>
+				<button id = "inst_btn" onclick="document.getElementById('id01').style.display='block'" class="button button1">READ INSTRUCTIONS</button>
+				<div id = "temp">
+					<div id="id01" class="w3-modal">
+						<div class="w3-modal-content w3-card-4 w3-animate-zoom" >
+							<div class="w3-center"><br>
+								<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+								<h3>Instruction : </h3>
+								<ul>
+									<li> IOS 11 is supported for video scanning ONLY with Safari browser</li>
+									<li> IOS version below 11 should proceed to image upload</li>
+									<li> In case if your device does not support video scanning, please proceed to image upload</li>
+									<li> Click / Tap the above icons for QR code reading method</li>
+									<li> Please be reminded that you should allow this page to access to camera / photo gallery when prompted</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class = "wrap no-w"></div>
+
+			</div>
+			<div class = "clear"</div>
+			<div class = "wrap no-w"></div>
+
 		</div>
-		<div class = "clear"</div>
-		<div class = "wrap no-w"></div>
-		
+		<script type = "text/javascript" src = "include/js/validation_focus.js"></script>
 	</div>
-	<script type = "text/javascript" src = "include/js/validation_focus.js"></script>
+	<div class = "wrap side-w side"></div>
+	<div class = "clear"></div>
 </div>
-<div class = "wrap side-w side"></div>
-<div class = "clear"></div>
 </body>
 </html>
