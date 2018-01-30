@@ -97,7 +97,6 @@ video.med {
 	z-index: 100 !important;
 }
 
-
 .empty {
 	float: left;
 	width: 25%;
@@ -138,7 +137,7 @@ video.med {
 		padding: 0 !important;
 	}
 	
-	.no-w {
+	.no-w, .side-w {
 		width: 0% !important;
 	}
 	
@@ -162,7 +161,15 @@ video.med {
 		width: 20% !important;
 	}
 	
-	.allwrap, .headmain, .form-wrapper, .qrdec-wrapper {
+	.side-w {
+		width: 10% !important;
+	}
+	
+	.allwrap {
+		width: 80% !important;
+	}
+	
+	.headmain, .form-wrapper, .qrdec-wrapper {
 		width: 60% !important;
 	}
 	
