@@ -14,6 +14,11 @@ input[type="file"] {
 	display: none;
 }
 
+.pg-contents-wrapper {
+	height: 
+	background-color: #F67820;
+}
+
 header {
 	display: inline-block;
 	text-align: center;
@@ -133,7 +138,6 @@ video.med {
 .empty {
 	float: left;
 	width: 25%;
-	min-height: 10px;
 }
 
 @media screen and (max-width: 480px) {
