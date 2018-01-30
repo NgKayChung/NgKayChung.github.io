@@ -14,7 +14,6 @@ var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitIma
 var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip_cam_95px_76px.png" alt = "Change Camera"/></div>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_96px_95px.png"/></div>';
 var formhtml = '<div class = "contents">' +
-'	<div class = "wrap no-w"></div>' +
 '	<div class = "wrap form-wrapper">' +
 		'<!--div class = "overlay-screen">' +
 		'<div class="lds-css ng-scope">' +
@@ -81,7 +80,6 @@ var formhtml = '<div class = "contents">' +
 			'</div>' +
 	'</div>' +
     	//'</form>'
-	'<div class = "wrap no-w"></div>' +
 '</div>';
 var instructionhtml = '<div id="id01" class="w3-modal">' +
 		    	'<div class="w3-modal-content w3-card-4 w3-animate-zoom" >' +
