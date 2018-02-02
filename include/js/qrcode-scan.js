@@ -300,6 +300,7 @@ function startDecode() {
 				}
 				else {
 					alert(currentScanned + " is a valid receipt ID");
+					document.getElementById('btn-grp').style.display = "none";
 					var resElem = document.getElementById('result');
 					resElem.innerHTML = "QR code successfully read and submitted !";
 					resElem.style.color = "green";
@@ -383,6 +384,7 @@ function decodeImage()
 				}
 				else {
 					alert(currentScanned + " is a valid receipt ID");
+					document.getElementById('btn-grp').style.display = "none";
 					var resElem = document.getElementById('result');
 					resElem.innerHTML = "QR code successfully read and submitted !";
 					resElem.style.color = "green";
