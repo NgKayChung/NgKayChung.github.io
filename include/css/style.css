@@ -187,10 +187,6 @@ video.med {
 	}
 }
 
-.qr-contents {
-	height: -webkit-fill-available;
-}
-
 .contents {
 	width: 100%;
 	padding: 10px 20px;
