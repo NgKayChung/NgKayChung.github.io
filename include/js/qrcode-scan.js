@@ -14,7 +14,7 @@ var imgsubhtml = '<img id = "output" src = ""/><div><button onclick = "submitIma
 var fliphtml = '<div id = "flipbtn"><img src = "include/images/flip_cam_95px_76px.png" alt = "Change Camera"/></div>';
 var screenhtml = '<div id = "screenbtn"><img id = "size-img" src = "include/images/fullscreen_96px_95px.png"/></div>';
 var formhtml = '<div class = "contents">' +
-'	<div class = "wrap form-wrapper">' +
+'	<div class = "form-wrapper">' +
 		'<!--div class = "overlay-screen">' +
 		'<div class="lds-css ng-scope">' +
 		'	<div style="width: 100%; height: 100%" class="lds-eclipse">' +
