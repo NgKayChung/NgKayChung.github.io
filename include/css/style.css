@@ -194,7 +194,7 @@ video.med {
 .contents {
 	width: 100%;
 	padding: 10px 20px;
-	height: -webkit-fill-available;
+	height: auto;
 }
 
 .wrap {
