@@ -139,6 +139,7 @@ video.med {
 .empty {
 	float: left;
 	width: 25%;
+	height: 10px;
 }
 
 @media screen and (max-width: 480px) {
