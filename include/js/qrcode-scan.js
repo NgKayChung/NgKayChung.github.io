@@ -259,7 +259,8 @@ function success(stream) {
 			document.getElementById('size-img').src = "include/images/fullscreen_96px_95px.png";
 		}
 	});
-	
+
+	document.getElementById('sc-grp').style.visibility = "visible";
     startDecode();
 }
 
@@ -336,7 +337,7 @@ function flipCamera()
 	var options = {deviceId: tempId, facingMode: (front ? 'user' : 'environment')};
 	
 	setwebcam2(options);
-	document.getElementById('sc-grp').style.visibility = "visible";
+	
 }
 
 function handleFile(f)
