@@ -53,6 +53,10 @@ li {
 	font-weight: 800;
 }
 
+video {
+	background-color: #000000;
+}
+
 video.full { 
 	position: absolute;
 	right: 0;
