@@ -71,6 +71,7 @@ video.med {
 #outdiv {
 	margin: 5px 0px;
     	border: 1px solid #002E44;
+	height: -webkit-fill-available;
 }
 
 .icon-wrap {
@@ -180,12 +181,11 @@ video.med {
 }
 
 .qr-contents {
-	height: auto !important;
+	height: -webkit-fill-available;
 }
 
 .contents {
 	width: 100%;
-	height: auto;
 	padding: 10px 20px;
 }
 
@@ -201,6 +201,7 @@ video.med {
 
 .allwrap {
 	width: 70%;
+	height: auto;
 	background-color: #FFFFFF;
 }
 
