@@ -90,24 +90,44 @@ function saveRegisteredQR()
 	localStorage.setItem(("QR" + (foundindex + 1)), JSON.stringify(qrData[foundindex]));
 }
 
+function searchICNo()
+{
+	for(var pn = 1;pn <= (localStorage.length - qrData.length);pn++) {
+		if(Person.ICNo == JSON.parse(localStorage.getItem("Record"+pn)).ICNo)
+			existed = true;
+	}
+}
+
 function saveitem()
 {
-	saveRegisteredQR();
-	document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
-	
-    var lscount = localStorage.length - qrData.length;
-	
-    var inputs = document.querySelectorAll("input[type='text']");
+	var inputs = document.querySelectorAll("input[type='text']");
 	
     Person.Name = inputs[0].value;
     Person.ICNo = inputs[1].value;
     Person.Email = inputs[2].value;
     Person.MobileNo = inputs[3].value;
-    
-    localStorage.setItem(("Record" + (lscount + 1)), JSON.stringify(Person));
 	
-	//to display to table
-	loaddata();
+	existed = false;
+	
+	searchICNo();
+	
+	setTimeout(function() {
+		if(existed) {
+			alert("IC Number already registered);
+			return;
+		}
+		else {
+			saveRegisteredQR();
+			document.getElementById('temp').innerHTML = '<div id="dvcontainer"></div>';
+
+			var lscount = localStorage.length - qrData.length;
+
+			localStorage.setItem(("Record" + (lscount + 1)), JSON.stringify(Person));
+
+			//to display to table
+			loaddata();
+		}
+	}, 1000);
 }
 
 function loaddata()
