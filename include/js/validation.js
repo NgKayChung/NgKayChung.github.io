@@ -113,7 +113,7 @@ function saveitem()
 	
 	setTimeout(function() {
 		if(existed) {
-			alert("IC Number already registered);
+			alert("IC Number already registered");
 			return;
 		}
 		else {
